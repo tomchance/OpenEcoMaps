@@ -1,0 +1,80 @@
+/***********************************************
+ * 
+ * Openlayers styles
+ * 
+ ***********************************************/
+
+.olControlLayerSwitcher span, .layersDiv {
+  background-color: #73A533 !important;
+}
+
+.olControlPermalink {
+	display: none !important;
+}
+
+/* popup related styles */
+.olPopup
+{
+	overflow:inherit;
+	width: 350px;
+}
+
+.olPopup *
+{
+	margin: 0px;
+	padding:0px;
+}
+
+.olPopupCloseBox
+{
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	top: 10px;
+	right: 28px;
+	background: url("/ol_theme_green/close.png") no-repeat top left !important;
+	margin: 0px;
+	font-size: 1px;
+	padding: 0px;
+}
+
+.olPopupCloseBox:hover
+{
+	background: url(/ol_theme_green/close-hover.png) no-repeat top left !important;
+}
+
+.olPopup .olPopupContent
+{
+        width: 350px;
+	background-color: #ffffff !important;
+	padding: 1px !important;
+	margin: 0px !important;
+}
+
+.olPopup .olPopupContent table
+{
+	border-collapse:collapse;
+	overflow: auto;
+	padding: 0px;
+}
+
+.olPopupContent table td
+{
+	padding: 4px;
+	border: 1px solid #cccccc;
+}
+
+img#chicken_FrameDecorationImg_0, 
+img#chicken_FrameDecorationImg_1, 
+img#chicken_FrameDecorationImg_2, 
+img#chicken_FrameDecorationImg_3,
+img#chicken_FrameDecorationImg_4
+{
+  width: 676px !important;
+}
+
+img#chicken_FrameDecorationImg_1, 
+img#chicken_FrameDecorationImg_3
+{
+  left: -638px !important;
+}

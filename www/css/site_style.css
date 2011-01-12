@@ -1,0 +1,293 @@
+/***********************************************
+ * 
+ * Basic page styles
+ * 
+ ***********************************************/
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: corbel, helvetica, sans;
+  background-color: #73A533;
+  text-align: center;
+  margin: 10px 0 0 0;
+  padding: 0;
+  height: 100%;
+  color: #26526c;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0;
+  padding: 20px 0 0 63px;
+  color: #26526c;
+}
+
+h1 a { 
+  text-decoration: none;
+  color: #26526c;
+}
+
+h1 a:hover {
+  color: #c80000;
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+h3, h4 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+ul {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+code {
+  font-family: monospace;
+}
+
+
+/***********************************************
+ * 
+ * Page layout
+ * 
+ ***********************************************/
+
+#wrap {
+  min-height: 100%;
+}
+
+#header {
+  background: url(../images/header-corners.png) 0 0;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+  width: 760px;
+  height: 100px;
+}
+
+#header p {
+  padding: 0 0 0 67px;
+  margin: 0;
+  color: #26526c;
+}
+
+#menu {
+  background-color: #fff;
+  width: 760px;
+  height: 32px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 0 0 0 65px;
+  clear: both;
+}
+
+#menu ul li {
+  display: inline;
+  margin: 0;
+}
+
+#menu ul a:link, #menu ul a:visited {
+  display: block;
+  float: left;
+  padding: 5px; 
+  background-color: transparent;
+  color: #26526c;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#menu ul a:hover, #menu ul a:link:hover, #menu ul a:visited:hover {
+  background-color: #26526c;
+  color: #fff !important;   
+  font-weight: bold;    
+  text-decoration: none;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 60px;
+}
+
+#contents {
+  margin: 0 auto;
+  clear: both;
+  text-align: left;
+  padding: 0;
+  width: 760px;
+}
+
+#contents p {
+  margin-top: 0;
+  padding: 0;
+}
+
+#text {
+  background-color: #fff;
+  padding: 10px;
+}
+
+#footer {
+  position: relative;
+  margin-top: -40px;
+  height: 20px;
+  clear: both;
+  background: #3f5b1c;
+  padding: 10px;
+  color: #eee;
+  font-size: 0.8em;
+}
+
+/*Opera Fix*/
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;
+}
+
+/***********************************************
+ * 
+ * Editor page layout
+ * 
+ ***********************************************/
+
+#edit_header {
+  background: #fff url(../images/header-corners.png) 0 0 no-repeat;
+  margin: -10px 0 0 0;
+  text-align: left;
+  padding: 0;
+  width: 100%;
+  height: 100px;
+}
+
+#edit_header p {
+  padding: 0 0 0 67px;
+  margin: 0;
+  color: #26526c;
+}
+
+#edit_menu {
+  background-color: #fff;
+  width: 100%;
+  height: 32px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#edit_menu ul {
+  margin: 0;
+  padding: 0 0 0 65px;
+  clear: both;
+}
+
+#edit_menu ul li {
+  display: inline;
+  margin: 0;
+}
+
+#edit_menu ul a:link, #edit_menu ul a:visited {
+  display: block;
+  float: left;
+  padding: 5px; 
+  background-color: transparent;
+  color: #26526c;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#edit_menu ul a:hover, #edit_menu ul a:link:hover, #edit_menu ul a:visited:hover {
+  background-color: #26526c;
+  color: #fff !important;   
+  font-weight: bold;    
+  text-decoration: none;
+}
+
+
+/***********************************************
+ * 
+ * Main map styles
+ * 
+ ***********************************************/
+
+
+
+#maplinks {
+  width: 740px;
+  padding: 0;
+}
+
+#maplinks ul {
+  margin: 0;
+  padding: 0;
+  clear: both;
+  border-bottom: solid 1px #26526c;
+}
+
+#maplinks ul li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+#maplinks ul a, #maplinks ul a:link, #maplinks ul a:visited {
+/*  display: block; 
+  float: left;*/
+  padding: 5px 5px 0 5px; 
+  margin: 0;
+  margin-left: 5px;
+  background-color: transparent;
+  color: #26526c;
+  font-weight: bold;
+  text-decoration: none;
+  border: solid 1px #26526c;
+  border-bottom: none;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+}
+
+#maplinks ul a:link:hover, #maplinks ul a:visited:hover {
+  text-decoration: underline;
+  color: #26526c;
+}
+
+.editno {
+  font-style: italic;
+  font-weight: normal !important;
+  color: #26526c;
+}
+
+.edityes {
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #26526c;
+}
+
+
+#map {
+  width: 100%;
+  height: 500px;
+  border: 0px;
+  padding: 0px;
+  position: relative;
+}
+     
+#accordion-container #map {
+        height: 360px !important;
+}

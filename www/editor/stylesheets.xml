@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<stylesheets>
+	<stylesheet>
+		<name>OpenEcoMaps</name>
+		<url>sustainablemap.css</url>
+	</stylesheet>
+	<stylesheet>
+		<name>OpenStreetMap default</name>
+		<url>potlatch.css</url>
+	</stylesheet>
+	<stylesheet>
+		<name>Wireframe</name>
+		<url>wireframe.css</url>
+	</stylesheet>
+</stylesheets>

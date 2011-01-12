@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<imagery>
+	<set>
+		<name>OpenEcoMaps</name>
+		<type>900913</type>
+		<url>http://a.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/3697/256/$z/$x/$y.png</url>
+		<default>yes</default>
+	</set>
+	<set>
+		<name>Ordnance Survey open data</name>
+		<type>900913</type>
+		<url>http://os.openstreetmap.org/sv/$z/$x/$y.png</url>
+		<sourcetag>OS OpenData StreetView</sourcetag>
+	</set>
+	<set>
+		<name>Bing aerial photography</name>
+		<url>http://ecn.t0.tiles.virtualearth.net/tiles/a$quadkey.jpeg?g=587&mkt=en-gb&n=z</url>
+		<scheme>microsoft</scheme>
+		<sourcetag>Bing</sourcetag>
+		<attribution_url>http://dev.virtualearth.net/REST/v1/Imagery/Metadata/Aerial/0,0?zl=1&mapVersion=v1&key=Arzdiw4nlOJzRwOz__qailc8NiR31Tt51dN2D7cm57NrnceZnCpgOkmJhNpGoppU&include=ImageryProviders&output=xml</attribution_url>
+		<logo>bing_maps.png</logo>
+		<logo_url>http://www.bing.com/maps</logo_url>
+		<terms_url>http://opengeodata.org/microsoft-imagery-details</terms_url>
+	</set>
+</imagery>

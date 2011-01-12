@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Quick documentation:
+
+<category> the categories that features belong to. This includes both nodes (icons on left) and ways/areas (drop-down list that appears when a way/area is selected)
+  name: Shown in GUI
+  id: internal reference (a feature refers to this with category=xxx)
+  
+<feature> a pre-defined group of tags that make up a feature
+  category: [ctext] corresponding to category id
+  icon
+    @image: path to .png file
+    @background: colour spec
+    @foreground: colour spec
+    (general html goes here?) Variables substituted with ${ref}
+  help: [ctext] URL, shown as a linked ? icon. Should (?) usually be an OSM wiki page.
+  description: Not currently used?
+  line/point/area: any or all of these are allowed. Determines whether this feature is shown in the corresponding situations. None is equivalent to all three.
+  tag - one or more of these required, defines the tags that make up the feature.
+    @k - key
+    @v - value
+  input 
+    @ref=xxx
+  inputSet
+    @ref=xxx
+</feature>  
+  
+<inputSet>: a reusable group of properties for a feature.
+  @id="internal id"
+  input...
+</inputSet>
+
+<input>
+  @type: choice/freetext/turn/checkbox/slider/route/speed/number - the different types of supported input dialogs.
+  @presence: always/onTagMatch/withCategory - Whether it always appears on the basic page, appears only when the tag is already set, or only ever show on the category page.
+  @category: which tab it appears on
+  @description: mouse-over text
+  @name: The text shown as the label of the property
+  @key: The actual OSM key (tag) that will be saved
+  @priority: highest/high/normal/low/lowest (default=>normal) - controls the order that different features show up in a panel.
+  match: for turn|route inputs, the tags to be considered on the relation as indicating a match.
+    @k: key
+    @v: value
+  icon: see above
+-->
+
+<mapFeatures>
+
+  <!-- Categories -->
+
+  <category name="Energy" id="energy">
+  </category>
+
+  <category name="Waste" id="waste">
+  </category>
+
+  <category name="Food" id="food">
+  </category>
+
+  <category name="Transport" id="transport">
+  </category>
+
+  <category name="Culture and heritage" id="culture">
+  </category>
+
+  <category name="Nature and wildlife" id="nature">
+  </category>
+
+  <category name="Advanced" id="advanced">
+  </category>
+
+  <category name="Misc" id="misc">
+  </category>
+
+  <!-- Common input sets -->
+  
+  <inputSet id="simpleName">
+    <input type="freetext" presence="always" name="Name" key="name" description="The name" priority="highest" />
+  </inputSet>
+
+  <inputSet id="names">
+    <input type="freetext" presence="always"
+        name="Name" category="Naming" priority="highest"
+        key="name" description="The most common name"/>
+    <input type="freetext" presence="onTagMatch"
+        name="International Name" category="Naming"
+        key="int_name" description="The internationally recognised name"/>
+    <input type="freetext" presence="onTagMatch"
+        name="Historical Name" category="Naming" priority="low"
+        key="old_name" description="The historic or previous name"/>
+  </inputSet>
+
+  <inputSet id="basics">
+    <input type="freetext" presence="always" category="Basic" description="Organisation that owns and operators the generator" name="Operator" key="operator"/>
+    <input type="freetext" presence="always" category="Basic" name="Description" key="description"/>
+    <input type="freetext" presence="withCategory" category="Basic" name="Website" key="website"/>
+    <input type="freetext" presence="withCategory" category="Basic" name="Wikipedia" key="wikipedia"/>
+    <input type="freetext" presence="withCategory" category="Basic" name="Flickr" description="Flickr photo ID (number after username)" key="flickr"/>
+  </inputSet>
+  
+  <inputSet id="buildingAddress">
+    <input type="freetext" presence="onTagMatch" category="Address" description="The number of the house, e.g. 156 or 10-12" name="House Number" key="addr:housenumber"/>
+    <input type="freetext" presence="onTagMatch" category="Address" description="The name of the house, e.g. Riverbank Cottage" name="Building Name" key="addr:housename"/>
+    <input type="freetext" presence="onTagMatch" category="Address" description="The Street Name (optional)" name="Street Name" key="addr:street"/>
+    <input type="freetext" presence="onTagMatch" category="Address" description="The postcode" name="Postcode" key="addr:postcode"/>
+  </inputSet>
+  
+  <inputSet id="web">
+    <input type="freetext" presence="onTagMatch" category="Web" description="The URL of the website" name="Website" key="website" />
+  </inputSet>
+
+  <!-- ************************************************************************
+       Energy generators
+       ************************************************************************ -->
+
+  <inputSet id="energySource">
+    <input type="choice" presence="always"  name="Energy source" key="generator:source" category="Energy">
+      <choice value="wind" text="Wind" />
+      <choice value="solar" text="Solar" />
+      <choice value="biofuel" text="Biofuel" />
+      <choice value="biofuel" text="Biomass" />
+      <choice value="biogas" text="Biogas" />
+      <choice value="geothermal" text="Geothermal" />
+      <choice value="hydro" text="Hydroelectric" />
+      <choice value="tidal" text="Tidal" />
+      <choice value="wave" text="Wave" />
+      <choice value="osmotic" text="Osmotic" />
+      <choice value="coal" text="Coal" />
+      <choice value="gas" text="Gas" />
+      <choice value="oil" text="Oil" />
+      <choice value="nuclear" text="Nuclear" />
+    </input>
+  </inputSet>
+
+  <inputSet id="energyMethod">
+    <input type="choice" presence="always"  name="Generation method" key="generator:method" category="Energy">
+      <choice value="photovoltaic" text="Photovoltaic cells" />
+      <choice value="thermal" text="Thermal (using heat from the sun)" />
+      <choice value="combustion" text="Combustion (burning)" />
+      <choice value="gasification" text="Gasification" />
+      <choice value="anaerobic_digestion" text="Anerobic digestion" />
+      <choice value="pyrolysis" text="Pyrolysis" />
+      <choice value="pumping" text="Pumping" />
+      <choice value="fission" text="Fission" />
+      <choice value="fusion" text="Fusion" />
+    </input>
+  </inputSet>
+  
+  <feature name="Wind turbine">
+    <category>energy</category>
+    <icon image="/feature_icons/power_wind.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:power=generator</help>
+    <point/>
+    <tag k="power" v="generator"/>
+    <tag k="generator:source" v="wind"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the turbine" name="Electrical rating" key="generator:output:electricity"/>
+  </feature>
+
+  <feature name="Solar panel">
+    <category>energy</category>
+    <icon image="/feature_icons/power_solar.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:power=generator</help>
+    <area/>
+    <point/>
+    <tag k="power" v="generator"/>
+    <tag k="generator:source" v="solar"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="choice" presence="always"  name="Generation method" key="generator:method">
+      <choice value="photovoltaic" text="Photovoltaic cells" />
+      <choice value="thermal" text="Thermal panels (for hot water)" />
+    </input>
+    <input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the panel" name="Output - electrical rating" key="generator:output:electricity"/>
+    <input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+  </feature>
+
+  <feature name="Biomass generator">
+    <category>energy</category>
+    <icon image="/feature_icons/power_biomass.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:power=generator</help>
+    <area/> 
+    <point/>
+    <tag k="power" v="generator"/>
+    <tag k="generator:source" v="biomass"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="energyMethod"/>
+    <input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the generator" name="Output - electricity rating" key="generator:output:electricity"/>
+    <input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+    <input type="freetext" presence="always" category="Energy" description="The hot air output rating (maximum potential) of the generator" name="Output - hot air rating" key="generator:output:hot_air"/>
+    <input type="freetext" presence="always" category="Energy" description="The cold water output rating (maximum potential) of the generator" name="Output - cold water rating" key="generator:output:cold_water"/>
+  </feature>
+
+  <feature name="Geothermal generator">
+    <category>energy</category>
+    <icon image="/feature_icons/power_geothermal.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:power=generator</help>
+    <area/> 
+    <point/>
+    <tag k="power" v="generator"/>
+    <tag k="generator:source" v="geothermal"/>
+    <tag k="generator:method" v="pumping"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the generator" name="Output - electricity rating" key="generator:output:electricity"/>
+    <input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+    <input type="freetext" presence="always" category="Energy" description="The cold water output rating (maximum potential) of the generator" name="Output - cold water rating" key="generator:output:cold_water"/>
+  </feature>
+
+
+  <!-- ************************************************************************
+       Waste features
+       ************************************************************************ -->
+
+  <inputSet id="recyclates">
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Paper" key="recycling:paper" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Cardboard" key="recycling:cardboard" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Metal cans" key="recycling:cans" layout="horizontal"/>
+  </inputSet>
+
+  <feature name="Recycling bin">
+    <category>waste</category>
+    <icon image="/feature_icons/waste_recycle.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=recycling</help>
+    <point/>
+    <tag k="amenity" v="recycling"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="recyclates"/>
+  </feature>
+
+  <feature name="Waste/recycling centre">
+    <category>waste</category>
+    <icon image="/feature_icons/waste_recycle.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=waste_transfer_station</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="waste_transfer_station"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="recyclates"/>
+  </feature>
+
+  <!-- ************************************************************************
+       Food features
+       ************************************************************************ -->
+
+  <feature name="Allotments">
+    <category>food</category>
+    <icon image="/feature_icons/food_allotment.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
+    <area/>
+    <tag k="landuse" v="allotments"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Community food growing">
+    <category>food</category>
+    <icon image="/feature_icons/food_community_growing.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=community_food_growing</help>
+    <area/>
+    <tag k="landuse" v="community_food_growing"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Market">
+    <category>food</category>
+    <icon image="/feature_icons/food_market.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=marketplace</help>
+    <point/>
+    <tag k="amenity" v="marketplace"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell vegetables?" name="Vegetables" key="vegetables" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell fish?" name="Fish" key="fish" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell meat?" name="Meat" key="meat" layout="horizontal"/>
+  </feature>
+
+  <!-- ************************************************************************
+       Transport features
+       ************************************************************************ -->
+
+  <inputSet id="rail_network">
+    <input type="choice" presence="always" category="Basic" name="Network" key="network">
+      <choice value="National Rail" text="National Rail"/>
+      <choice value="National Rail;London Overground" text="London Overground and National Rail"/>
+      <choice value="London Underground" text="London Underground"/>
+    </input>
+    <input type="choice" presence="always" category="Basic" name="TFL travelzone" key="tfl_travelzone">
+      <choice value="1" text="Zone 1"/>
+      <choice value="2" text="Zone 2"/>
+      <choice value="3" text="Zone 3"/>
+      <choice value="4" text="Zone 4"/>
+      <choice value="5" text="Zone 5"/>
+      <choice value="6" text="Zone 6"/>
+    </input>
+  </inputSet>
+
+  <feature name="Train station building">
+    <category>transport</category>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:railway=station</help>
+    <area/>
+    <tag k="building" v="railway_station"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Train station">
+    <category>transport</category>
+    <icon image="/feature_icons/transport_train.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:railway=station</help>
+    <point/>
+    <tag k="railway" v="station"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="rail_network"/>
+  </feature>
+
+  <feature name="Tube station">
+    <category>transport</category>
+    <icon image="/feature_icons/transport_tube.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:railway=station</help>
+    <point/>
+    <tag k="railway" v="station"/>
+    <tag k="network" v="London Underground"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="rail_network"/>
+  </feature>
+
+  <feature name="Tram stop">
+    <category>transport</category>
+    <icon image="/feature_icons/transport_tram.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:railway=tram_stop</help>
+    <point/>
+    <tag k="railway" v="tram_stop"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <inputSet ref="rail_network"/>
+  </feature>
+
+  <feature name="Bicycle rental">
+    <category>transport</category>
+    <icon image="/feature_icons/transport_cyclehire.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=bicycle_rental</help>
+    <point/>
+    <tag k="amenity" v="bicycle_rental"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="text" name="Capacity" key="capacity" presence="always" category="Basic"/>
+  </feature>
+
+  <feature name="Car club parking bay">
+    <category>transport</category>
+    <icon image="/feature_icons/transport_carsharing.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=car_sharing</help>
+    <point/>
+    <tag k="amenity" v="car_sharing"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <!-- ************************************************************************
+       Culture features
+       ************************************************************************ -->
+
+  <feature name="Library">
+    <category>culture</category>
+    <icon image="/feature_icons/culture_library.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=library</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="library"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Theatre">
+    <category>culture</category>
+    <icon image="/feature_icons/culture_theatre.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=theatre</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="theatre"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Cinema">
+    <category>culture</category>
+    <icon image="/feature_icons/culture_cinema.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=cinema</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="cinema"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Art gallery">
+    <category>culture</category>
+    <icon image="/feature_icons/culture_gallery.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:tourism=gallery</help>
+    <point/>
+    <area/>
+    <tag k="tourism" v="gallery"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Museum">
+    <category>culture</category>
+    <icon image="/feature_icons/culture_museum.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:tourism=museum</help>
+    <point/>
+    <area/>
+    <tag k="tourism" v="museum"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <!-- ************************************************************************
+       Nature and wildlife
+       ************************************************************************ -->
+
+  <feature name="Tree">
+    <category>nature</category>
+    <icon image="/feature_icons/nature_tree_16.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:natural=tree</help>
+    <point/>
+    <tag k="natural" v="tree"/>
+    <input type="freetext" presence="always" name="Common name" category="Basic" priority="highest" key="species:en" description="The common English name (e.g. London Plane)"/>
+    <input type="freetext" presence="always" name="Species" category="Basic" priority="high" key="species" description="The species (e.g. Platanus × hispanica)"/>
+    <input type="freetext" presence="always" name="Genus" category="Basic" priority="high" key="genus" description="The genus (e.g. Platanus)"/>
+    <input type="freetext" presence="always" name="Circumference (add cm to end)" category="Basic" priority="medium" key="circumference" description="The circumference of the tree in centimetres"/>
+    <input type="freetext" presence="always" name="Height (add m to end)" category="Basic" priority="medium" key="height" description="The height of the tree in metres"/>
+    <input type="freetext" presence="always" name="Notes" category="Basic" priority="low" key="note" description="Add any extra info e.g. appears dead, split, etc."/>
+  </feature>
+
+</mapFeatures>

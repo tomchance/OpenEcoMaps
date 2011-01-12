@@ -1,0 +1,6 @@
+#body {
+	height:expression(document.body.clientHeight - (89+17+20));
+	width:expression(document.body.clientWidth - 20);
+}
+
+#sidebar  { background-image: none; }

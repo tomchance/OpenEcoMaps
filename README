@@ -1,0 +1,39 @@
+==============
+OpenEcoMaps
+==============
+
+--------------
+Introduction
+--------------
+
+OpenEcoMaps is a set of tools to provide easy-access data on sustainable living
+from OpenStreetMap. It is divided into two parts:
+
+* www - the OpenEcoMaps web site, hosted at www.openeconmaps.co.uk, providing
+information about the project, the public KML files, an embeddable OpenLayers
+set-up and a customised Potlatch 2 set-up designed to make it easy to add only
+the features OpenEcoMaps provides
+
+* kml_generator - the Python scripts that download interesting data from the
+OpenStreetMap eXtended API and turns it onto pretty KML files
+
+
+--------------
+Deploying
+--------------
+
+The web site this is really rather simple. Pop the files in the 'www' folder
+into the right place for the web server and bingo, you're done. There aren't any
+complicated databases or config files to fiddle with. If you're also deploying
+the kml_generator, be sure that the kml_generator is running as a user that can
+write into the 'www/kml' folder.
+
+Put the kml_generator folder anywhere you like, preferably not visible to web
+browsers. Ensure the user that runs the script can write into the
+'kml_generator/kml' folder too.
+
+Finally, edit the 'oem_generate_kml.sh' script to include the correct paths and
+run the script to test it works. It should work through all the data then dump
+fresh KML files into the 'www/kml' folder. If it is having problems, run the
+Python script directly with the '-v' argument to see more detail as to what it's
+up to.
