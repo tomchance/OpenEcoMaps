@@ -26,6 +26,7 @@ include("includes/header.inc");
       <li>Food - <a href="http://www.openecomaps.org/kml/london/food.kml">KML</a></li> 
       <li>Waste - <a href="http://www.openecomaps.org/kml/london/waste.kml">KML</a></li> 
       <li>Transport - <a href="http://www.openecomaps.org/kml/london/transport.kml">KML</a></li> 
+      <li>Culture - <a href="http://www.openecomaps.org/kml/london/culture.kml">KML</a></li>
     </ul> 
 
     <h2>Getting the raw data</h2> 
