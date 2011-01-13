@@ -39,7 +39,11 @@ function initMap(lat, lon, zoom){
 	  resolutions: [76.43702827148438, 38.21851413574219,19.109257067871095, 9.554628533935547, 4.777314266967774, 2.3886571, 1.1943286],
 	  zoomOffset: 11,
 	  numZoomLevels: 7 });
-  map.addLayers([layerCloudMade, layerCycling, layerPublicTransport]);
+  var layerAerial = new OpenLayers.Layer.Bing(
+	{ name: "Aerial photography",
+	  key: 'AoGQ41xJtaeTYW-5bGSuE7e589v03uKnxXeXmtFEsWMH1UoZMyhBydLItxE7Qua_',
+	  type: 'Aerial' });
+  map.addLayers([layerCloudMade, layerCycling, layerPublicTransport, layerAerial]);
   
   var layerPower = addKMLLayer("Low carbon power", "../kml/power.kml");
   var layerWaste = addKMLLayer("Zero waste", "../kml/waste.kml");
@@ -115,9 +119,12 @@ function onFeatureUnselect(feature) {
  * Various functions for view/edit links on map
  */
 function updateLocation() {
-  for (var i=0; i < document.links.length; i++) {
-    if (document.links[i].text == "Permalink") {
-      document.links["view"].href = document.links[i].href;
+  var edit_link = document.getElementById("edit");
+  var view_link = document.getElementById("view");
+  var all_links = document.getElementsByTagName("a");
+  for (var i=0; i < all_links.length; i++) {
+    if (all_links[i].innerHTML == "Permalink") {
+      view_link.href = all_links[i].href;
     }
   }
   var cur_zoom = map.getZoom();
@@ -128,10 +135,10 @@ function updateLocation() {
   var cur_lat = Math.round(cur_lonlat_reproj.lat * decimals) / decimals;
   var cur_lon = Math.round(cur_lonlat_reproj.lon * decimals) / decimals;
   if (cur_zoom == 6) {
-    document.links["edit"].href = "editor/index.php?zoom=17&lon=" + cur_lon + "&lat=" + cur_lat;
-    document.links["edit"].className = "edityes";
+    edit_link.href = "editor/index.php?zoom=17&lon=" + cur_lon + "&lat=" + cur_lat;
+    edit_link.className = "edityes";
   } else {
-    document.links["edit"].href = "#";
-    document.links["edit"].className = "editno";
+    edit_link.href = "#";
+    edit_link.className = "editno";
   }
 }
