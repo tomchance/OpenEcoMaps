@@ -15,7 +15,7 @@ include("includes/header.inc");
 
     <p><code>&lt;iframe  height="500px" width="100%" src="http://www.openecomaps.org/map_embed.php"&gt;<br/>&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;<br/>&lt;/iframe&gt;</code></p>
 
-    <p>To centre the map on your area of interest, with the layers you want activated, navigate to your preferred default view on the <a href="map_embed.php?permalink=1">embeddable map</a> and copy the "Permalink" URL in the bottom right of the map. Then replace the URL in the iframe with that URL, <em>removing the <code>permalink=1</code> from the URL</em>.</p>
+    <p>To centre the map on your area of interest, with the layers you want activated, navigate to your preferred default view on the <a href="map_embed.php">embeddable map</a> and copy the "Permalink" URL and paste it to replace the URL in the iframe.</p>
 
     <h3>Using KML files</h3>
 
