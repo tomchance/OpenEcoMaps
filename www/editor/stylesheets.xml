@@ -3,7 +3,7 @@
 <stylesheets>
 	<stylesheet>
 		<name>OpenEcoMaps</name>
-		<url>sustainablemap.css</url>
+		<url>openecomap.css</url>
 	</stylesheet>
 	<stylesheet>
 		<name>OpenStreetMap default</name>
