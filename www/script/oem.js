@@ -45,11 +45,12 @@ function initMap(lat, lon, zoom){
 	  type: 'Aerial' });
   map.addLayers([layerCloudMade, layerCycling, layerPublicTransport, layerAerial]);
   
-  var layerPower = addKMLLayer("Low carbon power", "../kml/power.kml");
-  var layerWaste = addKMLLayer("Zero waste", "../kml/waste.kml");
-  var layerFood = addKMLLayer("Sustainable food", "../kml/food.kml");
-  var layerTransport = addKMLLayer("Sustainable transport", "../kml/transport.kml");
-  var layerCulture = addKMLLayer("Culture and heritage", "../kml/culture.kml");
+  var layerPower = addKMLLayer("Low carbon power", 
+"http://www.openecomaps.co.uk/kml/london/power.kml");
+  var layerWaste = addKMLLayer("Zero waste", "http://www.openecomaps.co.uk/kml/london/waste.kml");
+  var layerFood = addKMLLayer("Sustainable food", "http://www.openecomaps.co.uk/kml/london/food.kml");
+  var layerTransport = addKMLLayer("Sustainable transport", "http://www.openecomaps.co.uk/kml/london/transport.kml");
+  var layerCulture = addKMLLayer("Culture and heritage", "http://www.openecomaps.co.uk/kml/london/culture.kml");
   var layersPOI = [layerPower, layerWaste, layerFood, layerTransport, layerCulture];
   map.addLayers(layersPOI);
   var selectControl = new OpenLayers.Control.SelectFeature(layersPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
@@ -123,7 +124,7 @@ function updateLocation() {
   var view_link = document.getElementById("view");
   var all_links = document.getElementsByTagName("a");
   for (var i=0; i < all_links.length; i++) {
-    if (all_links[i].innerHTML == "Permalink") {
+    if (all_links[i].innerHTML == "permalink") {
       view_link.href = all_links[i].href;
     }
   }

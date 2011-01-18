@@ -26,7 +26,7 @@ include("includes/header.inc");
 
   <p>You can read the documentation on the <a href="http://wiki.openstreetmap.org/wiki/OpenEcoMaps">OpenStreetMap wiki page</a>, including the <a href="http://wiki.openstreetmap.org/wiki/OpenEcoMaps/tags">list of tags</a> we use..</p>
 
-  <p>You can download the code yourself from <a href="https://github.com/tomchance/Sustainable-OSM-maps">this github project</a>.</p>
+  <p>You can download the code yourself from <a href="https://github.com/tomchance/OpenEcoMaps">this github project</a>.</p>
 
   <h3>Who does this?</h3>
 

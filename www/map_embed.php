@@ -2,7 +2,7 @@
  
   <head>
     <link rel="stylesheet" type="text/css" href="css/oem_style.css">
-    <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js"></script> 
+    <script type="text/javascript" src="http://www.openlayers.org/dev/OpenLayers.js"></script> 
     <script type="text/javascript" src="script/oem.js"></script> 
 	<!--[if lt IE 7]>
 	<link rel="stylesheet" href="/script/ie6-fix.css" type="text/css">
@@ -13,6 +13,7 @@
         initMap(-0.1, 51.5, 1);
 	updateLocation();
 	map.events.register("moveend", map, updateLocation);
+	map.events.register("changelayer", map, updateLocation);
       }
     </script>
   </head> 
