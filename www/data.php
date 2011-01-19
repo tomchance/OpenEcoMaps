@@ -21,6 +21,8 @@ include("includes/header.inc");
 
     <p>Alternatively, you can use the KML feeds for each layer to embed anywhere you like. They are:</p> 
 
+    <h4>London</h4>
+
     <ul> 
       <li>Power - <a href="http://www.openecomaps.org/kml/london/power.kml">KML</a></li> 
       <li>Food - <a href="http://www.openecomaps.org/kml/london/food.kml">KML</a></li> 
@@ -28,6 +30,12 @@ include("includes/header.inc");
       <li>Transport - <a href="http://www.openecomaps.org/kml/london/transport.kml">KML</a></li> 
       <li>Culture - <a href="http://www.openecomaps.org/kml/london/culture.kml">KML</a></li>
     </ul> 
+
+    <h4>UK</h4>
+
+    <ul> 
+      <li>Power - <a href="http://www.openecomaps.org/kml/uk/power.kml">KML</a></li> 
+    </ul>
 
     <h2>Getting the raw data</h2> 
 
