@@ -20,6 +20,10 @@
   http://www.gnu.org/licenses/gpl-3.0.html
 """
 
+import flickr
+import re
+import sys
+
 def generateKMLStyle(name,icon):
   """
     Return a valid KML style definition
@@ -40,6 +44,8 @@ def generateKMLPlacemark(row,style):
     Return a valud KML placemark definition adding in
     data from the universal tags (description, website, etc.)
   """
+  if ('-v' in sys.argv):
+    sys.stdout.write('.')
   name = u'%s' % (row['name'].decode('utf-8'))
   name = name.encode('ascii', 'xmlcharrefreplace')
   lon = row['lon']
@@ -65,9 +71,3 @@ def generateKMLPlacemark(row,style):
       description = "".join([description, """<a href="http://en.wikipedia.org/wiki/%s">Wikipedia article</a>""" % (row['wikipedia'])])
     description = "".join([description, "</p>"])
   return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (name,description,style,lon,lat)
-
-def createKMLFile(function, output_file, bbox):
-  c = function(bbox)
-  f = open(output_file, 'w')
-  f.write(c)
-  f.close() 

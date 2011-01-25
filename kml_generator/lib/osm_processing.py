@@ -44,8 +44,9 @@ def processRawData(xsl_uri, features, bbox):
   for key,value in features.iteritems():
     xapi_fragment = "%s=%s" % (key,value)
   xapi_uri = "http://xapi.openstreetmap.org/api/0.6/*[%s][bbox=%s]" % (xapi_fragment, bbox)
+  xsl_uri = ''.join(['./lib/', xsl_uri])
   if ('-v' in sys.argv):
-    print "Downloading %s" % (xapi_uri)
+    print " : Downloading %s" % (xapi_uri)
   urllib.urlretrieve(xapi_uri,'temp.xml')
   osmdoc = libxml2.parseFile('temp.xml')
   styledoc = libxml2.parseFile(xsl_uri)
@@ -53,7 +54,7 @@ def processRawData(xsl_uri, features, bbox):
 
   # Translate XML to CSV (easier to then read into py object)
   if ('-v' in sys.argv):
-    print "Processing data..."
+    print " : Processing data..."
   for key,value in features.iteritems():
     result = style.applyStylesheet(osmdoc,\
       { "key":"'%s'"%key, "value":"'%s'"%value })
