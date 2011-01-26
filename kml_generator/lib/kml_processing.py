@@ -44,8 +44,6 @@ def generateKMLPlacemark(row,style):
     Return a valud KML placemark definition adding in
     data from the universal tags (description, website, etc.)
   """
-  if ('-v' in sys.argv):
-    sys.stdout.write('.')
   name = u'%s' % (row['name'].decode('utf-8'))
   name = name.encode('ascii', 'xmlcharrefreplace')
   lon = row['lon']
