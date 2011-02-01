@@ -21,8 +21,8 @@
   http://www.gnu.org/licenses/gpl-3.0.html
 """
 
-from osm_processing import *
-from kml_processing import *
+from lib.osm_processing import *
+from lib.kml_processing import *
 import re
 import flickr
 
@@ -46,7 +46,7 @@ def feature_amenitybicycle_rental(bbox, myStyles):
     Bike hire...
   """
   myStyles["transportCyclehire"] = "transport_cyclehire.png"
-  xsl_uri = 'trans_generic.xsl'
+  xsl_uri = 'lib/trans_generic.xsl'
   features = {"amenity":"bicycle_rental"}
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
@@ -94,7 +94,7 @@ def feature_amenitymarketplace(bbox, myStyles):
     Food markets...
   """
   myStyles["foodMarket"] = "food_market.png"
-  xsl_uri = 'trans_markets.xsl'
+  xsl_uri = 'lib/trans_markets.xsl'
   features = {"amenity":"marketplace"}
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
@@ -155,7 +155,7 @@ def feature_amenitywaste_transfer_station(bbox, myStyles):
     Recycling centres...
   """
   myStyles["wasteRecyclingDepot"] = "waste_recycle.png"
-  xsl_uri = 'trans_recycling.xsl'
+  xsl_uri = 'lib/trans_recycling.xsl'
   features = {"amenity":"waste_transfer_station"}
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
@@ -213,7 +213,7 @@ def feature_powergenerator(bbox, myStyles):
   myStyles["powerSea"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_sea.png"
   myStyles["powerWaste"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_waste.png"
   myStyles["powerDefault"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_default.png"
-  xsl_uri = 'trans_generators.xsl'
+  xsl_uri = 'lib/trans_generators.xsl'
   features = {"power":"generator"}
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
@@ -320,7 +320,7 @@ def feature_railwaystation(bbox, myStyles):
   myStyles["transportTrain"] = "transport_train.png"
   myStyles["transportDLR"] = "transport_train.png"
   myStyles["transportTube"] = "transport_tube.png"
-  xsl_uri = 'trans_generic.xsl'
+  xsl_uri = 'lib/trans_generic.xsl'
   features = {"railway":"station"}
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
@@ -362,7 +362,7 @@ def feature_tourismmuseum(bbox, myStyles):
   """
     Museums...
   """
-  myStyles["cultureMuseum"] = "culture_cinema.png"
+  myStyles["cultureMuseum"] = "culture_museum.png"
   features = {"tourism":"museum"}
   output = feature_generic(bbox, "Museum", "cultureMuseum", features)
   return output, myStyles

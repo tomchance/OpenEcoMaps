@@ -23,9 +23,8 @@
 
 import os
 import sys
-sys.path.append('./lib')
-from kml_processing import *
-from feature_defs import * 
+from lib.kml_processing import *
+from lib.feature_defs import * 
 
 bbox_london = '-0.51,51.20,0.35,51.80'
 bbox_uk = '-6.5,49.68,2.67,61.31'
@@ -36,7 +35,9 @@ def createKML(bbox, features, myStyles):
   to create the KML
   """
   output = ""
-  for featurekey,featurevalue in features.iteritems():
+  for feature in features:
+    featurekey = feature.keys()[0]
+    featurevalue = feature[featurekey]
     if ('-v' in sys.argv):
       print ''.join([featurekey, "=", featurevalue])
     function = "feature_%s%s" % (featurekey, featurevalue)
@@ -60,9 +61,9 @@ def doTheJob(bbox, filename, features, title):
   createKMLFile(title, feature_contents, filename, myStyles)
 
 if __name__=="__main__":
-  doTheJob(bbox_london, 'kml/london/power.kml', {'power':'generator'}, 'Low carbon power generators in London')
-  doTheJob(bbox_uk, 'kml/uk/power.kml', {'power':'generator'}, 'Low carbon power generators in the UK')
-  doTheJob(bbox_london, 'kml/london/waste.kml', {'amenity':'recycling', 'amenity':'waste_transfer_station','landuse':'landfill'}, 'Zero waste in London')
-  doTheJob(bbox_london, 'kml/london/transport.kml', {'railway':'station', 'amenity':'bicycle_rental', 'amenity':'car_sharing', 'railway':'tram_stop'}, 'Sustainable transport in London')
-  doTheJob(bbox_london, 'kml/london/food.kml', {'amenity':'marketplace', 'landuse':'allotments'}, 'Sustainable food in London')
-  doTheJob(bbox_london, 'kml/london/culture.kml', {'amenity':'library', 'amenity':'theatre', 'amenity':'cinema', 'tourism':'gallery', 'tourism':'museum'}, 'Culture and heritage in London')
+  doTheJob(bbox_london, 'kml/london/power.kml', [{'power':'generator'}], 'Low carbon power generators in London')
+  doTheJob(bbox_uk, 'kml/uk/power.kml', [{'power':'generator'}], 'Low carbon power generators in the UK')
+  doTheJob(bbox_london, 'kml/london/waste.kml', [{'amenity':'recycling'}, {'amenity':'waste_transfer_station'}, {'landuse':'landfill'}], 'Zero waste in London')
+  doTheJob(bbox_london, 'kml/london/transport.kml', [{'railway':'station'}, {'amenity':'bicycle_rental'}, {'amenity':'car_sharing'}, {'railway':'tram_stop'}], 'Sustainable transport in London')
+  doTheJob(bbox_london, 'kml/london/food.kml', [{'amenity':'marketplace'}, {'landuse':'allotments'}], 'Sustainable food in London')
+  doTheJob(bbox_london, 'kml/london/culture.kml', [{'amenity':'library'}, {'amenity':'theatre'}, {'amenity':'cinema'}, {'tourism':'gallery'}, {'tourism':'museum'}], 'Culture and heritage in London')
