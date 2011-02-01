@@ -187,8 +187,23 @@ def feature_landuseallotments(bbox, myStyles):
     Allotments...
   """
   myStyles["foodAllotment"] = "food_allotment.png"
+  myStyles["foodCommunityGrowing"] = "food_community_growing.png"
+  xsl_uri = 'lib/trans_generic.xsl'
   features = {"landuse":"allotments"}
-  output = feature_generic(bbox, "Allotments", "foodAllotment", features)
+  output = ''
+  poi_data = processRawData(xsl_uri, features, bbox)
+  for row in poi_data:
+    if (row['lat'] == None):
+      continue
+    if (row['community'] == 'yes'):
+      iconstyle = "foodCommunityGrowing"
+      if (row['name'] == ''):
+        row['name'] = 'Community food space'
+    else:
+      iconstyle = "foodAllotment"
+      if (row['name'] == ''):
+        row['name'] = 'Allotments'
+    output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
 def feature_landuselandfill(bbox, myStyles):
@@ -204,15 +219,15 @@ def feature_powergenerator(bbox, myStyles):
   """
     Power generator...
   """
-  myStyles["powerSolar"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_solar.png"
-  myStyles["powerWind"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_wind.png"
-  myStyles["powerBiomass"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_biomass.png"
-  myStyles["powerGas"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_gas.png"
-  myStyles["powerGeothermal"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_geothermal.png"
-  myStyles["powerHydro"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_hydro.png"
-  myStyles["powerSea"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_sea.png"
-  myStyles["powerWaste"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_waste.png"
-  myStyles["powerDefault"] = "http://tomchance.dev.openstreetmap.org/feature_icons/power_default.png"
+  myStyles["powerSolar"] = "power_solar.png"
+  myStyles["powerWind"] = "power_wind.png"
+  myStyles["powerBiomass"] = "power_biomass.png"
+  myStyles["powerGas"] = "power_gas.png"
+  myStyles["powerGeothermal"] = "power_geothermal.png"
+  myStyles["powerHydro"] = "power_hydro.png"
+  myStyles["powerSea"] = "power_sea.png"
+  myStyles["powerWaste"] = "power_waste.png"
+  myStyles["powerDefault"] = "power_default.png"
   xsl_uri = 'lib/trans_generators.xsl'
   features = {"power":"generator"}
   poi_data = processRawData(xsl_uri, features, bbox)

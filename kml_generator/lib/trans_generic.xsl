@@ -38,7 +38,7 @@ on how the object's lat/lon was extracted.
 <xsl:param name="key">None</xsl:param>
 <xsl:param name="value">None</xsl:param>
  
-<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;landuse&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;capacity&tab;network&tab;ref&tab;operator&tab;tfl_travelzone
+<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;landuse&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;capacity&tab;network&tab;ref&tab;operator&tab;community&tab;tfl_travelzone
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
 </xsl:template>
@@ -60,6 +60,7 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../tag[@k="network"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="ref"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="community"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="tfl_travelzone"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
@@ -86,6 +87,7 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../tag[@k="network"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="ref"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="community"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="tfl_travelzone"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>

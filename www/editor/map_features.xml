@@ -260,9 +260,10 @@ Quick documentation:
   <feature name="Community food growing">
     <category>food</category>
     <icon image="/feature_icons/food_community_growing.png"/>
-    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=community_food_growing</help>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
     <area/>
-    <tag k="landuse" v="community_food_growing"/>
+    <tag k="landuse" v="allotments"/>
+    <tag k="community" v="yes"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
   </feature>
