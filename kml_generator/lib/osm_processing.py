@@ -26,6 +26,12 @@ import csv
 import urllib
 import libxslt
 import libxml2
+
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-11, Tom Chance"
+__license__ = "GPL"
+
 libxml2.lineNumbersDefault(1)
 libxml2.substituteEntitiesDefault(1)
 

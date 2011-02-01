@@ -2,29 +2,34 @@
 #! /usr/bin/python
 
 """
-  extract_kml.py
-  Copyright 2010-11 Tom Chance <tom@acrewoods.net>
+extract_kml.py
+Copyright 2010-11, Tom Chance <tom@acrewoods.net>
 
-  This script downloads data from OpenStreetMap related to
-  sustainable lifemyStyles and turns it into KML feeds.
+This script downloads data from OpenStreetMap related to
+sustainable lifemyStyles and turns it into KML feeds.
 
-  This program is free software; you may redistribute it and/or
-  modify it under the terms of the GNU General Public License as
-  published by the Free Software Foundation; either version 3 of
-  the License, or (at your option) any later version.
+This program is free software; you may redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3 of
+the License, or (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful, 
-  but WITHOUT ANY WARRANTY; without even the implied warranty of 
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
-  GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details.
 
-  http://www.gnu.org/licenses/gpl-3.0.html
+http://www.gnu.org/licenses/gpl-3.0.html
 """
 
 import os
 import sys
 from lib.kml_processing import *
-from lib.feature_defs import * 
+from lib.feature_defs import *
+
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-11, Tom Chance"
+__license__ = "GPL"
 
 bbox_london = '-0.51,51.20,0.35,51.80'
 bbox_uk = '-6.5,49.68,2.67,61.31'

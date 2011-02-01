@@ -26,6 +26,11 @@ from lib.kml_processing import *
 import re
 import flickr
 
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-11, Tom Chance"
+__license__ = "GPL"
+
 def feature_generic(bbox, defaultName, style, features):
   """
     Generic features (no fancy info in the description)

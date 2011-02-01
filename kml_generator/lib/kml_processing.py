@@ -24,6 +24,11 @@ import flickr
 import re
 import sys
 
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-11, Tom Chance"
+__license__ = "GPL"
+
 def generateKMLStyle(name,icon):
   """
     Return a valid KML style definition
