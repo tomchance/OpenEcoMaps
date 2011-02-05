@@ -81,8 +81,6 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="amenity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="shop"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="capacity"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="network"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="ref"]/@v'/>&tab;

@@ -74,4 +74,3 @@ if __name__=="__main__":
   doTheJob(bbox_london, 'kml/london/transport.kml', [{'railway':'station'}, {'amenity':'bicycle_rental'}, {'amenity':'car_sharing'}, {'railway':'tram_stop'}], 'Sustainable transport in London')
   doTheJob(bbox_london, 'kml/london/food.kml', [{'amenity':'marketplace'}, {'landuse':'allotments'}], 'Sustainable food in London')
   doTheJob(bbox_london, 'kml/london/culture.kml', [{'amenity':'library'}, {'amenity':'theatre'}, {'amenity':'cinema'}, {'tourism':'gallery'}, {'tourism':'museum'}], 'Culture and heritage in London')
-  doTheJob(bbox_london, 'kml/london/food.kml', [{'landuse':'allotments'}], 'Sustainable food in London')
