@@ -257,13 +257,13 @@ Quick documentation:
     <inputSet ref="basics"/>
   </feature>
 
-  <feature name="Community food growing">
+  <feature name="]Community food growing">
     <category>food</category>
     <icon image="/feature_icons/food_community_growing.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
     <area/>
-    <tag k="landuse" v="allotments"/>
     <tag k="community" v="yes"/>
+    <tag k="landuse" v="allotments"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
   </feature>
