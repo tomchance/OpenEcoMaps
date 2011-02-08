@@ -53,6 +53,11 @@ function initMap(lat, lon, zoom){
   map.addControl(layerSwitcherControl);
   layerSwitcherControl.maximizeControl();
 
+  if (!map.getCenter()) {
+    var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
+    map.setCenter (lonLat, zoom);
+  }
+
   if (map.getCenter()) {
     curLonLat = map.getCenter().transform(map.projection,  map.displayProjection);
     if (curLonLat.lon > -0.51 && curLonLat.lat > 51.20 && curLonLat.lon < 0.35 && curLonLat.lat < 51.80) {
