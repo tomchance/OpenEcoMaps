@@ -21,7 +21,14 @@
   <body onload="init()">
  
     <?php if (!$_GET['zoom']): ?>
-    <div id="bigfatviewlink"><a href="map_embed.php" id="view" title="Link to this view">Copy this once you have zoomed to the right place and turned on the layers you want.</a></div>
+    <div id="bigfatviewlink">
+    <p>
+      Switch to your local map <a href="javascript:switch_to_london();">London</a>, <a href="javascript:switch_to_exeter();">Exeter</a>.
+    </p>
+    <p>
+      <a href="map_embed.php" id="view" title="Link to this view">Copy this once you have zoomed to the right place and turned on the layers you want.</a>
+    </p>
+    </div>
     <div style="display: none;"><a href="" id="edit">Edit.</a></div>
     <?php endif; ?>
 

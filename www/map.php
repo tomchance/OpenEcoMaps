@@ -7,6 +7,9 @@ include("includes/header.inc");
 
 <div id="contents" class="solid">
   <div id="text">
+    <p>
+    Switch to your local map <a href="javascript:switch_to_london();">London</a>, <a href="javascript:switch_to_exeter();">Exeter</a>.
+    </p>
   <div id="maplinks">
     <ul>
       <li><a href="map.php" class="" id="view" title="Link to this view">Link here</a></li>
