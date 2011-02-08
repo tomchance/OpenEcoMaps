@@ -13,7 +13,7 @@ include("includes/header.inc");
 
     <p>The first and most simple way is to simply embed the map in an iframe. If you can add HTML content, you can add this:</p> 
 
-    <p><code>&lt;iframe  height="500px" width="100%" src="http://www.openecomaps.org/map_embed.php"&gt;<br/>&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;<br/>&lt;/iframe&gt;</code></p>
+    <p><code>&lt;iframe  height="500px" width="100%" src="http://www.openecomaps.co.uk/map_embed.php"&gt;<br/>&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;<br/>&lt;/iframe&gt;</code></p>
 
     <p>To centre the map on your area of interest, with the layers you want activated, navigate to your preferred default view on the <a href="map_embed.php">embeddable map</a> and copy the "Permalink" URL and paste it to replace the URL in the iframe.</p>
 
@@ -21,21 +21,30 @@ include("includes/header.inc");
 
     <p>Alternatively, you can use the KML feeds for each layer to embed anywhere you like. They are:</p> 
 
-    <h4>London</h4>
-
-    <ul> 
-      <li>Power - <a href="http://www.openecomaps.org/kml/london/power.kml">KML</a></li> 
-      <li>Food - <a href="http://www.openecomaps.org/kml/london/food.kml">KML</a></li> 
-      <li>Waste - <a href="http://www.openecomaps.org/kml/london/waste.kml">KML</a></li> 
-      <li>Transport - <a href="http://www.openecomaps.org/kml/london/transport.kml">KML</a></li> 
-      <li>Culture - <a href="http://www.openecomaps.org/kml/london/culture.kml">KML</a></li>
-    </ul> 
-
     <h4>UK</h4>
 
     <ul> 
-      <li>Power - <a href="http://www.openecomaps.org/kml/uk/power.kml">KML</a></li> 
+      <li>Power - <a href="http://www.openecomaps.co.uk/kml/uk/power.kml">KML</a></li> 
     </ul>
+
+    <h4>London</h4>
+
+    <ul> 
+      <li>Power - <a href="http://www.openecomaps.co.uk/kml/london/power.kml">KML</a></li> 
+      <li>Food - <a href="http://www.openecomaps.co.uk/kml/london/food.kml">KML</a></li> 
+      <li>Waste - <a href="http://www.openecomaps.co.uk/kml/london/waste.kml">KML</a></li> 
+      <li>Transport - <a href="http://www.openecomaps.co.uk/kml/london/transport.kml">KML</a></li> 
+      <li>Culture - <a href="http://www.openecomaps.co.uk/kml/london/culture.kml">KML</a></li>
+    </ul> 
+
+    <h4>Exeter</h4>
+
+    <ul> 
+      <li>Power - <a href="http://www.openecomaps.co.uk/kml/exeter/power.kml">KML</a></li> 
+      <li>Food - <a href="http://www.openecomaps.co.uk/kml/exeter/food.kml">KML</a></li> 
+      <li>Waste - <a href="http://www.openecomaps.co.uk/kml/exeter/waste.kml">KML</a></li> 
+      <li>Transport - <a href="http://www.openecomaps.co.uk/kml/exeter/transport.kml">KML</a></li> 
+    </ul> 
 
     <h2>Getting the raw data</h2> 
 
