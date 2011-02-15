@@ -35,9 +35,6 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:param name="key">None</xsl:param>
-<xsl:param name="value">None</xsl:param>
- 
 <xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;amenity&tab;operator&tab;recycling:aluminium&tab;recycling:batteries&tab;recycling:books&tab;recycling:cans&tab;recycling:cardboard&tab;recycling:cartons&tab;recycling:cds&tab;recycling:chipboard&tab;recycling:christmas_trees&tab;recycling:clothes&tab;recycling:cooking_oil&tab;recycling:cork&tab;recycling:electrical_items&tab;recycling:engine_oil&tab;recycling:excrement&tab;recycling:fluorescent_tubes&tab;recycling:foil&tab;recycling:glass&tab;recycling:glass_bottles&tab;recycling:green_waste&tab;recycling:garden_waste&tab;recycling:hardcore&tab;recycling:low_energy_bulbs&tab;recycling:magazines&tab;recycling:mobile_phones&tab;recycling:newspaper&tab;recycling:paint&tab;recycling:paper&tab;recycling:paper_packaging&tab;recycling:plasterboard&tab;recycling:plastic_bags&tab;recycling:plastic_bottles&tab;recycling:plastic_packaging&tab;recycling:polyester&tab;recycling:printer_cartridges&tab;recycling:scrap_metal&tab;recycling:sheet_metal&tab;recycling:small_appliances&tab;recycling:tyres&tab;recycling:tv_monitor&tab;recycling:waste&tab;recycling:wood
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
@@ -45,7 +42,7 @@ on how the object's lat/lon was extracted.
  
 <xsl:template match="node">
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="amenity" @k="landuse"'>
 <xsl:value-of select='../@lat'/>&tab;
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
@@ -105,7 +102,7 @@ on how the object's lat/lon was extracted.
 <xsl:variable name="noderefs" select="nd[not(@ref=preceding-sibling::nd/@ref)]"/>
 <xsl:variable name="nodes" select="../node[@id=$noderefs/@ref]"/>
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="amenity" @k="landuse"'>
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;

@@ -45,6 +45,15 @@ def feature_generic(bbox, defaultName, style, features):
       row['name'] = defaultName
     output = ''.join([output, generateKMLPlacemark(row, style)])
   return output
+
+def feature_amenitybicycle_parking(bbox, myStyles):
+  """
+    Bicycle parking stands...
+  """
+  myStyles["transportCycleParking"] = "transport_cycle_parking.png"
+  features = "amenity=bicycle_parking"
+  output = feature_generic(bbox, "Cycle parking stand", "transportCycleParking", features)
+  return output, myStyles
     
 def feature_amenitybicycle_rental(bbox, myStyles):
   """
@@ -52,7 +61,7 @@ def feature_amenitybicycle_rental(bbox, myStyles):
   """
   myStyles["transportCyclehire"] = "transport_cyclehire.png"
   xsl_uri = 'lib/trans_generic.xsl'
-  features = {"amenity":"bicycle_rental"}
+  features = "amenity=bicycle_rental"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   for row in poi_data:
@@ -72,7 +81,7 @@ def feature_amenitycar_sharing(bbox, myStyles):
     Car club parking bays...
   """
   myStyles["transportCarshare"] = "transport_carsharing.png"
-  features = {"amenity":"car_sharing"}
+  features = "amenity=car_sharing"
   output = feature_generic(bbox, "Car club parking bay", "transportCarshare", features)
   return output, myStyles
 
@@ -81,7 +90,7 @@ def feature_amenitycinema(bbox, myStyles):
     Cinemas...
   """
   myStyles["cultureCinema"] = "culture_cinema.png"
-  features = {"amenity":"cinema"}
+  features = "amenity=cinema"
   output = feature_generic(bbox, "Cinema", "cultureCinema", features)
   return output, myStyles
 
@@ -90,7 +99,7 @@ def feature_amenitylibrary(bbox, myStyles):
     Libraries...
   """
   myStyles["cultureLibrary"] = "culture_library.png"
-  features = {"amenity":"library"}
+  features = "amenity=library"
   output = feature_generic(bbox, "Library", "cultureLibrary", features)
   return output, myStyles
     
@@ -99,8 +108,8 @@ def feature_amenitymarketplace(bbox, myStyles):
     Food markets...
   """
   myStyles["foodMarket"] = "food_market.png"
-  xsl_uri = 'lib/trans_markets.xsl'
-  features = {"amenity":"marketplace"}
+  xsl_uri = 'lib/trans_food.xsl'
+  features = "amenity=marketplace"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   for row in poi_data:
@@ -120,7 +129,7 @@ def feature_amenityrecycling(bbox, myStyles):
   """
   myStyles["wasteRecyclingBin"] = "waste_recycle.png"
   xsl_uri = 'lib/trans_recycling.xsl'
-  features = {"amenity":"recycling"}
+  features = "amenity=recycling"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   recycling_regexp = re.compile(r'recycling:(\w+)')
@@ -151,7 +160,7 @@ def feature_amenitytheatre(bbox, myStyles):
     Theatres...
   """
   myStyles["cultureTheatre"] = "culture_theatre.png"
-  features = {"amenity":"theatre"}
+  features = "amenity=theatre"
   output = feature_generic(bbox, "Theatre", "cultureTheatre", features)
   return output, myStyles
     
@@ -161,7 +170,7 @@ def feature_amenitywaste_transfer_station(bbox, myStyles):
   """
   myStyles["wasteRecyclingDepot"] = "waste_recycle.png"
   xsl_uri = 'lib/trans_recycling.xsl'
-  features = {"amenity":"waste_transfer_station"}
+  features = "amenity=waste_transfer_station"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   recycling_regexp = re.compile(r'recycling:(\w+)')
@@ -187,6 +196,27 @@ def feature_amenitywaste_transfer_station(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, 'wasteRecyclingDepot')])
   return output, myStyles
 
+def feature_cuisinevegetarian(bbox, myStyles):
+  """
+    Vegetarian, vegan and meat-free restaurants, cafes, etc...
+  """
+  myStyles["foodVeggie"] = "food_vegetarian.png"
+  myStyles["foodVegan"] = "food_vegan.png"
+  xsl_uri = 'lib/trans_food.xsl'
+  output = ''
+  #features = "diet:vegetarian=yes|only"
+  features="cuisine=vegetarian|vegan"
+  poi_data = processRawData(xsl_uri, features, bbox)
+  for row in poi_data:
+    if (row['name'] == None):
+      continue
+    if (row['cuisine'] == "vegetarian"):
+      iconstyle = "foodVeggie"
+    elif (row['cuisine'] == "vegan"):
+      iconstyle = "foodVegan"
+    output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
+  return output, myStyles
+
 def feature_landuseallotments(bbox, myStyles):
   """
     Allotments...
@@ -194,7 +224,7 @@ def feature_landuseallotments(bbox, myStyles):
   myStyles["foodAllotment"] = "food_allotment.png"
   myStyles["foodCommunityGrowing"] = "food_community_growing.png"
   xsl_uri = 'lib/trans_generic.xsl'
-  features = {"landuse":"allotments"}
+  features = "landuse=allotments"
   output = ''
   poi_data = processRawData(xsl_uri, features, bbox)
   for row in poi_data:
@@ -216,7 +246,7 @@ def feature_landuselandfill(bbox, myStyles):
     Landfill site...
   """
   myStyles["wasteLandfill"] = "waste_landfill.png"
-  features = {"landuse":"landfill"}
+  features = "landuse=landfill"
   output = feature_generic(bbox, "Landfill site", "wasteLandfill", features)
   return output, myStyles
     
@@ -234,7 +264,7 @@ def feature_powergenerator(bbox, myStyles):
   myStyles["powerWaste"] = "power_waste.png"
   myStyles["powerDefault"] = "power_default.png"
   xsl_uri = 'lib/trans_generators.xsl'
-  features = {"power":"generator"}
+  features = "power=generator"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   for row in poi_data:
@@ -341,7 +371,7 @@ def feature_railwaystation(bbox, myStyles):
   myStyles["transportDLR"] = "transport_train.png"
   myStyles["transportTube"] = "transport_tube.png"
   xsl_uri = 'lib/trans_generic.xsl'
-  features = {"railway":"station"}
+  features = "railway=station"
   poi_data = processRawData(xsl_uri, features, bbox)
   output = ''
   for row in poi_data:
@@ -365,7 +395,7 @@ def feature_railwaytram_stop(bbox, myStyles):
     Tram stops...
   """
   myStyles["transportTram"] = "transport_tram.png"
-  features = {"railway":"tram_stop"}
+  features = "railway=tram_stop"
   output = feature_generic(bbox, "Tram stop", "transportTram", features)
   return output, myStyles
 
@@ -374,7 +404,7 @@ def feature_tourismgallery(bbox, myStyles):
     Art galleries...
   """
   myStyles["cultureGallery"] = "culture_gallery.png"
-  features = {"tourism":"gallery"}
+  features = "tourism=gallery"
   output = feature_generic(bbox, "Art gallery", "cultureGallery", features)
   return output, myStyles
 
@@ -383,6 +413,6 @@ def feature_tourismmuseum(bbox, myStyles):
     Museums...
   """
   myStyles["cultureMuseum"] = "culture_museum.png"
-  features = {"tourism":"museum"}
+  features = "tourism=museum"
   output = feature_generic(bbox, "Museum", "cultureMuseum", features)
   return output, myStyles

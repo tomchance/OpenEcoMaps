@@ -35,9 +35,6 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:param name="key">None</xsl:param>
-<xsl:param name="value">None</xsl:param>
- 
 <xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;operator&tab;website&tab;wikipedia&tab;flickr&tab;source&tab;method&tab;electricity&tab;hot_water&tab;cold_water&tab;hot_air&tab;cold_air&tab;steam&tab;
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
@@ -45,7 +42,7 @@ on how the object's lat/lon was extracted.
  
 <xsl:template match="node">
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="power"'>
 <xsl:value-of select='../@lat'/>&tab;
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
@@ -70,7 +67,7 @@ on how the object's lat/lon was extracted.
 <xsl:variable name="noderefs" select="nd[not(@ref=preceding-sibling::nd/@ref)]"/>
 <xsl:variable name="nodes" select="../node[@id=$noderefs/@ref]"/>
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="power"'>
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;

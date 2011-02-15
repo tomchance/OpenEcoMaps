@@ -180,7 +180,7 @@ function switch_to_exeter() {
   add_layers_exeter();
 }
 function add_layers_exeter() {
-  //var layerEPower = addKMLLayer("Low carbon power", "http://www.openecomaps.co.uk/kml/exeter/power.kml");
+  var layerEPower = addKMLLayer("Low carbon power", "http://www.openecomaps.co.uk/kml/exeter/power.kml");
   var layerEWaste = addKMLLayer("Zero waste", "http://www.openecomaps.co.uk/kml/exeter/waste.kml");
   var layerEFood = addKMLLayer("Sustainable food", "http://www.openecomaps.co.uk/kml/exeter/food.kml");
   var layerETransport = addKMLLayer("Sustainable transport", "http://www.openecomaps.co.uk/kml/exeter/transport.kml");

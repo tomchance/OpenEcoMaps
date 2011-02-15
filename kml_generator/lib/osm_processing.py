@@ -46,24 +46,20 @@ def processRawData(xsl_uri, features, bbox):
   """
     Downloads the data from XAPI and turns it into a Python object.
   """
-  # Download data to temporary file and read the XML/XSL into memory
-  for key,value in features.iteritems():
-    xapi_fragment = "%s=%s" % (key,value)
-  xapi_uri = "http://xapi.openstreetmap.org/api/0.6/*[%s][bbox=%s]" % (xapi_fragment, bbox)
+  # Download data to temporary file
+  xapi_uri = "http://xapi.openstreetmap.org/api/0.6/*[%s][bbox=%s]" % (features, bbox)
   if ('-v' in sys.argv):
     print " : Downloading %s" % (xapi_uri)
   urllib.urlretrieve(xapi_uri,'temp.xml')
-  osmdoc = libxml2.parseFile('temp.xml')
-  styledoc = libxml2.parseFile(xsl_uri)
-  style = libxslt.parseStylesheetDoc(styledoc)
-
+  
   # Translate XML to CSV (easier to then read into py object)
   if ('-v' in sys.argv):
     print " : Processing data..."
-  for key,value in features.iteritems():
-    result = style.applyStylesheet(osmdoc,\
-      { "key":"'%s'"%key, "value":"'%s'"%value })
-    style.saveResultToFilename('temp.csv', result, 0)
+  osmdoc = libxml2.parseFile('temp.xml')
+  styledoc = libxml2.parseFile(xsl_uri)
+  style = libxslt.parseStylesheetDoc(styledoc)
+  result = style.applyStylesheet(osmdoc, None)
+  style.saveResultToFilename('temp.csv', result, 0)
 
   # Encode HTML elements
   f = open('temp.csv', 'r')

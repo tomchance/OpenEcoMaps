@@ -35,30 +35,30 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;landuse&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;capacity&tab;network&tab;ref&tab;operator&tab;community&tab;tfl_travelzone
+<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;phone&tab;opening_hours&tab;flickr&tab;operator&tab;cuisine&tab;meat&tab;fish&tab;vegetables
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
 </xsl:template>
  
 <xsl:template match="node">
 <xsl:for-each select="tag">
-<xsl:if test='@k="amenity" or @k="shop" or @k="landuse" or @k="tourism" or @k="leisure" or @k="railway" or @k="highway"'>
+<xsl:if test='@k="amenity" or @k="shop"'>
 <xsl:value-of select='../@lat'/>&tab;
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="amenity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="landuse"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="shop"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="phone"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="opening_hours"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="capacity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="network"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="ref"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="community"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="tfl_travelzone"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="cuisine"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>
@@ -67,23 +67,23 @@ on how the object's lat/lon was extracted.
 <xsl:variable name="noderefs" select="nd[not(@ref=preceding-sibling::nd/@ref)]"/>
 <xsl:variable name="nodes" select="../node[@id=$noderefs/@ref]"/>
 <xsl:for-each select="tag">
-<xsl:if test='@k="amenity" or @k="shop" or @k="landuse" or @k="tourism" or @k="leisure" or @k="railway" or @k="highway"'>
+<xsl:if test='@k="amenity" or @k="shop"'>
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="amenity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="landuse"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="shop"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="shop"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="phone"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="opening_hours"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="capacity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="network"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="ref"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="community"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="tfl_travelzone"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="cuisine"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>

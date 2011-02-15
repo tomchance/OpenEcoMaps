@@ -35,28 +35,23 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:param name="key">None</xsl:param>
-<xsl:param name="value">None</xsl:param>
- 
-<xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;operator&tab;meat&tab;fish&tab;vegetables
+<xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;species&tab;genus&tab;species:en&tab;operator&tab;circumference
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
 </xsl:template>
  
 <xsl:template match="node">
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="natural"'>
 <xsl:value-of select='../@lat'/>&tab;
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="species"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="genus"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="species:en"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="circumference"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>
@@ -65,18 +60,16 @@ on how the object's lat/lon was extracted.
 <xsl:variable name="noderefs" select="nd[not(@ref=preceding-sibling::nd/@ref)]"/>
 <xsl:variable name="nodes" select="../node[@id=$noderefs/@ref]"/>
 <xsl:for-each select="tag">
-<xsl:if test='@k=$key and @v=$value'>
+<xsl:if test='@k="natural"'>
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="species"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="genus"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="species:en"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="circumference"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>
