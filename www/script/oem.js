@@ -184,7 +184,7 @@ function add_layers_exeter() {
   var layerEWaste = addKMLLayer("Zero waste", "http://www.openecomaps.co.uk/kml/exeter/waste.kml");
   var layerEFood = addKMLLayer("Sustainable food", "http://www.openecomaps.co.uk/kml/exeter/food.kml");
   var layerETransport = addKMLLayer("Sustainable transport", "http://www.openecomaps.co.uk/kml/exeter/transport.kml");
-  var layersEPOI = [layerEWaste, layerETransport, layerEFood];
+  var layersEPOI = [layerEPower, layerEWaste, layerETransport, layerEFood];
   map.addLayers(layersEPOI);
   var selectControl = new OpenLayers.Control.SelectFeature(layersEPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
