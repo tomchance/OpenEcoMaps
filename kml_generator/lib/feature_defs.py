@@ -221,7 +221,7 @@ def feature_highwaybus_stop(bbox, myStyles):
   """
     Bus stops...
   """
-  myStyles["transportBusStop"] = "transport_bus_stop.png"
+  myStyles["transportBusStop"] = "transport_bus.png"
   features = "highway=bus_stop"
   output = feature_generic(bbox, "Bus stop", "transportBusStop", features)
   return output, myStyles
