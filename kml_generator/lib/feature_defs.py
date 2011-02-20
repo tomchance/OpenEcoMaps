@@ -217,6 +217,15 @@ def feature_cuisinevegetarian(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
+def feature_highwaybus_stop(bbox, myStyles):
+  """
+    Bus stops...
+  """
+  myStyles["transportBusStop"] = "transport_bus_stop.png"
+  features = "highway=bus_stop"
+  output = feature_generic(bbox, "Bus stop", "transportBusStop", features)
+  return output, myStyles
+
 def feature_landuseallotments(bbox, myStyles):
   """
     Allotments...
@@ -397,6 +406,51 @@ def feature_railwaytram_stop(bbox, myStyles):
   myStyles["transportTram"] = "transport_tram.png"
   features = "railway=tram_stop"
   output = feature_generic(bbox, "Tram stop", "transportTram", features)
+  return output, myStyles
+
+def feature_shopbakery(bbox, myStyles):
+  """
+    Bakeries...
+  """
+  myStyles["foodBakery"] = "food_bakery.png"
+  features = "shop=bakery"
+  output = feature_generic(bbox, "Bakery", "foodBakery", features)
+  return output, myStyles
+
+def feature_shopbutcher(bbox, myStyles):
+  """
+    Butchers...
+  """
+  myStyles["foodButcher"] = "food_butcher.png"
+  features = "shop=butcher"
+  output = feature_generic(bbox, "Butcher", "foodButcher", features)
+  return output, myStyles
+
+def feature_shopfarm(bbox, myStyles):
+  """
+    Farmers shop...
+  """
+  myStyles["foodFarmShop"] = "food_farmers.png"
+  features = "shop=farm"
+  output = feature_generic(bbox, "Farm shop", "foodFarmShop", features)
+  return output, myStyles
+
+def feature_shopseafood(bbox, myStyles):
+  """
+    Fishmongers...
+  """
+  myStyles["foodFishmonger"] = "food_fishmonger.png"
+  features = "shop=seafood"
+  output = feature_generic(bbox, "Fishmonger", "foodFishmonger", features)
+  return output, myStyles
+
+def feature_shopgreengrocer(bbox, myStyles):
+  """
+    Greengrocers...
+  """
+  myStyles["foodGreengrocer"] = "food_greengrocer.png"
+  features = "shop=greengrocer"
+  output = feature_generic(bbox, "Greengrocer", "foodGreengrocer", features)
   return output, myStyles
 
 def feature_tourismgallery(bbox, myStyles):
