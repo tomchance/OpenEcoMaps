@@ -257,7 +257,7 @@ Quick documentation:
     <inputSet ref="basics"/>
   </feature>
 
-  <feature name="]Community food growing">
+  <feature name="Community food growing">
     <category>food</category>
     <icon image="/feature_icons/food_community_growing.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
@@ -343,7 +343,7 @@ Quick documentation:
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
-  <feature name="Veggie restaurant">
+  <feature name="Restaurant">
     <category>food</category>
     <icon image="/feature_icons/food_vegetarian.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
@@ -357,9 +357,14 @@ Quick documentation:
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegetarian food"/>
     </input>
+    <input type="choice" presence="always" category="Basic" name="Vegan options" key="diet:vegan">
+      <choice value="no" text="No options"/>
+      <choice value="yes" text="Some full meal options"/>
+      <choice value="only" text="Only vegan food"/>
+    </input>
   </feature>
 
-  <feature name="Veggie cafe">
+  <feature name="Cafe">
     <category>food</category>
     <icon image="/feature_icons/food_vegetarian.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
@@ -373,37 +378,10 @@ Quick documentation:
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegetarian food"/>
     </input>
-  </feature>
-
-  <feature name="Vegan restaurant">
-    <category>food</category>
-    <icon image="/feature_icons/food_vegan.png"/>
-    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
-    <point/>
-    <area/>
-    <tag k="amenity" v="restaurant"/>
-    <inputSet ref="names"/>
-    <inputSet ref="basics"/>
-    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegan">
+    <input type="choice" presence="always" category="Basic" name="Vegan options" key="diet:vegan">
       <choice value="no" text="No options"/>
       <choice value="yes" text="Some full meal options"/>
-      <choice value="only" text="Only vegetarian food"/>
-    </input>
-  </feature>
-
-  <feature name="Vegan cafe">
-    <category>food</category>
-    <icon image="/feature_icons/food_vegan.png"/>
-    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
-    <point/>
-    <area/>
-    <tag k="amenity" v="cafe"/>
-    <inputSet ref="names"/>
-    <inputSet ref="basics"/>
-    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegan">
-      <choice value="no" text="No options"/>
-      <choice value="yes" text="Some full meal options"/>
-      <choice value="only" text="Only vegetarian food"/>
+      <choice value="only" text="Only vegan food"/>
     </input>
   </feature>
 
