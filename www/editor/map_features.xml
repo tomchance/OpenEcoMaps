@@ -273,6 +273,7 @@ Quick documentation:
     <icon image="/feature_icons/food_market.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Tag:amenity=marketplace</help>
     <point/>
+    <area/>
     <tag k="amenity" v="marketplace"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
@@ -280,6 +281,130 @@ Quick documentation:
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell vegetables?" name="Vegetables" key="vegetables" layout="horizontal"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell fish?" name="Fish" key="fish" layout="horizontal"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell meat?" name="Meat" key="meat" layout="horizontal"/>
+  </feature>
+
+  <feature name="Bakery">
+    <category>food</category>
+    <icon image="/feature_icons/food_bakery.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:shop=bakery</help>
+    <point/>
+    <area/>
+    <tag k="shop" v="bakery"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+  </feature>
+
+  <feature name="Butcher">
+    <category>food</category>
+    <icon image="/feature_icons/food_butcher.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:shop=butcher</help>
+    <point/>
+    <area/>
+    <tag k="shop" v="butcher"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+  </feature>
+
+  <feature name="Fishmonger">
+    <category>food</category>
+    <icon image="/feature_icons/food_fishmonger.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:shop=seafood</help>
+    <point/>
+    <area/>
+    <tag k="shop" v="seafood"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+  </feature>
+
+  <feature name="Greengrocer">
+    <category>food</category>
+    <icon image="/feature_icons/food_greengrocer.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:shop=greengrocer</help>
+    <point/>
+    <area/>
+    <tag k="shop" v="greengrocer"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+  </feature>
+
+  <feature name="Farm shop">
+    <category>food</category>
+    <icon image="/feature_icons/food_farmers.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:shop=farm</help>
+    <point/>
+    <area/>
+    <tag k="shop" v="farm"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
+  </feature>
+
+  <feature name="Veggie restaurant">
+    <category>food</category>
+    <icon image="/feature_icons/food_vegetarian.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="restaurant"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegetarian">
+      <choice value="no" text="No options"/>
+      <choice value="yes" text="Some full meal options"/>
+      <choice value="only" text="Only vegetarian food"/>
+    </input>
+  </feature>
+
+  <feature name="Veggie cafe">
+    <category>food</category>
+    <icon image="/feature_icons/food_vegetarian.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="cafe"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegetarian">
+      <choice value="no" text="No options"/>
+      <choice value="yes" text="Some full meal options"/>
+      <choice value="only" text="Only vegetarian food"/>
+    </input>
+  </feature>
+
+  <feature name="Vegan restaurant">
+    <category>food</category>
+    <icon image="/feature_icons/food_vegan.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="restaurant"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegan">
+      <choice value="no" text="No options"/>
+      <choice value="yes" text="Some full meal options"/>
+      <choice value="only" text="Only vegetarian food"/>
+    </input>
+  </feature>
+
+  <feature name="Vegan cafe">
+    <category>food</category>
+    <icon image="/feature_icons/food_vegan.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Key:diet</help>
+    <point/>
+    <area/>
+    <tag k="amenity" v="cafe"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegan">
+      <choice value="no" text="No options"/>
+      <choice value="yes" text="Some full meal options"/>
+      <choice value="only" text="Only vegetarian food"/>
+    </input>
   </feature>
 
   <!-- ************************************************************************
