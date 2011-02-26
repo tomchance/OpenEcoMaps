@@ -53,17 +53,17 @@ function initMap(lat, lon, zoom){
   map.addControl(layerSwitcherControl);
   layerSwitcherControl.maximizeControl();
 
+  var pack = gup('pack');
+  if (pack == '') {
+    pack = 'LDN';
+  }
+  script = document.createElement('script');
+  script.src = '/script/map_packs.php?pack=' + pack;
+  document.getElementsByTagName( 'head' )[0].appendChild(script);
+  
   if (!map.getCenter()) {
     var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
     map.setCenter (lonLat, zoom);
-  }
-
-  // Pull in map pack code and append to document HEAD
-  if (map.getCenter()) {
-    var pack = gup('pack');
-    script = document.createElement('script');
-    script.src = '/script/map_packs.php?pack=' + pack;
-    document.getElementsByTagName( 'head' )[0].appendChild(script);
   }
 
   return map;

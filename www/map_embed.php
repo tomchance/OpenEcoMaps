@@ -26,7 +26,7 @@
     <p>
       Switch to your local map <?php
 // Grab the pack and layers info, turn into Javascript
-$result = mysql_query("SELECT identifier, title FROM packs");
+$result = mysql_query("SELECT identifier, title, lon, lat, zoom FROM packs");
 while ($pack = mysql_fetch_assoc($result)) {
   print "<a href=\"map_embed.php?pack=" . $pack['identifier'] . "\">" . $pack['title'] . "</a> ";
 }

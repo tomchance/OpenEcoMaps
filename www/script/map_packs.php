@@ -10,10 +10,13 @@ $pack_ident = $_GET['pack'];
 // Connect to database
 include("../includes/database.inc");
 
-// Grab the pack and layers info, turn into Javascript
+// Grab the pack and print the new default lon/lat
 $result = mysql_query("SELECT id, title, lat, lon, zoom FROM packs WHERE identifier = '$pack_ident'");
 $pack_data = mysql_fetch_row($result);
 $pack_id = $pack_data[0];
+print "lon = " . $pack_data['lon'] . "; lat = " . $pack_data['lat'] . "; zoom = " . $pack_data['zoom'] . ":";
+
+// Grab the layers info, turn into Javascript
 $result = mysql_query("SELECT layers.kml_filename, layers.name FROM layers LEFT JOIN pack_layers ON pack_layers.layer = layers.id WHERE pack_layers.pack = $pack_id");
 $i = 0;
 while ($layer = mysql_fetch_assoc($result)) {
