@@ -5,7 +5,7 @@ var map;
  * Sets up the map, its layers and controls.
  * lat, lon, zoom are the initial map position, provided a permalink has not been used
  */
-function initMap(lat, lon, zoom){
+function initMap(){
   map = new OpenLayers.Map('map',
 	  { maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
 	    units: 'm',

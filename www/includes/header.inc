@@ -23,7 +23,7 @@
   <script type="text/javascript">
     function init() {
   <?php if ($map_max): ?>
-      initMap(-0.1, 51.5, 1);
+      initMap();
       updateLocation();
       map.events.register("moveend", map, updateLocation);
       map.events.register("changelayer", map, updateLocation);
