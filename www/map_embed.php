@@ -1,3 +1,4 @@
+<?php if (!$_GET['lat']) { header("Location: map_embed.php?pack=LDN&zoom=1&lon=-0.1&lat=51.5"); exit; } ?>
 <?php include("includes/database.inc"); ?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
  
@@ -21,14 +22,14 @@
  
   <body onload="init()">
  
-    <?php if (!$_GET['zoom']): ?>
+    <?php if (!$_GET['layers']): ?>
     <div id="bigfatviewlink">
     <p>
       Switch to your local map <?php
 // Grab the pack and layers info, turn into Javascript
 $result = mysql_query("SELECT identifier, title, lon, lat, zoom FROM packs");
 while ($pack = mysql_fetch_assoc($result)) {
-  print "<a href=\"map_embed.php?pack=" . $pack['identifier'] . "\">" . $pack['title'] . "</a> ";
+  print "<a href=\"map.php?pack=" . $pack['identifier'] . "&zoom=" . $pack['zoom'] . "&lon=" . $pack['lon'] . "&lat=" . $pack['lat'] . "\">" . $pack['title'] . "</a> ";
 }
 ?>
     </p>
