@@ -60,15 +60,20 @@ function initMap(lat, lon, zoom){
   script = document.createElement('script');
   script.src = '/script/map_packs.php?pack=' + pack;
   document.getElementsByTagName( 'head' )[0].appendChild(script);
-  
-  if (!map.getCenter()) {
-    var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
-    map.setCenter (lonLat, zoom);
-  }
 
   return map;
 }
 
+/*
+ * Center the map on pack defaults if arguments haven't been passed in URL
+ */
+function center_map(lat, lon, zoom) {  
+  if (!map.getCenter()) {
+    var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
+    map.setCenter (lonLat, zoom);
+  }
+}
+  
 /**
  * Function: addKMLLayer
  * Sets up a KML layer with popup classes
