@@ -54,9 +54,6 @@ function initMap(lat, lon, zoom){
   layerSwitcherControl.maximizeControl();
 
   var pack = gup('pack');
-  if (pack == '') {
-    pack = 'LDN';
-  }
   script = document.createElement('script');
   script.src = '/script/map_packs.php?pack=' + pack;
   document.getElementsByTagName( 'head' )[0].appendChild(script);
@@ -69,7 +66,7 @@ function initMap(lat, lon, zoom){
  */
 function oem_center_map(lat, lon, zoom) {  
   if (!map.getCenter()) {
-    var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
+    var lonLat = new OpenLayers.LonLat(lon, lat).transform(map.displayProjection,  map.projection);
     map.setCenter (lonLat, zoom);
   }
 }
