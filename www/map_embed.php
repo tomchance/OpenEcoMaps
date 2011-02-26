@@ -28,7 +28,7 @@
 // Grab the pack and layers info, turn into Javascript
 $result = mysql_query("SELECT identifier, title FROM packs");
 while ($pack = mysql_fetch_assoc($result)) {
-  print "<a href=\"map.php?pack=" . $pack['identifier'] . "\">" . $pack['title'] . "</a> ";
+  print "<a href=\"map_embed.php?pack=" . $pack['identifier'] . "\">" . $pack['title'] . "</a> ";
 }
 ?>
     </p>
