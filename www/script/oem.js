@@ -67,7 +67,7 @@ function initMap(lat, lon, zoom){
 /*
  * Center the map on pack defaults if arguments haven't been passed in URL
  */
-function center_map(lat, lon, zoom) {  
+function oem_center_map(lat, lon, zoom) {  
   if (!map.getCenter()) {
     var lonLat = new OpenLayers.LonLat(lat, lon).transform(map.displayProjection,  map.projection);
     map.setCenter (lonLat, zoom);
@@ -132,7 +132,7 @@ function updateLocation() {
   var cur_zoom = map.getZoom();
   var cur_lonlat = map.getCenter();
   var cur_lonlat_unproj = cur_lonlat.clone();
-  var cur_lonlat_reproj = cur_lonlat_unproj.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+  var cur_lonlat_reproj = cur_lonlat_unproj.transform(map.displayProjection,  map.projection);
   var decimals = Math.pow(10, Math.floor(cur_zoom));
   var cur_lat = Math.round(cur_lonlat_reproj.lat * decimals) / decimals;
   var cur_lon = Math.round(cur_lonlat_reproj.lon * decimals) / decimals;

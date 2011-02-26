@@ -14,7 +14,7 @@ include("../includes/database.inc");
 $result = mysql_query("SELECT id, title, lat, lon, zoom FROM packs WHERE identifier = '$pack_ident'");
 $pack_data = mysql_fetch_row($result);
 $pack_id = $pack_data[0];
-print "center_map(" . $pack_data[2] . ", " . $pack_data[3] . ", " . $pack_data[4] . ");";
+print "oem_center_map(" . $pack_data[2] . ", " . $pack_data[3] . ", " . $pack_data[4] . ");";
 
 // Grab the layers info, turn into Javascript
 $result = mysql_query("SELECT layers.kml_filename, layers.name FROM layers LEFT JOIN pack_layers ON pack_layers.layer = layers.id WHERE pack_layers.pack = $pack_id");
