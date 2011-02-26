@@ -1,4 +1,5 @@
 <?php
+if (!$_GET['lat']) { header("Location: map_embed.php?pack=LDN&zoom=1&lon=-0.1&lat=51.5"); exit; }
 $map = 1;
 $map_max = 1;
 $page_title = "the map";
