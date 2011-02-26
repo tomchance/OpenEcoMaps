@@ -53,7 +53,7 @@
 <div id="menu">
   <ul> 
     <li><a href="index.php">Home</a></li>
-    <li><a href="map.php">View the map</a></li>
+    <li><a href="map.php?pack=LDN">View the map</a></li>
     <li><a href="data.php">Use the data</a></li>
     <li><a href="areas.php">Add your area</a></li>
     <li><a href="contribute.php">Contribute</a></li>
