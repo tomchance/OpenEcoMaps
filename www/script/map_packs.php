@@ -8,7 +8,7 @@ print "var mylayers = new Array();";
 $pack_ident = $_GET['pack'];
 
 // Connect to database
-include("includes/database.inc");
+include("../includes/database.inc");
 
 // Grab the pack and layers info, turn into Javascript
 $result = mysql_query("SELECT id, title, lat, lon, zoom FROM packs WHERE identifier = '$pack_ident'");

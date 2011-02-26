@@ -13,7 +13,7 @@ include("includes/database.inc");
 // Grab the pack and layers info, turn into Javascript
 $result = mysql_query("SELECT identifier, title, lon, lat, zoom FROM packs");
 while ($pack = mysql_fetch_assoc($result)) {
-  print "<a href=\"map_test.php?pack=" . $pack['identifier'] . "&zoom=" . $pack['zoom'] . "&lon=" . $pack['lon'] . "&lat=" . $pack['lat'] . "\">" . $pack['title'] . "</a> ";
+  print "<a href=\"map.php?pack=" . $pack['identifier'] . "&zoom=" . $pack['zoom'] . "&lon=" . $pack['lon'] . "&lat=" . $pack['lat'] . "\">" . $pack['title'] . "</a> ";
 }
 ?>
     </p>
