@@ -1,3 +1,4 @@
+<?php include("includes/database.inc"); ?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
  
   <head>
@@ -23,7 +24,13 @@
     <?php if (!$_GET['zoom']): ?>
     <div id="bigfatviewlink">
     <p>
-      Switch to your local map <a href="javascript:switch_to_london();">London</a>, <a href="javascript:switch_to_exeter();">Exeter</a>.
+      Switch to your local map <?php
+// Grab the pack and layers info, turn into Javascript
+$result = mysql_query("SELECT identifier, title, lon, lat, zoom FROM packs");
+while ($pack = mysql_fetch_assoc($result)) {
+  print "<a href=\"map_embed.php?pack=" . $pack['identifier'] . "&zoom=" . $pack['zoom'] . "&lon=" . $pack['lon'] . "&lat=" . $pack['lat'] . "\">" . $pack['title'] . "</a> ";
+}
+?>
     </p>
     <p>
       <a href="map_embed.php" id="view" title="Link to this view">Copy this once you have zoomed to the right place and turned on the layers you want.</a>
