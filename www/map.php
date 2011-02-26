@@ -3,12 +3,19 @@ $map = 1;
 $map_max = 1;
 $page_title = "the map";
 include("includes/header.inc");
+include("includes/database.inc");
 ?>
 
 <div id="contents" class="solid">
   <div id="text">
     <p>
-    Switch to your local map <a href="javascript:switch_to_london();">London</a>, <a href="javascript:switch_to_exeter();">Exeter</a>.
+    Switch to your local map: <?php
+// Grab the pack and layers info, turn into Javascript
+$result = mysql_query("SELECT identifier, title, lon, lat, zoom FROM packs");
+while ($pack = mysql_fetch_assoc($result)) {
+  print "<a href=\"map_test.php?pack=" . $pack['identifier'] . "&zoom=" . $pack['zoom'] . "&lon=" . $pack['lon'] . "&lat=" . $pack['lat'] . "\">" . $pack['title'] . "</a> ";
+}
+?>
     </p>
   <div id="maplinks">
     <ul>

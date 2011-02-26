@@ -58,13 +58,12 @@ function initMap(lat, lon, zoom){
     map.setCenter (lonLat, zoom);
   }
 
+  // Pull in map pack code and append to document HEAD
   if (map.getCenter()) {
-    curLonLat = map.getCenter().transform(map.projection,  map.displayProjection);
-    if (curLonLat.lon > -0.51 && curLonLat.lat > 51.20 && curLonLat.lon < 0.35 && curLonLat.lat < 51.80) {
-      add_layers_london();
-    } else if (curLonLat.lon > -3.667 && curLonLat.lat > 50.626 && curLonLat.lon < -3.3209 && curLonLat.lat < 50.8491) {
-      add_layers_exeter();
-    }
+    var pack = gup('pack');
+    script = document.createElement('script');
+    script.src = '/script/map_packs.php?pack=' + pack;
+    document.getElementsByTagName( 'head' )[0].appendChild(script);
   }
 
   return map;
@@ -121,7 +120,7 @@ function updateLocation() {
   var view_link = document.getElementById("view");
   var all_links = document.getElementsByTagName("a");
   for (var i=0; i < all_links.length; i++) {
-    if (all_links[i].innerHTML == "permalink") {
+    if (all_links[i].innerHTML == "Permalink") {
       view_link.href = all_links[i].href;
     }
   }
@@ -142,51 +141,30 @@ function updateLocation() {
 }
 
 /**
- * Functions to load local-specific layers
+ * Function to load pack of local-specific layers
  */
-function kill_overlays() {
-  for (i=map.layers.length-1; i>=0;i--) {
-    lyr = map.layers[i];
-    if (!lyr.isBaseLayer) {
-      map.removeLayer(lyr);
-    }
+function add_pack(layerdef) {
+  var poiLayers = new Array();
+  for (var i=0; i < layerdef.length; i++) {
+    poiLayers[i] = addKMLLayer(layerdef[i].name, layerdef[i].url);
   }
-}
-
-function switch_to_london() {
-  kill_overlays();
-  var lonLat = new OpenLayers.LonLat(-0.1, 51.5).transform(map.displayProjection,  map.projection);
-  map.setCenter (lonLat, 1);
-  add_layers_london();
-}
-function add_layers_london() {
-  var layerPower = addKMLLayer("Low carbon power",
-"http://www.openecomaps.co.uk/kml/london/power.kml");
-  var layerWaste = addKMLLayer("Zero waste", "http://www.openecomaps.co.uk/kml/london/waste.kml");
-  var layerFood = addKMLLayer("Sustainable food", "http://www.openecomaps.co.uk/kml/london/food.kml");
-  var layerTransport = addKMLLayer("Sustainable transport", "http://www.openecomaps.co.uk/kml/london/transport.kml");
-  var layerCulture = addKMLLayer("Culture and heritage", "http://www.openecomaps.co.uk/kml/london/culture.kml");
-  var layersPOI = [layerPower, layerWaste, layerFood, layerTransport, layerCulture];
-  map.addLayers(layersPOI);
-  var selectControl = new OpenLayers.Control.SelectFeature(layersPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
-  map.addControl(selectControl);
-  selectControl.activate();
-}
-
-function switch_to_exeter() {
-  kill_overlays();
-  var lonLat = new OpenLayers.LonLat(-3.51, 50.72).transform(map.displayProjection,  map.projection);
-  map.setCenter (lonLat, 1);
-  add_layers_exeter();
-}
-function add_layers_exeter() {
-  var layerEPower = addKMLLayer("Low carbon power", "http://www.openecomaps.co.uk/kml/exeter/power.kml");
-  var layerEWaste = addKMLLayer("Zero waste", "http://www.openecomaps.co.uk/kml/exeter/waste.kml");
-  var layerEFood = addKMLLayer("Sustainable food", "http://www.openecomaps.co.uk/kml/exeter/food.kml");
-  var layerETransport = addKMLLayer("Sustainable transport", "http://www.openecomaps.co.uk/kml/exeter/transport.kml");
-  var layersEPOI = [layerEPower, layerEWaste, layerETransport, layerEFood];
-  map.addLayers(layersEPOI);
+  map.addLayers(poiLayers);
   var selectControl = new OpenLayers.Control.SelectFeature(layersEPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
   selectControl.activate();
+}
+
+/*
+ * Amazing, silly function just to ger URL arguments
+ */
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
 }
