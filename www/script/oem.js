@@ -151,7 +151,7 @@ function add_pack(layerdef) {
     poiLayers[i] = addKMLLayer(layerdef[i].name, layerdef[i].url);
   }
   map.addLayers(poiLayers);
-  var selectControl = new OpenLayers.Control.SelectFeature(layersEPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
+  var selectControl = new OpenLayers.Control.SelectFeature(poiLayers, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
   selectControl.activate();
 }
