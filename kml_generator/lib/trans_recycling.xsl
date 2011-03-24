@@ -42,7 +42,7 @@ on how the object's lat/lon was extracted.
  
 <xsl:template match="node">
 <xsl:for-each select="tag">
-<xsl:if test='@k="amenity" @k="landuse"'>
+<xsl:if test='@k="amenity" or @k="landuse"'>
 <xsl:value-of select='../@lat'/>&tab;
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
@@ -102,7 +102,7 @@ on how the object's lat/lon was extracted.
 <xsl:variable name="noderefs" select="nd[not(@ref=preceding-sibling::nd/@ref)]"/>
 <xsl:variable name="nodes" select="../node[@id=$noderefs/@ref]"/>
 <xsl:for-each select="tag">
-<xsl:if test='@k="amenity" @k="landuse"'>
+<xsl:if test='@k="amenity" or @k="landuse"'>
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
