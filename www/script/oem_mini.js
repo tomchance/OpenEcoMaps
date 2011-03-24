@@ -29,8 +29,8 @@ function initMap(lat, lon, zoom){
   
   var layerPower = addKMLLayer("Low carbon power", "http://www.openecomaps.co.uk/kml/one_planet_london/low_carbon_power.kml");
   var layerFood = addKMLLayer("Food", "http://www.openecomaps.co.uk/kml/one_planet_london/food.kml");
-  var layerCulture = addKMLLayer("Culture and heritage", "http://www.openecomaps.co.uk/kml/one_planet_london/culture.kml");
-  var layersPOI = [layerPower, layerWaste, layerFood, layerTransport, layerCulture];
+  var layerCulture = addKMLLayer("Culture and heritage", "http://www.openecomaps.co.uk/kml/one_planet_london/culture_and_heritage.kml");
+  var layersPOI = [layerPower, layerFood, layerCulture];
   map.addLayers(layersPOI);
   var selectControl = new OpenLayers.Control.SelectFeature(layersPOI, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
