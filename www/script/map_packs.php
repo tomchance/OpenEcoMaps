@@ -21,7 +21,7 @@ $result = mysql_query("SELECT layers.name FROM layers LEFT JOIN pack_layers ON p
 $i = 0;
 while ($layer = mysql_fetch_assoc($result)) {
   $name = $layer['name'];
-  $url = $pack_data[1] . "/" . $name . ".kmz";
+  $url = $pack_data[1] . "/" . $name . ".kml";
   $url = str_replace(" ", "_", $url);
   $url = strtolower($url);
   print "var mylayer = new Array(); mylayer['name'] = '$name'; mylayer['url'] = 'http://www.openecomaps.co.uk/kml/$url'; mylayers[$i] = mylayer;";
