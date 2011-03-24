@@ -67,9 +67,9 @@ def createKMLFile(title, contents, filename, myStyles):
   f.write(output)
   f.close()
 
-def doTheJob(bbox, filename, features, title):
+def doTheJob(bbox, packtitle, filename, features, layername):
   if ('-v' in sys.argv):
-    print title
+    print ''.join([packtitle, " --> ", layername])
   feature_contents, myStyles = createKML(bbox, features, {})
   createKMLFile(title, feature_contents, filename, myStyles)
 
@@ -81,7 +81,7 @@ if __name__=="__main__":
   for layer in layers:
     kml_filename = ''.join(["kml/", str.lower(layer[1].replace(" ", "_")), "/", str.lower(layer[3].replace(" ", "_")), ".kml"])
     try:
-      doTheJob(layer[0], kml_filename, layer[2], layer[3])
+      doTheJob(layer[0], layer[1], kml_filename, layer[2], layer[3])
     except:
       if ('-v' in sys.argv):
 	print "*** Blast, that layer failed. Moving on... ***"
