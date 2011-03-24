@@ -35,7 +35,7 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;species&tab;genus&tab;species:en&tab;operator&tab;circumference
+<xsl:template match="osm">lat&tab;lon&tab;name&tab;description&tab;website&tab;wikipedia&tab;flickr&tab;species&tab;genus&tab;species:en&tab;produce&tab;operator&tab;circumference
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
 </xsl:template>
@@ -47,9 +47,13 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../@lon'/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="species"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="genus"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="species:en"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="produce"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="circumference"]/@v'/>&cr;
 </xsl:if>
@@ -65,9 +69,13 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="flickr"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="species"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="genus"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="species:en"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="produce"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="operator"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="circumference"]/@v'/>&cr;
 </xsl:if>

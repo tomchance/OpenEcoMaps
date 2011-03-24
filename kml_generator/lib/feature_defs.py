@@ -46,7 +46,7 @@ def feature_generic(bbox, defaultName, style, features):
     output = ''.join([output, generateKMLPlacemark(row, style)])
   return output
 
-def feature_amenitybicycle_parking(bbox, myStyles):
+def feature_bicycle_parking(bbox, myStyles):
   """
     Bicycle parking stands...
   """
@@ -55,7 +55,7 @@ def feature_amenitybicycle_parking(bbox, myStyles):
   output = feature_generic(bbox, "Cycle parking stand", "transportCycleParking", features)
   return output, myStyles
     
-def feature_amenitybicycle_rental(bbox, myStyles):
+def feature_bicycle_rental(bbox, myStyles):
   """
     Bike hire...
   """
@@ -76,7 +76,7 @@ def feature_amenitybicycle_rental(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, "transportCyclehire")])
   return output, myStyles
 
-def feature_amenitycar_sharing(bbox, myStyles):
+def feature_car_sharing(bbox, myStyles):
   """
     Car club parking bays...
   """
@@ -85,7 +85,7 @@ def feature_amenitycar_sharing(bbox, myStyles):
   output = feature_generic(bbox, "Car club parking bay", "transportCarshare", features)
   return output, myStyles
 
-def feature_amenitycinema(bbox, myStyles):
+def feature_cinema(bbox, myStyles):
   """
     Cinemas...
   """
@@ -94,7 +94,7 @@ def feature_amenitycinema(bbox, myStyles):
   output = feature_generic(bbox, "Cinema", "cultureCinema", features)
   return output, myStyles
 
-def feature_amenitylibrary(bbox, myStyles):
+def feature_library(bbox, myStyles):
   """
     Libraries...
   """
@@ -103,7 +103,7 @@ def feature_amenitylibrary(bbox, myStyles):
   output = feature_generic(bbox, "Library", "cultureLibrary", features)
   return output, myStyles
     
-def feature_amenitymarketplace(bbox, myStyles):
+def feature_marketplace(bbox, myStyles):
   """
     Food markets...
   """
@@ -123,7 +123,7 @@ def feature_amenitymarketplace(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, 'foodMarket')])
   return output, myStyles
     
-def feature_amenityrecycling(bbox, myStyles):
+def feature_recycling(bbox, myStyles):
   """
     Recycling bins...
   """
@@ -155,7 +155,7 @@ def feature_amenityrecycling(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, 'wasteRecyclingBin')])
   return output, myStyles
 
-def feature_amenitytheatre(bbox, myStyles):
+def feature_theatre(bbox, myStyles):
   """
     Theatres...
   """
@@ -164,7 +164,7 @@ def feature_amenitytheatre(bbox, myStyles):
   output = feature_generic(bbox, "Theatre", "cultureTheatre", features)
   return output, myStyles
     
-def feature_amenitywaste_transfer_station(bbox, myStyles):
+def feature_waste_transfer_station(bbox, myStyles):
   """
     Recycling centres...
   """
@@ -196,7 +196,7 @@ def feature_amenitywaste_transfer_station(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, 'wasteRecyclingDepot')])
   return output, myStyles
 
-def feature_cuisinevegetarian(bbox, myStyles):
+def feature_vegetarian(bbox, myStyles):
   """
     Vegetarian, vegan and meat-free restaurants, cafes, etc...
   """
@@ -217,7 +217,29 @@ def feature_cuisinevegetarian(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
-def feature_highwaybus_stop(bbox, myStyles):
+def feature_fruittree(bbox, myStyles):
+  """
+    Trees with fruit or nuts
+  """
+  myStyles["foodFruitTree"] = "food_fruit_tree.png"
+  xsl_uri = 'lib/trans_trees.xsl'
+  output = ''
+  features="produce=*"
+  poi_data = processRawData(xsl_uri, features, bbox)
+  iconstyle = 'foodFruitTree'
+  for row in poi_data:
+    if (row['name'] == None):
+      continue
+    if (row['produce']):
+      row['description'] = ''.join(["<p><strong>Fruit/nuts:</strong> %s</p>" % (row['produce']), row['description']])
+    if (row['species:en']):
+      row['description'] = ''.join(["<p><strong>Tree common name:</strong> %s</p>" % (row['species:en']), row['description']])
+    if (row['species']):
+      row['description'] = ''.join(["<p><strong>Tree species:</strong> %s</p>" % (row['species']), row['description']])
+    output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
+  return output, myStyles
+
+def feature_bus_stop(bbox, myStyles):
   """
     Bus stops...
   """
@@ -226,7 +248,7 @@ def feature_highwaybus_stop(bbox, myStyles):
   output = feature_generic(bbox, "Bus stop", "transportBusStop", features)
   return output, myStyles
 
-def feature_landuseallotments(bbox, myStyles):
+def feature_allotments(bbox, myStyles):
   """
     Allotments...
   """
@@ -250,7 +272,7 @@ def feature_landuseallotments(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
-def feature_landuselandfill(bbox, myStyles):
+def feature_landfill(bbox, myStyles):
   """
     Landfill site...
   """
@@ -399,7 +421,7 @@ def feature_railwaystation(bbox, myStyles):
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
     
-def feature_railwaytram_stop(bbox, myStyles):
+def feature_tram_stop(bbox, myStyles):
   """
     Tram stops...
   """
@@ -408,7 +430,7 @@ def feature_railwaytram_stop(bbox, myStyles):
   output = feature_generic(bbox, "Tram stop", "transportTram", features)
   return output, myStyles
 
-def feature_shopbakery(bbox, myStyles):
+def feature_bakery(bbox, myStyles):
   """
     Bakeries...
   """
@@ -417,7 +439,7 @@ def feature_shopbakery(bbox, myStyles):
   output = feature_generic(bbox, "Bakery", "foodBakery", features)
   return output, myStyles
 
-def feature_shopbutcher(bbox, myStyles):
+def feature_butcher(bbox, myStyles):
   """
     Butchers...
   """
@@ -426,7 +448,7 @@ def feature_shopbutcher(bbox, myStyles):
   output = feature_generic(bbox, "Butcher", "foodButcher", features)
   return output, myStyles
 
-def feature_shopfarm(bbox, myStyles):
+def feature_farmshop(bbox, myStyles):
   """
     Farmers shop...
   """
@@ -435,7 +457,7 @@ def feature_shopfarm(bbox, myStyles):
   output = feature_generic(bbox, "Farm shop", "foodFarmShop", features)
   return output, myStyles
 
-def feature_shopseafood(bbox, myStyles):
+def feature_seafood(bbox, myStyles):
   """
     Fishmongers...
   """
@@ -444,7 +466,7 @@ def feature_shopseafood(bbox, myStyles):
   output = feature_generic(bbox, "Fishmonger", "foodFishmonger", features)
   return output, myStyles
 
-def feature_shopgreengrocer(bbox, myStyles):
+def feature_greengrocer(bbox, myStyles):
   """
     Greengrocers...
   """
@@ -453,7 +475,7 @@ def feature_shopgreengrocer(bbox, myStyles):
   output = feature_generic(bbox, "Greengrocer", "foodGreengrocer", features)
   return output, myStyles
 
-def feature_tourismgallery(bbox, myStyles):
+def feature_gallery(bbox, myStyles):
   """
     Art galleries...
   """
@@ -462,7 +484,7 @@ def feature_tourismgallery(bbox, myStyles):
   output = feature_generic(bbox, "Art gallery", "cultureGallery", features)
   return output, myStyles
 
-def feature_tourismmuseum(bbox, myStyles):
+def feature_museum(bbox, myStyles):
   """
     Museums...
   """
