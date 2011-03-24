@@ -69,7 +69,7 @@ def createKMLFile(title, contents, filename, myStyles):
 
 def doTheJob(bbox, packtitle, filename, features, layername):
   if ('-v' in sys.argv):
-    print ''.join([packtitle, " --> ", layername])
+    print ''.join([packtitle, " --> ", layername, " (", filename, ")"])
   feature_contents, myStyles = createKML(bbox, features, {})
   createKMLFile(title, feature_contents, filename, myStyles)
 
