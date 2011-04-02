@@ -35,7 +35,7 @@ on how the object's lat/lon was extracted.
  
 <xsl:output method="text"/>
  
-<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;phone&tab;opening_hours&tab;flickr&tab;operator&tab;cuisine&tab;meat&tab;fish&tab;vegetables
+<xsl:template match="osm">lat&tab;lon&tab;amenity&tab;shop&tab;name&tab;description&tab;website&tab;wikipedia&tab;phone&tab;opening_hours&tab;flickr&tab;operator&tab;cuisine&tab;meat&tab;fish&tab;vegetables&tab;diet:vegetarian&tab;diet:vegan
 <xsl:apply-templates select="node"/>
 <xsl:apply-templates select="way"/>
 </xsl:template>
@@ -58,7 +58,9 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../tag[@k="cuisine"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="diet:vegetarian"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="diet:vegan"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>
@@ -71,8 +73,8 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select="sum($nodes/@lat) div count($nodes)"/>&tab;
 <xsl:value-of select="sum($nodes/@lon) div count($nodes)"/>&tab;
 <xsl:value-of select='../tag[@k="amenity"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="shop"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="name"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="description"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="website"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="wikipedia"]/@v'/>&tab;
@@ -83,7 +85,9 @@ on how the object's lat/lon was extracted.
 <xsl:value-of select='../tag[@k="cuisine"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="meat"]/@v'/>&tab;
 <xsl:value-of select='../tag[@k="fish"]/@v'/>&tab;
-<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&cr;
+<xsl:value-of select='../tag[@k="vegetables"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="diet:vegetarian"]/@v'/>&tab;
+<xsl:value-of select='../tag[@k="diet:vegan"]/@v'/>&cr;
 </xsl:if>
 </xsl:for-each>
 </xsl:template>

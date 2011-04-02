@@ -200,20 +200,52 @@ def feature_vegetarian(bbox, myStyles):
   """
     Vegetarian, vegan and meat-free restaurants, cafes, etc...
   """
-  myStyles["foodVeggie"] = "food_vegetarian.png"
-  myStyles["foodVegan"] = "food_vegan.png"
+  myStyles["veggieBakery"] = "food_bakery.png"
+  myStyles["veggieFarmShop"] = "food_farmers.png"
+  myStyles["veggieGreengrocer"] = "food_greengrocer.png"
+  myStyles["veggieConvenience"] = "food_convenience.png"
+  myStyles["veggieCafe"] = "food_cafe.png"
+  myStyles["veggieRestaurant"] = "food_restaurant.png"
+  myStyles["veggieTakeaway"] = "food_takeaway.png"
   xsl_uri = 'lib/trans_food.xsl'
   output = ''
-  #features = "diet:vegetarian=yes|only"
-  features="cuisine=vegetarian|vegan"
+  features = "diet:vegetarian|diet:vegan=yes|only"
+  #features="cuisine=vegetarian|vegan"
   poi_data = processRawData(xsl_uri, features, bbox)
+  yn = ["yes", "no"]
   for row in poi_data:
     if (row['name'] == None):
       continue
-    if (row['cuisine'] == "vegetarian"):
-      iconstyle = "foodVeggie"
-    elif (row['cuisine'] == "vegan"):
-      iconstyle = "foodVegan"
+    if (row['amenity'] == "cafe"):
+      iconstyle = "veggieCafe"
+      row['name'] = ''.join([row['name'], " (cafe)"])
+    elif (row['amenity'] == "restaurant"):
+      iconstyle = "veggieRestaurant"
+      row['name'] = ''.join([row['name'], " (restaurant)"])
+    elif (row['amenity'] == "fast_food"):
+      iconstyle = "veggieTakeaway"
+      row['name'] = ''.join([row['name'], " (takeaway)"])
+    elif (row['shop'] == "baker"):
+      iconstyle = "veggieBakery"
+      row['name'] = ''.join([row['name'], " (bakery)"])
+    elif (row['shop'] == "farm"):
+      iconstyle = "veggieFarmShop"
+      row['name'] = ''.join([row['name'], " (farm shop)"])
+    elif (row['shop'] == "greengrocer"):
+      iconstyle = "veggieGreengrocer"
+      row['name'] = ''.join([row['name'], " (greengrocer)"])
+    elif (row['shop'] == "convenience"):
+      iconstyle = "veggieConvenience"
+      row['name'] = ''.join([row['name'], " (corner shop)"])
+    elif (row['shop'] == "supermarket"):
+      iconstyle = "veggieConvenience"
+      row['name'] = ''.join([row['name'], " (supermarket)"])
+    if (row['cuisine']):
+      row['description'] = ''.join(["<p><strong>Cuisine: %s</p>" % (row['cuisine']), row['description']])
+    if (row['diet:vegetarian'] in yn):
+      row['description'] = ''.join(["<p><strong>Vegetarian: %s</p>" % (row['diet:vegetarian']), row['description']])
+    if (row['diet:vegan'] in yn):
+      row['description'] = ''.join(["<p><strong>Vegan: %s</p>" % (row['diet:vegan']), row['description']])
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
