@@ -71,7 +71,7 @@ def doTheJob(bbox, packtitle, filename, features, layername):
   if ('-v' in sys.argv):
     print ''.join([packtitle, " --> ", layername, " (", filename, ")"])
   feature_contents, myStyles = createKML(bbox, features, {})
-  createKMLFile(title, feature_contents, filename, myStyles)
+  createKMLFile(packtitle, feature_contents, filename, myStyles)
 
 if __name__=="__main__":
   db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASSWD, db=DBDB)
@@ -84,4 +84,4 @@ if __name__=="__main__":
       doTheJob(layer[0], layer[1], kml_filename, layer[2], layer[3])
     except:
       if ('-v' in sys.argv):
-	print "*** Blast, that layer failed. Moving on... ***"
+        print "*** Blast, that layer failed. Moving on... ***"
