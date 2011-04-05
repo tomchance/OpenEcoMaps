@@ -241,11 +241,11 @@ def feature_vegetarian(bbox, myStyles):
       iconstyle = "veggieConvenience"
       row['name'] = ''.join([row['name'], " (supermarket)"])
     if (row['cuisine']):
-      row['description'] = ''.join(["<p><strong>Cuisine: %s</p>" % (row['cuisine']), row['description']])
+      row['description'] = ''.join(["<p><strong>Cuisine:</strong> %s</p>" % (row['cuisine']), row['description']])
     if (row['diet:vegetarian'] in yn):
-      row['description'] = ''.join(["<p><strong>Vegetarian: %s</p>" % (row['diet:vegetarian']), row['description']])
+      row['description'] = ''.join(["<p><strong>Vegetarian:</strong> %s</p>" % (row['diet:vegetarian']), row['description']])
     if (row['diet:vegan'] in yn):
-      row['description'] = ''.join(["<p><strong>Vegan: %s</p>" % (row['diet:vegan']), row['description']])
+      row['description'] = ''.join(["<p><strong>Vegan:</strong> %s</p>" % (row['diet:vegan']), row['description']])
     output = ''.join([output, generateKMLPlacemark(row, iconstyle)])
   return output, myStyles
 
