@@ -47,7 +47,7 @@ def processRawData(xsl_uri, features, bbox):
     Downloads the data from XAPI and turns it into a Python object.
   """
   # Download data to temporary file
-  xapi_uri = "http://xapi.openstreetmap.org/api/0.6/*[%s][bbox=%s]" % (features, bbox)
+  xapi_uri = "http://open.mapquestapi.com/xapi/api/0.6/*[%s][bbox=%s]" % (features, bbox)
   if ('-v' in sys.argv):
     print " : Downloading %s" % (xapi_uri)
   urllib.urlretrieve(xapi_uri,'temp.xml')

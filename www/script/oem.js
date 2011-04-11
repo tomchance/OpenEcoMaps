@@ -33,7 +33,9 @@ function initMap(){
 	  zoomOffset: 11,
 	  numZoomLevels: 7 });
   var layerPublicTransport = new OpenLayers.Layer.OSM("Public transport",
-	"http://tile.xn--pnvkarte-m4a.de/tilegen/${z}/${x}/${y}.png",
+	["http://a.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png",
+	"http://b.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png",
+	"http://c.tile2.opencyclemap.org/transport/${z}/${x}/${y}.png"],
 	{ attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org">OpenStreetMap</a> and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>.',
 	  buffer: 0,
 	  resolutions: [76.43702827148438, 38.21851413574219,19.109257067871095, 9.554628533935547, 4.777314266967774, 2.3886571, 1.1943286],

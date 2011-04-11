@@ -219,9 +219,9 @@ def feature_vegetarian(bbox, myStyles):
     if (row['amenity'] == "cafe"):
       iconstyle = "veggieCafe"
       row['name'] = ''.join([row['name'], " (cafe)"])
-    elif (row['amenity'] == "restaurant"):
+    elif (row['amenity'] == "restaurant" or row['amenity'] == "pub"):
       iconstyle = "veggieRestaurant"
-      row['name'] = ''.join([row['name'], " (restaurant)"])
+      row['name'] = ''.join([row['name'], " (restaurant/pub)"])
     elif (row['amenity'] == "fast_food"):
       iconstyle = "veggieTakeaway"
       row['name'] = ''.join([row['name'], " (takeaway)"])
@@ -240,6 +240,8 @@ def feature_vegetarian(bbox, myStyles):
     elif (row['shop'] == "supermarket"):
       iconstyle = "veggieConvenience"
       row['name'] = ''.join([row['name'], " (supermarket)"])
+    else:
+      continue
     if (row['cuisine']):
       row['description'] = ''.join(["<p><strong>Cuisine:</strong> %s</p>" % (row['cuisine']), row['description']])
     if (row['diet:vegetarian'] in yn):
