@@ -53,14 +53,13 @@ def generateKMLPlacemark(row,style):
   name = name.encode('ascii', 'xmlcharrefreplace')
   lon = row['lon']
   lat = row['lat']
-  if (row['description']):
-    description = u'%s' % (row['description'])
-  else:
-    description = "<p>No further details known</p>"
+  description = ''
   cycle_link = "http://www.cyclestreets.net/journey/from/%s,%s,15/" % (lat, lon)
   walk_link = "http://maps.cloudmade.com/?lat=%s&lng=%s&zoom=15&directions=%s,%s&travel=foot&styleId=27911&opened_tab=1" % (lat, lon, lat, lon)
   travel_to_links = "<div class=\"travel\"><a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/cyclehere.png\" width=\"55\" height=\"45\" alt=\"Cycle here\" /></a> <a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/walkhere.png\" width=\"55\" height=\"45\" alt=\"Walk here\" /></a></div>" % (cycle_link, walk_link)
   description = "".join([description, travel_to_links])
+  if (row['description']):
+    description = "".join([description, "<p>", u'%s' % (row['description']), "</p>"])
   if (row['flickr']):
     pdata = flickr._doget('flickr.photos.getSizes', photo_id=row['flickr'])
     for psize in pdata.rsp.sizes.size:
