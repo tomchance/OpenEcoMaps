@@ -55,6 +55,10 @@ def generateKMLPlacemark(row,style):
   lat = row['lat']
   if (row['description']):
     description = u'%s' % (row['description'])
+  cycle_link = "http://www.cyclestreets.net/journey/from/%s,%s,15/" % (lat, lon)
+  walk_link = "http://maps.cloudmade.com/?lat=%s&lng=%s&zoom=15&directions=%s,%s&travel=foot&styleId=27911&opened_tab=1" % (lat, lon, lat, lon)
+  travel_to_links = "<div class=\"travel\"><a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/cyclehere.png\" width=\"55\" height=\"45\" alt=\"Cycle here\" /></a> <a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/walkhere.png\" width=\"55\" height=\"45\" alt=\"Walk here\" /></a></div>" % (cycle_link, walk_link)
+  description = "".join([description, travel_to_links])
   else:
     description = "<p>No further details known</p>"
   if (row['flickr']):
@@ -73,8 +77,4 @@ def generateKMLPlacemark(row,style):
       row['wikipedia'] = re.sub(r'http://en.wikipedia.org/wiki/', '', row['wikipedia'])
       description = "".join([description, """<a href="http://en.wikipedia.org/wiki/%s">Wikipedia article</a>""" % (row['wikipedia'])])
     description = "".join([description, "</p>"])
-  cycle_link = "http://www.cyclestreets.net/journey/from/%s,%s,15/" % (lat, lon)
-  walk_link = "http://maps.cloudmade.com/?lat=%s&lng=%s&zoom=15&directions=%s,%s&travel=foot&styleId=27911&opened_tab=1" % (lat, lon, lat, lon)
-  travel_to_links = "<div class=\"travel\"><a href=\"%s\"><img src=\"http://www.openecomaps.co.uk/images/cyclehere.png\" width=\"55\" height=\"45\" alt=\"Cycle here\" /></a> <a href=\"%s\"><img src=\"http://www.openecomaps.co.uk/images/walkhere.png\" width=\"55\" height=\"45\" alt=\"Walk here\" /></a></div>" % (cycle_link, walk_link)
-  description = "".join([description, travel_to_links])
   return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (name,description,style,lon,lat)

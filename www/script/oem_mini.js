@@ -76,7 +76,7 @@ function onFeatureSelect(feature) {
   popup = new OpenLayers.Popup.FramedCloud("chicken", 
     feature.geometry.getBounds().getCenterLonLat(),
     new OpenLayers.Size(100,100),
-      "<div><strong>"+feature.attributes.name+"</strong><br/>"+feature.attributes.description+"</div>",
+      "<div><h3>"+feature.attributes.name+"</h3>"+feature.attributes.description+"</div>",
       null, true, onPopupClose);
   feature.popup = popup;
   map.addPopup(popup);
