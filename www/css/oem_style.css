@@ -25,6 +25,23 @@
 	padding:0px;
 }
 
+.olPopup h3 {
+	color: #73A533;
+	font-size: 1.3em;
+	font-weight: bolder;
+}
+
+.olPopup p
+{
+	margin: 1.12em 0;
+}
+
+.olPopup .travel
+{
+	float: right;
+	margin: 5px 0 5px 5px;
+}
+
 .olPopupCloseBox
 {
 	width: 14px;
