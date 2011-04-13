@@ -54,7 +54,7 @@ def generateKMLPlacemark(row,style):
   lon = row['lon']
   lat = row['lat']
   description = ''
-  cycle_link = "http://www.cyclestreets.net/journey/from/%s,%s,15/" % (lat, lon)
+  cycle_link = "http://www.cyclestreets.net/journey/to/%s,%s,15/" % (lat, lon)
   walk_link = "http://maps.cloudmade.com/?lat=%s&lng=%s&zoom=15&directions=%s,%s&travel=foot&styleId=27911&opened_tab=1" % (lat, lon, lat, lon)
   travel_to_links = "<div class=\"travel\"><a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/cyclehere.png\" width=\"55\" height=\"45\" alt=\"Cycle here\" /></a> <a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/walkhere.png\" width=\"55\" height=\"45\" alt=\"Walk here\" /></a></div>" % (cycle_link, walk_link)
   description = "".join([description, travel_to_links])
