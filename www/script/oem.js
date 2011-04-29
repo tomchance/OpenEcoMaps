@@ -131,7 +131,7 @@ function updateLocation() {
   var cur_zoom = map.getZoom();
   var cur_lonlat = map.getCenter();
   var cur_lonlat_unproj = cur_lonlat.clone();
-  var cur_lonlat_reproj = cur_lonlat_unproj.transform(map.displayProjection,  map.projection);
+  var cur_lonlat_reproj = cur_lonlat_unproj.transform(map.projection,  map.displayProjection);
   var decimals = Math.pow(10, Math.floor(cur_zoom));
   var cur_lat = Math.round(cur_lonlat_reproj.lat * decimals) / decimals;
   var cur_lon = Math.round(cur_lonlat_reproj.lon * decimals) / decimals;
