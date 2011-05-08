@@ -200,19 +200,26 @@ def feature_vegetarian(bbox, myStyles):
   """
     Vegetarian, vegan and meat-free restaurants, cafes, etc...
   """
-  myStyles["veggieBakery"] = "food_bakery.png"
-  myStyles["veggieFarmShop"] = "food_farmers.png"
-  myStyles["veggieGreengrocer"] = "food_greengrocer.png"
-  myStyles["veggieConvenience"] = "food_convenience.png"
-  myStyles["veggieCafe"] = "food_cafe.png"
-  myStyles["veggieRestaurant"] = "food_restaurant.png"
-  myStyles["veggieTakeaway"] = "food_takeaway.png"
+  myStyles["veggieBakery"] = "food_bakery_grey.png"
+  myStyles["veggieFarmShop"] = "food_farmers_grey.png"
+  myStyles["veggieGreengrocer"] = "food_greengrocer_grey.png"
+  myStyles["veggieConvenience"] = "food_convenience_grey.png"
+  myStyles["veggieCafe"] = "food_cafe_grey.png"
+  myStyles["veggieRestaurant"] = "food_restaurant_grey.png"
+  myStyles["veggieTakeaway"] = "food_takeaway_grey.png"
+  myStyles["veggieBakeryOnly"] = "food_bakery.png"
+  myStyles["veggieFarmShopOnly"] = "food_farmers.png"
+  myStyles["veggieGreengrocerOnly"] = "food_greengrocer.png"
+  myStyles["veggieConvenienceOnly"] = "food_convenience.png"
+  myStyles["veggieCafeOnly"] = "food_cafe.png"
+  myStyles["veggieRestaurantOnly"] = "food_restaurant.png"
+  myStyles["veggieTakeawayOnly"] = "food_takeaway.png"
   xsl_uri = 'lib/trans_food.xsl'
   output = ''
   features = "diet:vegetarian|diet:vegan=yes|only"
   #features="cuisine=vegetarian|vegan"
   poi_data = processRawData(xsl_uri, features, bbox)
-  yn = ["yes", "no"]
+  yn = ["yes", "no", "only"]
   for row in poi_data:
     if (row['name'] == None):
       continue
@@ -242,6 +249,8 @@ def feature_vegetarian(bbox, myStyles):
       row['name'] = ''.join([row['name'], " (supermarket)"])
     else:
       continue
+    if (row['diet:vegetarian'] == 'only' or row['diet:vegan'] == 'only'):
+      iconstyle = ''.join([iconstyle, 'Only'])
     if (row['cuisine']):
       row['description'] = ''.join(["<p><strong>Cuisine:</strong> %s</p>" % (row['cuisine']), row['description']])
     if (row['diet:vegetarian'] in yn):
