@@ -36,6 +36,11 @@
 	margin: 1.12em 0;
 }
 
+.olPopup img
+{
+	border: 0;
+}
+
 .olPopup .travel
 {
 	float: right;
