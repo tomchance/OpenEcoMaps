@@ -91,22 +91,19 @@ Quick documentation:
   </inputSet>
 
   <inputSet id="basics">
-    <input type="freetext" presence="always" category="Basic" description="Organisation that owns and operators the generator" name="Operator" key="operator"/>
-    <input type="freetext" presence="always" category="Basic" name="Description" key="description"/>
-    <input type="freetext" presence="withCategory" category="Basic" name="Website" key="website"/>
-    <input type="freetext" presence="withCategory" category="Basic" name="Wikipedia" key="wikipedia"/>
-    <input type="freetext" presence="withCategory" category="Basic" name="Flickr" description="Flickr photo ID (number after username)" key="flickr"/>
+    <input type="freetext" presence="always" category="More basics" description="Organisation that owns and operates the feature" name="Operator" key="operator"/>
+    <input type="freetext" presence="always" category="More basics" description="Is this feature part of a network like the Capital Growth food spaces?" name="Network" key="network"/>
+    <input type="freetext" presence="always" category="More basics" name="Description" key="description"/>
+    <input type="freetext" presence="withCategory" category="More basics" name="Website" key="website"/>
+    <input type="freetext" presence="withCategory" category="More basics" name="Wikipedia" key="wikipedia"/>
+    <input type="freetext" presence="withCategory" category="More basics" name="Flickr" description="Flickr photo ID (number after username)" key="flickr"/>
   </inputSet>
   
   <inputSet id="buildingAddress">
-    <input type="freetext" presence="onTagMatch" category="Address" description="The number of the house, e.g. 156 or 10-12" name="House Number" key="addr:housenumber"/>
-    <input type="freetext" presence="onTagMatch" category="Address" description="The name of the house, e.g. Riverbank Cottage" name="Building Name" key="addr:housename"/>
-    <input type="freetext" presence="onTagMatch" category="Address" description="The Street Name (optional)" name="Street Name" key="addr:street"/>
-    <input type="freetext" presence="onTagMatch" category="Address" description="The postcode" name="Postcode" key="addr:postcode"/>
-  </inputSet>
-  
-  <inputSet id="web">
-    <input type="freetext" presence="onTagMatch" category="Web" description="The URL of the website" name="Website" key="website" />
+    <input type="freetext" presence="withCategory" category="Address" description="The number of the house, e.g. 156 or 10-12" name="House Number" key="addr:housenumber"/>
+    <input type="freetext" presence="withCategory" category="Address" description="The name of the house, e.g. Riverbank Cottage" name="Building Name" key="addr:housename"/>
+    <input type="freetext" presence="withCategory" category="Address" description="The Street Name (optional)" name="Street Name" key="addr:street"/>
+    <input type="freetext" presence="withCategory" category="Address" description="The postcode" name="Postcode" key="addr:postcode"/>
   </inputSet>
 
   <!-- ************************************************************************
@@ -215,9 +212,22 @@ Quick documentation:
        ************************************************************************ -->
 
   <inputSet id="recyclates">
-    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Paper" key="recycling:paper" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Batteries" key="recycling:batteries" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Cans" key="recycling:cans" layout="horizontal"/>
     <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Cardboard" key="recycling:cardboard" layout="horizontal"/>
-    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Metal cans" key="recycling:cans" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Tetrapak cartons" key="recycling:cartons" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="CDs" key="recycling:cds" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Clothes" key="recycling:clothes" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Electrical items" key="recycling:electrical_items" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Garden waste" key="recycling:garden_waste" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Glass" key="recycling:glass" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Glass bottles" key="recycling:glass_bottles" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Magazines" key="recycling:magazines" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Paper" key="recycling:paper" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Plastic bags" key="recycling:plastic_bags" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Plastic bottles" key="recycling:plastic_bottles" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Plastic packaging" key="recycling:plastic_packaging" layout="horizontal"/>
+    <input type="checkbox" presence="withCategory" category="Recycling" description="Can you recycle this?" name="Printer cartridges" key="recycling:printer_cartridges" layout="horizontal"/>
   </inputSet>
 
   <feature name="Recycling bin">
@@ -247,22 +257,22 @@ Quick documentation:
        Food features
        ************************************************************************ -->
 
-  <feature name="Allotments">
-    <category>food</category>
-    <icon image="/feature_icons/food_allotment.png"/>
-    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
-    <area/>
-    <tag k="landuse" v="allotments"/>
-    <inputSet ref="names"/>
-    <inputSet ref="basics"/>
-  </feature>
-
   <feature name="Community food growing">
     <category>food</category>
     <icon image="/feature_icons/food_community_growing.png"/>
     <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
     <area/>
     <tag k="community" v="yes"/>
+    <tag k="landuse" v="allotments"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Allotments">
+    <category>food</category>
+    <icon image="/feature_icons/food_allotment.png"/>
+    <help>http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments</help>
+    <area/>
     <tag k="landuse" v="allotments"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
@@ -292,6 +302,7 @@ Quick documentation:
     <tag k="shop" v="bakery"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
@@ -304,6 +315,7 @@ Quick documentation:
     <tag k="shop" v="butcher"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
@@ -316,6 +328,7 @@ Quick documentation:
     <tag k="shop" v="seafood"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
@@ -328,6 +341,7 @@ Quick documentation:
     <tag k="shop" v="greengrocer"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
@@ -340,6 +354,7 @@ Quick documentation:
     <tag k="shop" v="farm"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
     <input type="checkbox" presence="withCategory" category="Produce" description="Does the market sell organic produce?" name="Organic" key="organic" layout="horizontal"/>
   </feature>
 
@@ -352,12 +367,13 @@ Quick documentation:
     <tag k="amenity" v="restaurant"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
-    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegetarian">
+    <inputSet ref="buildingAddress"/>
+    <input type="choice" presence="always" category="More basics" name="Vegetarian options" key="diet:vegetarian">
       <choice value="no" text="No options"/>
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegetarian food"/>
     </input>
-    <input type="choice" presence="always" category="Basic" name="Vegan options" key="diet:vegan">
+    <input type="choice" presence="always" category="More basics" name="Vegan options" key="diet:vegan">
       <choice value="no" text="No options"/>
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegan food"/>
@@ -373,12 +389,13 @@ Quick documentation:
     <tag k="amenity" v="cafe"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
-    <input type="choice" presence="always" category="Basic" name="Vegetarian options" key="diet:vegetarian">
+    <inputSet ref="buildingAddress"/>
+    <input type="choice" presence="always" category="More basics" name="Vegetarian options" key="diet:vegetarian">
       <choice value="no" text="No options"/>
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegetarian food"/>
     </input>
-    <input type="choice" presence="always" category="Basic" name="Vegan options" key="diet:vegan">
+    <input type="choice" presence="always" category="More basics" name="Vegan options" key="diet:vegan">
       <choice value="no" text="No options"/>
       <choice value="yes" text="Some full meal options"/>
       <choice value="only" text="Only vegan food"/>
@@ -390,12 +407,12 @@ Quick documentation:
        ************************************************************************ -->
 
   <inputSet id="rail_network">
-    <input type="choice" presence="always" category="Basic" name="Network" key="network">
+    <input type="choice" presence="always" category="More basics" name="Network" key="network">
       <choice value="National Rail" text="National Rail"/>
       <choice value="National Rail;London Overground" text="London Overground and National Rail"/>
       <choice value="London Underground" text="London Underground"/>
     </input>
-    <input type="choice" presence="always" category="Basic" name="TFL travelzone" key="tfl_travelzone">
+    <input type="choice" presence="always" category="More basics" name="TFL travelzone" key="tfl_travelzone">
       <choice value="1" text="Zone 1"/>
       <choice value="2" text="Zone 2"/>
       <choice value="3" text="Zone 3"/>
@@ -412,6 +429,7 @@ Quick documentation:
     <tag k="building" v="railway_station"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <feature name="Train station">
@@ -456,7 +474,7 @@ Quick documentation:
     <tag k="amenity" v="bicycle_rental"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
-    <input type="text" name="Capacity" key="capacity" presence="always" category="Basic"/>
+    <input type="text" name="Capacity" key="capacity" presence="always" category="More basics"/>
   </feature>
 
   <feature name="Car club parking bay">
@@ -482,6 +500,7 @@ Quick documentation:
     <tag k="amenity" v="library"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <feature name="Theatre">
@@ -493,6 +512,7 @@ Quick documentation:
     <tag k="amenity" v="theatre"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <feature name="Cinema">
@@ -504,6 +524,7 @@ Quick documentation:
     <tag k="amenity" v="cinema"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <feature name="Art gallery">
@@ -515,6 +536,7 @@ Quick documentation:
     <tag k="tourism" v="gallery"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <feature name="Museum">
@@ -526,6 +548,7 @@ Quick documentation:
     <tag k="tourism" v="museum"/>
     <inputSet ref="names"/>
     <inputSet ref="basics"/>
+    <inputSet ref="buildingAddress"/>
   </feature>
 
   <!-- ************************************************************************
@@ -538,12 +561,12 @@ Quick documentation:
     <help>http://wiki.openstreetmap.org/wiki/Tag:natural=tree</help>
     <point/>
     <tag k="natural" v="tree"/>
-    <input type="freetext" presence="always" name="Common name" category="Basic" priority="highest" key="species:en" description="The common English name (e.g. London Plane)"/>
-    <input type="freetext" presence="always" name="Species" category="Basic" priority="high" key="species" description="The species (e.g. Platanus × hispanica)"/>
-    <input type="freetext" presence="always" name="Genus" category="Basic" priority="high" key="genus" description="The genus (e.g. Platanus)"/>
-    <input type="freetext" presence="always" name="Circumference (add cm to end)" category="Basic" priority="medium" key="circumference" description="The circumference of the tree in centimetres"/>
-    <input type="freetext" presence="always" name="Height (add m to end)" category="Basic" priority="medium" key="height" description="The height of the tree in metres"/>
-    <input type="freetext" presence="always" name="Notes" category="Basic" priority="low" key="note" description="Add any extra info e.g. appears dead, split, etc."/>
+    <input type="freetext" presence="always" name="Common name" category="More basics" priority="highest" key="species:en" description="The common English name (e.g. London Plane)"/>
+    <input type="freetext" presence="always" name="Species" category="More basics" priority="high" key="species" description="The species (e.g. Platanus × hispanica)"/>
+    <input type="freetext" presence="always" name="Genus" category="More basics" priority="high" key="genus" description="The genus (e.g. Platanus)"/>
+    <input type="freetext" presence="always" name="Circumference (add cm to end)" category="More basics" priority="medium" key="circumference" description="The circumference of the tree in centimetres"/>
+    <input type="freetext" presence="always" name="Height (add m to end)" category="More basics" priority="medium" key="height" description="The height of the tree in metres"/>
+    <input type="freetext" presence="always" name="Notes" category="More basics" priority="low" key="note" description="Add any extra info e.g. appears dead, split, etc."/>
   </feature>
 
 </mapFeatures>
