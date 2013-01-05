@@ -3,7 +3,7 @@
 
 """
   feature_defs.py
-  Copyright 2010-11 Tom Chance <tom@acrewoods.net>
+  Copyright 2010-13 Tom Chance <tom@acrewoods.net>
 
   Functions to define how we process different OpenStreetMap
   features
@@ -21,15 +21,15 @@
   http://www.gnu.org/licenses/gpl-3.0.html
 """
 
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-13, Tom Chance"
+__license__ = "GPL"
+
 from lib.osm_processing import *
 from lib.kml_processing import *
 import re
 import flickr
-
-__author__ = "Tom Chance"
-__email__ = "tom@acrewoods.net"
-__copyright__ = "Copyright 2010-11, Tom Chance"
-__license__ = "GPL"
 
 def feature_generic(bbox, defaultName, style, features):
   """
@@ -324,7 +324,7 @@ def feature_landfill(bbox, myStyles):
   output = feature_generic(bbox, "Landfill site", "wasteLandfill", features)
   return output, myStyles
     
-def feature_powergenerator(bbox, myStyles):
+def feature_powergenerator(bbox, myStyles, server):
   """
     Power generator...
   """
@@ -337,104 +337,106 @@ def feature_powergenerator(bbox, myStyles):
   myStyles["powerSea"] = "power_sea.png"
   myStyles["powerWaste"] = "power_waste.png"
   myStyles["powerDefault"] = "power_default.png"
-  xsl_uri = 'lib/trans_generators.xsl'
-  features = "power=generator"
-  poi_data = processRawData(xsl_uri, features, bbox)
-  output = ''
+  poi_data = processRawData('power','generator', bbox, server)
+  output = []
   for row in poi_data:
     if (row['lat'] == None):
       continue
+    # Skip generators without a source with which to categorise
+    if ('generator:source' not in row):
+      continue
     # Skip definitely-un-green sources
-    if (row['source'] == 'nuclear' or row['source'] == 'coal'):
+    if (row['generator:source'] == 'nuclear' or row['generator:source'] == 'coal'):
       continue
     # Start out with default assumptions
     gen_style = "powerDefault"
     gen_type = "Unknown power generator"
     # Solar panels, geothermal, hydro, tidal, wave or wind turbines? (easy cases)
-    if (row['source'] == 'solar'):
+    if (row['generator:source'] == 'solar'):
       gen_style = "powerSolar"
-      if (row['hot_water'] != ''):
+      if ('generator:output:hot_water' in row):
         gen_type = "Solar thermal heating panel(s)"
-      elif (row['electricity'] != '' and row['method'] == 'thermal'):
-	gen_type = "Solar thermal electricity generator"
-      elif (row['electricity'] != ''):
+      elif ('generator:output:electricity' in row and row['generator:method'] == 'thermal'):
+        gen_type = "Solar thermal electricity generator"
+      elif ('generator:output:electricity' in row):
         gen_type = "Solar photovoltaic panel(s)"
-    elif (row['source'] == 'geothermal'):
+    elif (row['generator:source'] == 'geothermal'):
       gen_style = 'powerGeothermal'
-      if (row['hot_water'] != ''):
+      if ('generator:output:hot_water' in row):
         gen_type = "Geothermal heat pump"
-      elif (row['electricity'] != ''):
-	gen_type = "Geothermal electricity generator"
-    elif (row['source'] == 'wind'):
+      elif ('generator:output:electricity' in row):
+        gen_type = "Geothermal electricity generator"
+    elif (row['generator:source'] == 'wind'):
       gen_type = "Wind turbine(s)"
       gen_style = "powerWind"
-    elif (row['source'] == 'hydro'):
+    elif (row['generator:source'] == 'hydro'):
       gen_type = 'Hydro generator'
       gen_style = 'powerHydro'
-    elif (row['source'] == 'tidal'):
+    elif (row['generator:source'] == 'tidal'):
       gen_type = 'Tidal generator'
       gen_style = 'powerSea'
-    elif (row['source'] == 'wave'):
+    elif (row['generator:source'] == 'wave'):
       gen_type = 'Wave generator'
       gen_style = 'powerSea'
-    elif (row['source'] == 'osmotic'):
+    elif (row['generator:source'] == 'osmotic'):
       gen_type = 'Osmotic generator'
       gen_style = 'powerSea'
     # OK, must be some sort of boiler/CHP/digester/etc.... type of fuel?
-    elif (row['source'] == 'biomass'):
+    elif (row['generator:source'] == 'biomass'):
       gen_type = "Biomass "
       gen_style = "powerBiomass"
-    elif (row['source'] == 'biofuel'):
+    elif (row['generator:source'] == 'biofuel'):
       gen_type = 'Biofuel '
       gen_style = "powerBiomass"
-    elif (row['source'] == 'biogas'):
+    elif (row['generator:source'] == 'biogas'):
       gen_type = 'Biogas '
       gen_style = "powerBiomass"
-    elif (row['source'] == 'gas'):
+    elif (row['generator:source'] == 'gas'):
       gen_type = 'Gas '
       gen_style = 'powerGas'
-    elif (row['source'] == 'oil'):
+    elif (row['generator:source'] == 'oil'):
       gen_type = 'Oil '
       gen_style = "powerDefault"
-    elif (row['source'] == 'waste'):
+    elif (row['generator:source'] == 'waste'):
       gen_type = 'Waste-to-energy '
       gen_style = 'powerWaste'
     # Right, means of generation... is it an advanced energy-to-waste plant?
-    if (row['method'] == 'anaerobic_digestion'):
+    if ('generator:method' in row and row['generator:method'] == 'anaerobic_digestion'):
       gen_type = ''.join([gen_type, "anaerobic digester"])
-    elif (row['method'] == 'pyrolysis'):
+    elif ('generator:method' in row and row['generator:method'] == 'pyrolysis'):
       gen_type = ''.join([gen_type, "pyrolising digester"])
-    if (row['source'] in ["biomass", "biofuel", "biogas", "gas", "oil", "waste"]):
+    if (row['generator:source'] in ["biomass", "biofuel", "biogas", "gas", "oil", "waste"]):
       # Or maybe just a boiler / stove?
-      if (row['electricity'] == '' and (row['hot_water'] != '' or row['hot_air'] != '')):
+      if ('generator:output:electricity' not in row and ('generator:output:hot_water' in row or 'generator:output:hot_air' in row)):
         if (gen_type == 'Gas '):
-	  continue # no interest in gas boilers
-        elif (row['hot_water'] != ''):
-  	  gen_type = ''.join([gen_type, "boiler"])
-        elif (row['hot_air'] != ''):
-	  gen_type = ''.join([gen_type, "stove"])
-       # Or maybe a CHP/CCHP?
-      elif (row['electricity'] != '' and row['cold_water'] == '' and (row['hot_water'] != '' or row['steam'] != '')):
+          continue # no interest in gas boilers
+        elif ('generator:output:hot_water' in row):
+          gen_type = ''.join([gen_type, "boiler"])
+        elif ('generator:output:hot_air'  in row):
+          gen_type = ''.join([gen_type, "stove"])
+      # Or maybe a CHP/CCHP?
+      elif ('generator:output:electricity' in row and 'generator:output:cold_water' not in row and ('generator:output:hot_water' in row or 'generator:output:steam' in row)):
         gen_type = ''.join([gen_type, "combined heat and power plant"])
-      elif (row['electricity'] != '' and row['cold_water'] != '' and (row['hot_water'] != '' or row['steam'] != '')):
+      elif ('generator:output:electricity' in row and 'generator:output:cold_water' in row and ('generator:output:hot_water' in row or 'generator:output:steam' in row)):
         gen_type = ''.join([gen_type, "combined heat, cooling and power plant"])
     # For now, skip unknown and fossil generators
     if (gen_type == "Unknown power generator" or gen_type == "Gas " or gen_type == "Oil "):
       continue
     # Description stuff?
     description = "No further details known"
-    if (row['description']):
+    if ('description' in row):
       description = row['description']
     rating = re.compile('\d')
-    if (rating.match(row['electricity'])):
-      description = ''.join([description, """<p><strong>Electrical rating:</strong> %s</p>""" % (row['electricity'])])
-    if (rating.match(row['hot_water'])):
-      description = ''.join([description, """<p><strong>Hot water rating:</strong> %s</p>""" % (row['hot_water'])])
-    if (rating.match(row['steam'])):
-      description = ''.join([description, """<p><strong>Steam rating:</strong> %s</p>""" % (row['steam'])])
-    row['description'] = description
-    row['name'] = gen_type
-    output = ''.join([output, generateKMLPlacemark(row, gen_style)])
+    if ('generator:output:electricity' in row and rating.match(row['generator:output:electricity'])):
+      description = ''.join([description, """<p><strong>Electrical rating:</strong> %s</p>""" % (row['generator:output:electricity'])])
+    if ('generator:output:hot_water' in row and rating.match(row['generator:output:hot_water'])):
+      description = ''.join([description, """<p><strong>Hot water rating:</strong> %s</p>""" % (row['generator:output:hot_water'])])
+    if ('generator:output:steam' in row and rating.match(row['generator:output:steam'])):
+      description = ''.join([description, """<p><strong>Steam rating:</strong> %s</p>""" % (row['generator:output:steam'])])
+    row['popup_title'] = gen_type
+    row['popup_contents'] = description
+    row['popup_style'] = gen_style
+    output.append(row)
   return output, myStyles
     
 def feature_railwaystation(bbox, myStyles):

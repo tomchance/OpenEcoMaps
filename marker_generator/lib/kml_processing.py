@@ -37,43 +37,63 @@ def generateKMLStyle(name,icon):
 
 def generateKMLHeader(styles,document_name):
   """
-    Return a valud KML header definition
+    Return a valid KML header definition
   """
   kml_styles = ''
   for name,icon in styles.iteritems():
     kml_styles = ''.join([kml_styles, generateKMLStyle(name,icon)])
   return """<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2">\n<Document>\n\t<name>%s</name>\n%s\n\n""" % (document_name, kml_styles)
 
-def generateKMLPlacemark(row,style):
+def generateKMLPlacemark(row):
   """
-    Return a valud KML placemark definition adding in
+    Return a valid KML placemark definition adding in
     data from the universal tags (description, website, etc.)
   """
-  name = u'%s' % (row['name'].decode('utf-8'))
+  name = u'%s' % (row['popup_title'].decode('utf-8'))
   name = name.encode('ascii', 'xmlcharrefreplace')
   lon = row['lon']
   lat = row['lat']
-  description = ''
+  popupContents = ''
   cycle_link = "http://www.cyclestreets.net/journey/to/%s,%s,15/" % (lat, lon)
   walk_link = "http://maps.cloudmade.com/?lat=%s&lng=%s&zoom=15&directions=%s,%s&travel=foot&styleId=27911&opened_tab=1" % (lat, lon, lat, lon)
   travel_to_links = "<div class=\"travel\"><a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/cyclehere.png\" width=\"55\" height=\"45\" alt=\"Cycle here\" /></a> <a href=\"%s\" target=\"_blank\"><img src=\"http://www.openecomaps.co.uk/images/walkhere.png\" width=\"55\" height=\"45\" alt=\"Walk here\" /></a></div>" % (cycle_link, walk_link)
-  description = "".join([description, travel_to_links])
-  if (row['description']):
-    description = "".join([description, "<p>", u'%s' % (row['description']), "</p>"])
-  if (row['flickr']):
-    pdata = flickr._doget('flickr.photos.getSizes', photo_id=row['flickr'])
-    for psize in pdata.rsp.sizes.size:
-      if (psize.label == 'Small'):
-        description = "".join([description, """<p><img src="%s"></p>""" % (psize.source)])
-  if (row['operator']):
-    description = "".join([description, """<p><strong>Operator:</strong> %s</p>""" % (row['operator'])])
-  if (row['website'] or row['wikipedia']):
-    description = "".join([description, "<p><strong>More information:</strong> "])
-    if (row['website']):
-      description = "".join([description, """<a href="%s">Website</a> """ % (row['website'])])
-    if (row['wikipedia']):
+  popupContents = "".join([popupContents, travel_to_links])
+  if ('popup_contents' in row):
+      popupContents = "".join([popupContents, "<p>", u'%s' % (row['popup_contents']), "</p>"])
+  if ('flickr' in row):
+    try:
+      pdata = flickr._doget('flickr.photos.getSizes', photo_id=row['flickr'])
+      for psize in pdata.rsp.sizes.size:
+        if (psize.label == 'Small'):
+          popupContents = "".join([popupContents, """<p><img src="%s"></p>""" % (psize.source)])
+    except:
+      pass
+  if ('operator' in row):
+    popupContents = "".join([popupContents, """<p><strong>Operator:</strong> %s</p>""" % (row['operator'])])
+  if ('website' in row or 'wikipedia' in row):
+    popupContents = "".join([popupContents, "<p><strong>More information:</strong> "])
+    if ('website' in row):
+      popupContents = "".join([popupContents, """<a href="%s">Website</a> """ % (row['website'])])
+    if ('wikipedia' in row):
       row['wikipedia'] = re.sub(r'en:', '', row['wikipedia'])
       row['wikipedia'] = re.sub(r'http://en.wikipedia.org/wiki/', '', row['wikipedia'])
-      description = "".join([description, """<a href="http://en.wikipedia.org/wiki/%s">Wikipedia article</a>""" % (row['wikipedia'])])
-    description = "".join([description, "</p>"])
-  return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (name,description,style,lon,lat)
+      popupContents = "".join([popupContents, """<a href="http://en.wikipedia.org/wiki/%s">Wikipedia article</a>""" % (row['wikipedia'])])
+    popupContents = "".join([popupContents, "</p>"])
+  return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (name,popupContents,row['popup_style'],lon,lat)
+
+def createKMLFile(title, output, filename, styles):
+  """
+  Create a valid KML document for all the features
+  downloaded and save to a file
+  """
+  header = generateKMLHeader(styles, title)
+  body = ''
+  for feature in output:
+    body = ''.join([body, generateKMLPlacemark(feature)])
+  filename = 'kml/' + filename + '.kml'
+  output = ''.join([header, body, "</Document></kml>"])
+  if ('-v' in sys.argv):
+    print " : Writing to KML « " + filename + " »"
+  f = open(filename, 'w')
+  f.write(output)
+  f.close()

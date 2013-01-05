@@ -1,0 +1,8 @@
+[database]
+host = localhost
+user = username
+passwd = password
+db = database_name
+
+[overpass]
+server = http://overpass-api.de/api/
