@@ -94,6 +94,8 @@ def createJSONFile(title, output, filename, styles):
   Create a valid GeoJSON feature collection for all the features
   downloaded and save to a file
   '''
+  filename = 'json/' + filename + '.json'
+  filename = str.lower(filename.replace(' ', '_'))
   if ('-v' in sys.argv):
     print ' : Writing to GeoJSON « ' + filename + ' »'
   icon_styles = []
@@ -103,8 +105,6 @@ def createJSONFile(title, output, filename, styles):
   for feature in output:
     feature_collection['features'].append(generateJSONFeature(feature))
   output = ''.join(['var iconstyles = ', pp.pformat(icon_styles), '\nvar ', filename, ' = ', pp.pformat(feature_collection)])
-  filename = 'json/' + filename + '.json'
-  filename = str.lower(filename.replace(' ', '_'))
   f = open(filename, 'w')
   f.write(output)
   f.close()

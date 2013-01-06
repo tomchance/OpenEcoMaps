@@ -89,14 +89,14 @@ def createKMLFile(title, output, filename, styles):
   Create a valid KML document for all the features
   downloaded and save to a file
   """
+  filename = 'kml/' + filename + '.kml'
+  filename = str.lower(filename.replace(' ', '_'))
   if ('-v' in sys.argv):
     print " : Writing to KML « " + filename + " »"
   header = generateKMLHeader(styles, title)
   body = ''
   for feature in output:
     body = ''.join([body, generateKMLPlacemark(feature)])
-  filename = 'kml/' + filename + '.kml'
-  filename = str.lower(filename.replace(' ', '_'))
   output = ''.join([header, body, "</Document></kml>"])
   f = open(filename, 'w')
   f.write(output)

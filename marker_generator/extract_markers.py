@@ -51,7 +51,7 @@ def doTheJob(bbox, filename, packtitle, features, layername):
     if not os.path.exists(directory):
       os.makedirs(directory)
   output = []
-  styles = []
+  styles = {}
   for feature in features_list:
     function = "feature_%s" % (feature)
     new_output, new_styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
