@@ -3,7 +3,7 @@
 
 """
   kml_processing.py
-  Copyright 2010-11 Tom Chance <tom@acrewoods.net>
+  Copyright 2010-13 Tom Chance <tom@acrewoods.net>
 
   Functions to create KML files
 
@@ -20,14 +20,14 @@
   http://www.gnu.org/licenses/gpl-3.0.html
 """
 
+__author__ = "Tom Chance"
+__email__ = "tom@acrewoods.net"
+__copyright__ = "Copyright 2010-13, Tom Chance"
+__license__ = "GPL"
+
 import flickr
 import re
 import sys
-
-__author__ = "Tom Chance"
-__email__ = "tom@acrewoods.net"
-__copyright__ = "Copyright 2010-11, Tom Chance"
-__license__ = "GPL"
 
 def generateKMLStyle(name,icon):
   """
@@ -49,8 +49,11 @@ def generateKMLPlacemark(row):
     Return a valid KML placemark definition adding in
     data from the universal tags (description, website, etc.)
   """
-  name = u'%s' % (row['popup_title'].decode('utf-8'))
-  name = name.encode('ascii', 'xmlcharrefreplace')
+  try:
+    test = row['popup_title'].decode('ascii')
+    title = row['popup_title']
+  except UnicodeEncodeError:
+    title = row['popup_title'].encode('ascii', 'xmlcharrefreplace')
   lon = row['lon']
   lat = row['lat']
   popupContents = ''
@@ -79,7 +82,7 @@ def generateKMLPlacemark(row):
       row['wikipedia'] = re.sub(r'http://en.wikipedia.org/wiki/', '', row['wikipedia'])
       popupContents = "".join([popupContents, """<a href="http://en.wikipedia.org/wiki/%s">Wikipedia article</a>""" % (row['wikipedia'])])
     popupContents = "".join([popupContents, "</p>"])
-  return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (name,popupContents,row['popup_style'],lon,lat)
+  return """<Placemark>\n\t<name>%s</name>\n\t<description><![CDATA[%s]]></description>\n\t<styleUrl>#%s</styleUrl>\n\t<Point>\n\t\t<coordinates>%s,%s</coordinates>\n\t</Point>\n</Placemark>\n""" % (title,popupContents,row['popup_style'],lon,lat)
 
 def createKMLFile(title, output, filename, styles):
   """

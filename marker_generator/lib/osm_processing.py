@@ -30,6 +30,7 @@ try: import simplejson as json
 except ImportError: import json
 import urllib2
 import sys
+import re
 
 def escape(html):
     """
@@ -42,12 +43,24 @@ def processRawData(key, value, bbox, server):
   """
   Downloads all nodes, ways and relations with the key/value pair from the Overpass server
   """
-  query = """interpreter?data=[out:json];(node(%s)["%s"="%s"];(relation(%s)["%s"="%s"];node(r)->.nodes;way(r);node(w););(way(%s)["%s"="%s"];node(w);););out;""" % (bbox, key, value, bbox, key, value, bbox, key, value)
+  if (value):
+    if (re.search(r'\|',value)):
+      operator = '~'
+      multiple_values = True
+    else:
+      operator = '='
+      multiple_values = False
+    query_value = '"%s"' % (value)
+  else:
+    value = ''
+    operator = ''
+    multiple_values = True
+  query = """interpreter?data=[out:json];(node(%s)["%s"%s%s];(relation(%s)["%s"%s%s];node(r)->.nodes;way(r);node(w););(way(%s)["%s"%s%s];node(w);););out;""" % (bbox, key, operator, query_value, bbox, key, operator, query_value, bbox, key, operator, query_value)
   f = urllib2.urlopen(server + query)
   data = json.load(f)
   if ('-v' in sys.argv):
-    print " : Downloading %s=%s « %s »" % (key, value, server + query)
-
+    print ' : Downloading "%s"="%s" « %s »' % (key, value, server + query)
+  
   # Indexes for nodes and ways needed to find lat/lon centrepoints for ways and relations
   node_index = {}
   way_index = {}
@@ -64,7 +77,7 @@ def processRawData(key, value, bbox, server):
     if (item['type'] == 'node'):
       node_index[item['id']] = { 'lat' : item['lat'], 'lon' : item['lon'] } 
       if ('tags' in item):
-        if (key in item['tags'] and item['tags'][key] == value):
+        if ((key in item['tags'] and item['tags'][key] == value) or multiple_values):
           thisitem = { 'lat' : item['lat'], 'lon' : item['lon'] }
           for tagkey in item['tags'].keys():
             thisitem[tagkey] = escape(item['tags'][tagkey])
@@ -82,7 +95,7 @@ def processRawData(key, value, bbox, server):
       loncen = "{0:.4f}".format((max(lons) + min(lons)) / 2)
       way_index[item['id']] = { 'lat' : latcen, 'lon' : loncen }
       if ('tags' in item):
-        if (key in item['tags'] and item['tags'][key] == value):
+        if ((key in item['tags'] and item['tags'][key] == value) or multiple_values):
           thisitem = { 'lat' : latcen, 'lon' : loncen }
           for tagkey in item['tags'].keys():
             thisitem[tagkey] = escape(item['tags'][tagkey])
@@ -99,7 +112,7 @@ def processRawData(key, value, bbox, server):
             latcen = way_index[member['ref']]['lat']
             loncen = way_index[member['ref']]['lon']
       if ('tags' in item):
-        if (key in item['tags'] and item['tags'][key] == value):
+        if ((key in item['tags'] and item['tags'][key] == value) or multiple_values):
           thisitem = { 'lat' : latcen, 'lon' : loncen }
           for tagkey in item['tags'].keys():
             thisitem[tagkey] = escape(item['tags'][tagkey])

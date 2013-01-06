@@ -47,4 +47,4 @@ def doTheJob(bbox, filename, features, title):
     createKMLFile(title, output, filename, styles)
 
 if __name__=="__main__":
-  doTheJob('51.20,-0.51,51.80,0.35', 'london_power', 'powergenerator', 'Low carbon power in London')
+  doTheJob('51.20,-0.51,51.80,0.35', 'power', 'powergenerator', 'Low carbon power in London')
