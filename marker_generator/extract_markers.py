@@ -58,7 +58,7 @@ if __name__=='__main__':
   cursor.execute('SELECT packs.bbox, packs.title, layers.features, layers.name from packs, layers, pack_layers WHERE pack_layers.layer = layers.id AND pack_layers.pack = packs.id')
   layers = cursor.fetchall()
   for layer in layers:
-    filename = ''.join([layer[1], '/', layer[3])])
+    filename = ''.join([layer[1], '/', layer[3]])
     try:
       doTheJob(layer[0], filename, layer[2], layer[3])
     except:
