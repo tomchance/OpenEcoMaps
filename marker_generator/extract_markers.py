@@ -60,7 +60,7 @@ if __name__=='__main__':
   for layer in layers:
     filename = ''.join([layer[1], '/', layer[3]])
     try:
-    doTheJob(layer[0], filename, layer[1], layer[2], layer[3], )
+      doTheJob(layer[0], filename, layer[1], layer[2], layer[3])
     except:
      if ('-v' in sys.argv):
-       print '*** Blast, that layer failed. Moving on... ***'
+       print '*** Blast, that layer failed. I tried %s on bbox %s to no avail. Moving on... ***' % (layer[2], layer[0])
