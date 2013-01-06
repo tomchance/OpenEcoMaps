@@ -46,6 +46,9 @@ def doTheJob(bbox, filename, packtitle, features, layername):
   if ('-v' in sys.argv):
     print ''.join([packtitle, ' --> ', layername, ' (', filename, ')'])
   features_list = features.split(';')
+  directory = str.lower(packtitle.replace(' ', '_'))
+  if not os.path.exists(directory):
+    os.makedirs(directory)
   for feature in features_list:
     function = "feature_%s" % (feature)
     output, styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
@@ -61,6 +64,7 @@ if __name__=='__main__':
     filename = ''.join([layer[1], '/', layer[3]])
     try:
       doTheJob(layer[0], filename, layer[1], layer[2], layer[3])
+      print '\n'
     except:
      if ('-v' in sys.argv):
-       print '*** Blast, that layer failed. I tried %s on bbox %s to no avail. Moving on... ***' % (layer[2], layer[0])
+       print '*** Blast, that layer failed. I tried %s on bbox %s to no avail. Moving on... ***\n' % (layer[2], layer[0])
