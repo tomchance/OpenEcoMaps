@@ -94,6 +94,7 @@ def createKMLFile(title, output, filename, styles):
   for feature in output:
     body = ''.join([body, generateKMLPlacemark(feature)])
   filename = 'kml/' + filename + '.kml'
+  filename = str.lower(filename.replace(' ', '_'))
   output = ''.join([header, body, "</Document></kml>"])
   if ('-v' in sys.argv):
     print " : Writing to KML « " + filename + " »"
