@@ -29,7 +29,7 @@ __license__ = "GPL"
 import os
 import sys
 from lib.feature_defs import *
-#from lib.kml_processing import *
+from lib.kml_processing import *
 from lib.geojson_processing import *
 
 from ConfigParser import SafeConfigParser
