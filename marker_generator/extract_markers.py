@@ -52,9 +52,11 @@ def doTheJob(bbox, filename, packtitle, features, layername):
       os.makedirs(directory)
   for feature in features_list:
     function = "feature_%s" % (feature)
-    output, styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
-    createJSONFile(layername, output, filename, styles)
-    createKMLFile(layername, output, filename, styles)
+    new_output, new_styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
+    output.append(new_output)
+    styles.append(new_styles)
+  createJSONFile(layername, output, filename, styles)
+  createKMLFile(layername, output, filename, styles)
 
 if __name__=='__main__':
   db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASSWD, db=DBDB)
