@@ -46,9 +46,10 @@ def doTheJob(bbox, filename, packtitle, features, layername):
   if ('-v' in sys.argv):
     print ''.join([packtitle, ' --> ', layername, ' (', filename, ')'])
   features_list = features.split(';')
-  directory = str.lower(packtitle.replace(' ', '_'))
-  if not os.path.exists(directory):
-    os.makedirs(directory)
+  for fileformat ['json', 'kml']:
+    directory = fileformat + '/' + str.lower(packtitle.replace(' ', '_'))
+    if not os.path.exists(directory):
+      os.makedirs(directory)
   for feature in features_list:
     function = "feature_%s" % (feature)
     output, styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
