@@ -46,7 +46,7 @@ def doTheJob(bbox, filename, packtitle, features, layername):
   if ('-v' in sys.argv):
     print ''.join([packtitle, ' --> ', layername, ' (', filename, ')'])
   features_list = features.split(';')
-  for fileformat ['json', 'kml']:
+  for fileformat in ['json', 'kml']:
     directory = fileformat + '/' + str.lower(packtitle.replace(' ', '_'))
     if not os.path.exists(directory):
       os.makedirs(directory)
