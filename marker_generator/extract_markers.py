@@ -60,7 +60,7 @@ def doTheJob(bbox, filename, packtitle, features, layername):
   createJSONFile(layername, output, filename, styles)
   createKMLFile(layername, output, filename, styles)
   if ('-v' in sys.argv):
-    print 'All done, next...?\n'
+    print ' : Layer finished, next...?\n'
 
 if __name__=='__main__':
   db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASSWD, db=DBDB)
