@@ -56,10 +56,10 @@ def processRawData(key, value, bbox, server):
     operator = ''
     multiple_values = True
   query = """interpreter?data=[out:json];(node(%s)["%s"%s%s];(relation(%s)["%s"%s%s];node(r)->.nodes;way(r);node(w););(way(%s)["%s"%s%s];node(w);););out;""" % (bbox, key, operator, query_value, bbox, key, operator, query_value, bbox, key, operator, query_value)
-  f = urllib2.urlopen(server + query)
-  data = json.load(f)
   if ('-v' in sys.argv):
     print ' : Downloading "%s"="%s" « %s »' % (key, value, server + query)
+  f = urllib2.urlopen(server + query)
+  data = json.load(f)
   
   # Indexes for nodes and ways needed to find lat/lon centrepoints for ways and relations
   node_index = {}

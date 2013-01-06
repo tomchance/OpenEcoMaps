@@ -42,7 +42,7 @@ DBPASSWD = parser.get('database', 'passwd')
 DBDB = parser.get('database', 'db')
 OVERPASS = parser.get('overpass', 'server')
 
-def doTheJob(bbox, filename, features, layername):
+def doTheJob(bbox, filename, packtitle, features, layername):
   if ('-v' in sys.argv):
     print ''.join([packtitle, ' --> ', layername, ' (', filename, ')'])
   features_list = features.split(';')
@@ -60,7 +60,7 @@ if __name__=='__main__':
   for layer in layers:
     filename = ''.join([layer[1], '/', layer[3]])
     try:
-      doTheJob(layer[0], filename, layer[2], layer[3])
+    doTheJob(layer[0], filename, layer[1], layer[2], layer[3], )
     except:
-      if ('-v' in sys.argv):
-        print '*** Blast, that layer failed. Moving on... ***'
+     if ('-v' in sys.argv):
+       print '*** Blast, that layer failed. Moving on... ***'
