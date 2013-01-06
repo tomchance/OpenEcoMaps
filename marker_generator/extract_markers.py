@@ -50,11 +50,13 @@ def doTheJob(bbox, filename, packtitle, features, layername):
     directory = fileformat + '/' + str.lower(packtitle.replace(' ', '_'))
     if not os.path.exists(directory):
       os.makedirs(directory)
+  output = []
+  styles = []
   for feature in features_list:
     function = "feature_%s" % (feature)
     new_output, new_styles = globals()[function](bbox, {}, parser.get('overpass', 'server'))
-    output.append(new_output)
-    styles.append(new_styles)
+    output = output + new_output
+    styles = dict(styles.items() + new_styles.items())
   createJSONFile(layername, output, filename, styles)
   createKMLFile(layername, output, filename, styles)
 
@@ -67,7 +69,6 @@ if __name__=='__main__':
     filename = ''.join([layer[1], '/', layer[3]])
     try:
       doTheJob(layer[0], filename, layer[1], layer[2], layer[3])
-      print '\n'
     except:
      if ('-v' in sys.argv):
        print '*** Blast, that layer failed. I tried %s on bbox %s to no avail. Moving on... ***\n' % (layer[2], layer[0])

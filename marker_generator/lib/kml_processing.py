@@ -89,6 +89,8 @@ def createKMLFile(title, output, filename, styles):
   Create a valid KML document for all the features
   downloaded and save to a file
   """
+  if ('-v' in sys.argv):
+    print " : Writing to KML « " + filename + " »"
   header = generateKMLHeader(styles, title)
   body = ''
   for feature in output:
@@ -96,8 +98,6 @@ def createKMLFile(title, output, filename, styles):
   filename = 'kml/' + filename + '.kml'
   filename = str.lower(filename.replace(' ', '_'))
   output = ''.join([header, body, "</Document></kml>"])
-  if ('-v' in sys.argv):
-    print " : Writing to KML « " + filename + " »"
   f = open(filename, 'w')
   f.write(output)
   f.close()

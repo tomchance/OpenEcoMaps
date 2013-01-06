@@ -94,6 +94,8 @@ def createJSONFile(title, output, filename, styles):
   Create a valid GeoJSON feature collection for all the features
   downloaded and save to a file
   '''
+  if ('-v' in sys.argv):
+    print ' : Writing to GeoJSON « ' + filename + ' »'
   icon_styles = []
   for stylename in styles.keys():
     icon_styles.append({'name' : stylename, 'url' : ''.join(['http://www.openecomaps.co.uk/feature_icons/', styles[stylename]])})
@@ -103,8 +105,6 @@ def createJSONFile(title, output, filename, styles):
   output = ''.join(['var iconstyles = ', pp.pformat(icon_styles), '\nvar ', filename, ' = ', pp.pformat(feature_collection)])
   filename = 'json/' + filename + '.json'
   filename = str.lower(filename.replace(' ', '_'))
-  if ('-v' in sys.argv):
-    print ' : Writing to GeoJSON « ' + filename + ' »'
   f = open(filename, 'w')
   f.write(output)
   f.close()
