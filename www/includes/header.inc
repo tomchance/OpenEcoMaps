@@ -28,7 +28,7 @@
       map.events.register("moveend", map, updateLocation);
       map.events.register("changelayer", map, updateLocation);
   <?php else: ?>
-      initMap(-0.081, 51.5043, 3);
+      initMap(-0.085, 51.5043, 1);
   <?php endif; ?>
     }
   </script>
