@@ -51,15 +51,17 @@ function initMap(lat, lon, zoom){
  * layername and layerurl are pretty self-explanatory
  */
 function addKMLLayer(layername,layerurl){
-  var kmllayer = new OpenLayers.Layer.GML(layername, layerurl,
-  {
-    format: OpenLayers.Format.KML,
+  var kmllayer = new OpenLayers.Layer.Vector(layername, {
+    strategies: [new OpenLayers.Strategy.Fixed()],
     projection: new OpenLayers.Projection("EPSG:4326"),
-    visibility: true,
-    formatOptions: {
-      extractStyles: true,
-      extractAttributes: true
-    }
+    visibility: false,
+    protocol: new OpenLayers.Protocol.HTTP({
+      url: layerurl,
+      format: new OpenLayers.Format.KML({
+        extractStyles: true, 
+        extractAttributes: true,
+      })
+    })
   });
   return kmllayer;
 }

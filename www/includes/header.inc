@@ -15,7 +15,7 @@
   <script type="text/javascript" src="script/oem.js"></script>
 <?php endif; ?>
 <?php if ($map): ?>
-  <script type="text/javascript" src="http://www.openlayers.org/dev/OpenLayers.js"></script>
+  <script type="text/javascript" src="http://www.openlayers.org/api/2.12/OpenLayers.js"></script>
   <!--[if lt IE 7]>
   <link rel="stylesheet" href="/script/ie6-fix.css" type="text/css">
   <script type="text/javascript" src="/script/ie6-fix.js"></script>
