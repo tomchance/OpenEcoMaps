@@ -16,10 +16,11 @@ function initMap(){
 
    OpenLayers.ImgPath = "/ol_theme_green/";
 
-  var layerCloudMade = new OpenLayers.Layer.OSM("Default map",
-	["http://a.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png",
-	"http://b.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png",
-	"http://c.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png"],
+  var layerMapBox = new OpenLayers.Layer.OSM("Default map",
+	["http://a.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://b.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://c.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://d.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png"],
 	{ resolutions: [76.43702827148438, 38.21851413574219,19.109257067871095, 9.554628533935547, 4.777314266967774, 2.3886571, 1.1943286],
 	  zoomOffset: 11,
 	  numZoomLevels: 7 });
@@ -45,7 +46,7 @@ function initMap(){
 	{ name: "Aerial photography",
 	  key: 'AoGQ41xJtaeTYW-5bGSuE7e589v03uKnxXeXmtFEsWMH1UoZMyhBydLItxE7Qua_',
 	  type: 'Aerial' });
-  map.addLayers([layerCloudMade, layerCycling, layerPublicTransport, layerAerial]);
+  map.addLayers([layerMapBox, layerCycling, layerPublicTransport, layerAerial]);
   
   map.addControl(new OpenLayers.Control.PanZoomBar());
   map.addControl(new OpenLayers.Control.Attribution());

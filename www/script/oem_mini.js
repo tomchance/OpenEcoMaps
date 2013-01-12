@@ -18,14 +18,15 @@ function initMap(lat, lon, zoom){
 
    OpenLayers.ImgPath = "/ol_theme_green/";
 
-  var layerCloudMade = new OpenLayers.Layer.OSM("Default map",
-	["http://a.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png",
-	"http://b.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png",
-	"http://c.tile.cloudmade.com/8bafab36916b5ce6b4395ede3cb9ddea/27911/256/${z}/${x}/${y}.png"],
+  var layerMapBox = new OpenLayers.Layer.OSM("Default map",
+	["http://a.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://b.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://c.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png",
+    "http://d.tiles.mapbox.com/v3/tomchance.map-hr1423ep/${z}/${x}/${y}.png"],
 	{ resolutions: [19.109257067871095, 9.554628533935547, 4.777314266967774, 2.3886571, 1.1943286],
 	  zoomOffset: 13,
 	  numZoomLevels: 5 });
-  map.addLayers([layerCloudMade]);
+  map.addLayers([layerMapBox]);
   
   var layerPower = addKMLLayer("Low carbon power", "http://www.openecomaps.co.uk/kml/one_planet_london/low_carbon_power.kml");
   var layerFood = addKMLLayer("Food", "http://www.openecomaps.co.uk/kml/one_planet_london/food.kml");
