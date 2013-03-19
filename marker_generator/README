@@ -3,10 +3,10 @@ OpenEcoMaps
 ==============
 
 --------------
-kml_generator
+marker_generator
 -------------- 
 
-Run extract_kml.py to create the default KML files.
+Run extract_markers.py or similar to create the default KML and JSON files.
 
 Options:
 
@@ -18,11 +18,15 @@ Options:
 Customising
 -------------- 
 
-You can create your own KML files with your own combination of features by
-changing the extract_kml.py file.
+You can create your own KML and/or JSON files with your own combination of 
+features by changing the extract_markers.py file. This script takes a todo
+list from a MySQL database.
+
+You can also manually create KML and/or JSON files by playing with the example
+script.
 
 To customise how different features are processed (i.e. what tags are used and
-how they create the KML), edit 'libs/feature_defs.py'.
+how they create the KML/JSON), edit 'libs/feature_defs.py'.
 
 
 --------------
