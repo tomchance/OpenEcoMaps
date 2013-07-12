@@ -186,7 +186,7 @@ def feature_waste_transfer_station(bbox, myStyles, server):
     Recycling centres...
   '''
   myStyles['wasteRecyclingDepot'] = 'waste_recycle.png'
-  poi_data = processRawData('amenity', 'waste_transfer_station', bbox)
+  poi_data = processRawData('amenity', 'waste_transfer_station', bbox, server)
   output = []
   recycling_regexp = re.compile(r'recycling:(\w+)')
   for row in poi_data:
@@ -289,7 +289,7 @@ def feature_fruittree(bbox, myStyles, server):
   '''
   myStyles['foodFruitTree'] = 'food_fruit_tree.png'
   output = []
-  poi_data = processRawData('produce', None, bbox, server)
+  poi_data = processRawData('produce', '', bbox, server)
   for row in poi_data:
     if (row['lat'] == None):
       continue
@@ -454,7 +454,7 @@ def feature_powergenerator(bbox, myStyles, server):
     if (gen_type == 'Unknown power generator' or gen_type == 'Gas ' or gen_type == 'Oil '):
       continue
     # Description stuff?
-    description = 'No further details known'
+    description = 'No further details known.'
     if ('description' in row):
       description = row['description']
     rating = re.compile('\d')

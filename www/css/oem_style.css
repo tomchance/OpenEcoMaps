@@ -86,6 +86,14 @@
 	border: 1px solid #cccccc;
 }
 
+.olFramedCloudPopupContent:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 img#chicken_FrameDecorationImg_0, 
 img#chicken_FrameDecorationImg_1, 
 img#chicken_FrameDecorationImg_2, 

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="UndoableAction,net.systemeD.halcyon.connection.UndoableAction,FAIL,NO_CHANGE,SUCCESS,doAction,mergePrevious,undoAction" name="keywords">
+<title>net.systemeD.halcyon.connection.UndoableAction</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'UndoableAction - Halcyon and Potlatch2 Developer documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Halcyon and Potlatch2 Developer documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?net/systemeD/halcyon/connection/UndoableAction.html&amp;net/systemeD/halcyon/connection/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;UndoableAction</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class UndoableAction"); titleBar_setSubNav(true,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">net.systemeD.halcyon.connection</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class UndoableAction</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../connection/CompositeUndoableAction.html">CompositeUndoableAction</a>, <a href="../connection/UndoableEntityAction.html">UndoableEntityAction</a></td>
+</tr>
+</table>
+<p></p>
+    UndoableAction is the base class from which other actions types inherit. An undoable action
+    is an object that can be added to a list of actions, for example the MainUndoStack or any
+    other list of actions.
+        <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="CompositeUndoableAction.html" target="">CompositeUndoableAction</a>
+<br>
+<a href="UndoableEntityAction.html" target="">UndoableEntityAction</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#doAction()">doAction</a>():uint</div>
+<div class="summaryTableDescription">
+        The doAction function is called when it is time to execute this action or
+        combination of actions.</div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#mergePrevious()">mergePrevious</a>(previous:<a href="UndoableAction.html">UndoableAction</a>):Boolean</div>
+<div class="summaryTableDescription">
+        Can this action be merged with the previous action? This is sometimes wanted, such as
+        when moving nodes around.</div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#undoAction()">undoAction</a>():uint</div>
+<div class="summaryTableDescription">
+        The undoAction function is called in order to undo this action or combination
+        of actions.</div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#FAIL">FAIL</a> : uint = 0<div class="summaryTableDescription">[static] Something went wrong while attempting the action </div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#NO_CHANGE">NO_CHANGE</a> : uint = 2<div class="summaryTableDescription">[static] No entity was altered by this action </div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#SUCCESS">SUCCESS</a> : uint = 1<div class="summaryTableDescription">[static] The action worked, and entities were changed </div>
+</td><td class="summaryTableOwnerCol">UndoableAction</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="doAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">doAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function doAction():uint</code><p>
+        The doAction function is called when it is time to execute this action or
+        combination of actions. It is usually triggered by either MainUndoStack.addAction
+        or by MainUndoStack.redo.
+                This should be overridden.
+                </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>uint</code> &mdash; whether the action succeed, failed or nothing happened
+        </td>
+</tr>
+</table>
+</div>
+<a name="mergePrevious()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">mergePrevious</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function mergePrevious(previous:<a href="UndoableAction.html">UndoableAction</a>):Boolean</code><p>
+        Can this action be merged with the previous action? This is sometimes wanted, such as
+        when moving nodes around.
+                This is overridden when needed.
+                </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">previous</span>:<a href="UndoableAction.html">UndoableAction</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="actions/MoveNodeAction.html#mergePrevious" target="">net.systemeD.halcyon.connection.actions.MoveNodeAction.mergePrevious</a>
+</div>
+</div>
+<a name="undoAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">undoAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function undoAction():uint</code><p>
+        The undoAction function is called in order to undo this action or combination
+        of actions. It is usually triggered by MainUndoStack.undo.
+                This should be overridden.
+                </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>uint</code> &mdash; whether undoing the action succeed, failed or nothing happened
+        </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="FAIL"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">FAIL</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const FAIL:uint = 0</code><p> Something went wrong while attempting the action </p></div>
+<a name="NO_CHANGE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NO_CHANGE</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const NO_CHANGE:uint = 2</code><p> No entity was altered by this action </p></div>
+<a name="SUCCESS"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SUCCESS</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const SUCCESS:uint = 1</code><p> The action worked, and entities were changed </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">Found an error? Help us fix it. http://wiki.openstreetmap.org/wiki/Potlatch2</center>
+</div>
+</body>
+</html>
+<!--Found an error? Help us fix it. http://wiki.openstreetmap.org/wiki/Potlatch2-->

@@ -14,7 +14,7 @@ include("includes/header.inc");
   <p>
   If you like, this video will take you through the basics. It might help to watch the video first, then read through this page and have a go yourself.</p>
 
-  <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/T7oiuq3KqmE?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/T7oiuq3KqmE?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
+  <iframe width="640" height="480" src="//www.youtube.com/embed/hAp6ufMGdpg" frameborder="0" allowfullscreen></iframe>
 
   <h3>Creating an OpenStreetMap account</h3>
 
@@ -29,10 +29,10 @@ include("includes/header.inc");
   <p><img src="images/editor_mainscreen.png" alt="Main screen of the customised Potlatch 2 editor"></p>
 
   <p>
-  <strong>The main section shows the map</strong> with all of the features drawn on top of the background map as thin grey lines or little grey dots. In this customised editor, all the sustainability features show up as the icons or as more prominently drawn areas such as those allotments and the library.</p>
+  <strong>The main section shows the map</strong> with all of the features drawn on top of the aerial imagery. In this customised editor, all the sustainability features show up as the icons you'll see on the normal map, or as more prominently drawn areas - shops, veggie cafes and the like drawn as buildings are given a bold green outline, trees are drawn, and so on.</p>
 
   <p>
-  <strong>At the top you have general controls</strong> that let you change the background (e.g. to aerial photography or an old out-of-copyright map); change the map style (e.g. away from our custom style to the OpenStreetMap default); show up any GPS data you might have gathered; read the help pages; change your options; and save anything you've done.</p>
+  <strong>At the top you have general controls</strong> that let you save your work to OpenStreetMap; read the help pages; change the background (you can choose between aerial photography, the OpenEcoMaps map style, or an Ordnance Survey map we are allowed to copy); change the map style (e.g. away from our custom style to the OpenStreetMap default or a simple wireframe view); show up any GPS data you might have gathered; and change your options.</p>
 
   <p>
   <strong>On the left you have the features</strong> that you can add and edit. If you've not got anything selected it shows "points of interest" you can drag and drop onto the map (but not areas, since you can't just drag and drop them on - you need to draw their shape). If you select a feature, it will show that feature's properties.</p>
@@ -83,6 +83,15 @@ include("includes/header.inc");
   <p>
   Click on the 'save' button at the top right to save your changes. If it's the first time you've used the editor, you will need to follow the instructions to authorise yourself with the OpenStreetMap web site.</p>
 
+  <p>
+  You will save your information to the <strong>live OpenStreetMap database</a>, a global community project. The information you add will now be available to anyone in the world as open data. Exciting!</p>
+
+  <h2>Some more hints and tips</h2>
+
+  <p>
+  Watch this video for some more tips, covering many of the points described in this page and a few more. Sometimes it's easier to watch someone else doing it...</p>
+
+  <iframe width="640" height="480" src="//www.youtube.com/embed/nK0W87y0U-w" frameborder="0" allowfullscreen></iframe>
 
 
   </div>

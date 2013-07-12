@@ -99,5 +99,9 @@ def createKMLFile(title, output, filename, styles):
     body = ''.join([body, generateKMLPlacemark(feature)])
   output = ''.join([header, body, "</Document></kml>"])
   f = open(filename, 'w')
+  try:
+    test = output.decode('ascii')
+  except UnicodeEncodeError:
+    output = output.encode('ascii', 'xmlcharrefreplace')
   f.write(output)
   f.close()

@@ -1,0 +1,28 @@
+<featureGroup>
+
+  <feature name="Community food growing">
+    <category>foodanddrink</category>
+    <icon image="/feature_icons/food_community_growing.png"/>
+    <help>
+    http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments
+    </help>
+    <area/>
+    <tag k="community" v="yes"/>
+    <tag k="landuse" v="allotments"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+  <feature name="Allotments">
+    <category>foodanddrink</category>
+    <icon image="/feature_icons/food_allotment.png"/>
+    <help>
+    http://wiki.openstreetmap.org/wiki/Tag:landuse=allotments
+    </help>
+    <area/>
+    <tag k="landuse" v="allotments"/>
+    <inputSet ref="names"/>
+    <inputSet ref="basics"/>
+  </feature>
+
+</featureGroup>

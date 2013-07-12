@@ -1,0 +1,18 @@
+<featureGroup>
+
+<feature name="Tree">
+  <category>nature</category>
+  <icon image="/feature_icons/nature_tree_16.png"/>
+  <help>
+    http://wiki.openstreetmap.org/wiki/Tag:natural=tree
+  </help>
+  <point/>
+  <tag k="natural" v="tree"/>
+    <input type="freetext" presence="always" name="Common name" category="Details" priority="highest" key="species:en" description="The common English name (e.g. London Plane)"/>
+    <input type="freetext" presence="always" name="Species" category="Details" priority="high" key="species" description="The species (e.g. Platanus × hispanica)"/>
+    <input type="freetext" presence="always" name="Genus" category="Details" priority="high" key="genus" description="The genus (e.g. Platanus)"/>
+    <input type="freetext" presence="always" name="Circumference (add cm to end)" category="Details" priority="medium" key="circumference" description="The circumference of the tree in centimetres"/>
+    <input type="freetext" presence="always" name="Height (add m to end)" category="Details" priority="medium" key="height" description="The height of the tree in metres"/>
+    <input type="freetext" presence="always" name="Notes" category="Details" priority="low" key="note" description="Add any extra info e.g. appears dead, split, etc."/>
+  </feature>
+</featureGroup>

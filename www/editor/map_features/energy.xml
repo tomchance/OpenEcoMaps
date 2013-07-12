@@ -1,0 +1,157 @@
+<featureGroup>
+  <inputSet id="energySource">
+    <input type="choice" presence="always" name="Energy source" key="generator:source" category="Energy">
+      <choice value="wind" text="Wind"/>
+      <choice value="solar" text="Solar"/>
+      <choice value="biofuel" text="Biofuel"/>
+      <choice value="biofuel" text="Biomass"/>
+      <choice value="biogas" text="Biogas"/>
+      <choice value="geothermal" text="Geothermal"/>
+      <choice value="hydro" text="Hydroelectric"/>
+      <choice value="tidal" text="Tidal"/>
+      <choice value="wave" text="Wave"/>
+      <choice value="osmotic" text="Osmotic"/>
+      <choice value="coal" text="Coal"/>
+      <choice value="gas" text="Gas"/>
+      <choice value="oil" text="Oil"/>
+      <choice value="nuclear" text="Nuclear"/>
+    </input>
+  </inputSet>
+  <inputSet id="energyMethod">
+    <input type="choice" presence="always" name="Generation method" key="generator:method" category="Energy">
+      <choice value="photovoltaic" text="Photovoltaic cells"/>
+      <choice value="thermal" text="Thermal (using heat from the sun)"/>
+      <choice value="combustion" text="Combustion (burning)"/>
+      <choice value="gasification" text="Gasification"/>
+      <choice value="anaerobic_digestion" text="Anerobic digestion"/>
+      <choice value="pyrolysis" text="Pyrolysis"/>
+      <choice value="pumping" text="Pumping"/>
+      <choice value="fission" text="Fission"/>
+      <choice value="fusion" text="Fusion"/>
+    </input>
+  </inputSet>
+
+  <feature name="Wind turbine">
+    <category>energy</category>
+      <icon image="/feature_icons/power_wind.png"/>
+      <help>
+        http://wiki.openstreetmap.org/wiki/Tag:power=generator
+      </help>
+      <point/>
+        <tag k="power" v="generator"/>
+        <tag k="generator:source" v="wind"/>
+        <inputSet ref="names"/>
+        <inputSet ref="basics"/>
+        <input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the turbine" name="Electrical rating" key="generator:output:electricity"/>
+      </feature>
+<feature name="Solar panel">
+<category>energy</category>
+<icon image="/feature_icons/power_solar.png"/>
+<help>
+http://wiki.openstreetmap.org/wiki/Tag:power=generator
+</help>
+<area/>
+<point/>
+<tag k="power" v="generator"/>
+<tag k="generator:source" v="solar"/>
+<inputSet ref="names"/>
+<inputSet ref="basics"/>
+<input type="choice" presence="always" name="Generation method" key="generator:method">
+<choice value="photovoltaic" text="Photovoltaic cells"/>
+<choice value="thermal" text="Thermal panels (for hot water)"/>
+</input>
+<input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the panel" name="Output - electrical rating" key="generator:output:electricity"/>
+<input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+</feature>
+<feature name="Biomass generator">
+<category>energy</category>
+<icon image="/feature_icons/power_biomass.png"/>
+<help>
+http://wiki.openstreetmap.org/wiki/Tag:power=generator
+</help>
+<area/>
+<point/>
+<tag k="power" v="generator"/>
+<tag k="generator:source" v="biomass"/>
+<inputSet ref="names"/>
+<inputSet ref="basics"/>
+<inputSet ref="energyMethod"/>
+<input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the generator" name="Output - electricity rating" key="generator:output:electricity"/>
+<input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+<input type="freetext" presence="always" category="Energy" description="The hot air output rating (maximum potential) of the generator" name="Output - hot air rating" key="generator:output:hot_air"/>
+<input type="freetext" presence="always" category="Energy" description="The cold water output rating (maximum potential) of the generator" name="Output - cold water rating" key="generator:output:cold_water"/>
+</feature>
+<feature name="Geothermal generator">
+<category>energy</category>
+<icon image="/feature_icons/power_geothermal.png"/>
+<help>
+http://wiki.openstreetmap.org/wiki/Tag:power=generator
+</help>
+<area/>
+<point/>
+<tag k="power" v="generator"/>
+<tag k="generator:source" v="geothermal"/>
+<tag k="generator:method" v="pumping"/>
+<inputSet ref="names"/>
+<inputSet ref="basics"/>
+<input type="freetext" presence="always" category="Energy" description="The electrical output rating (maximum potential) of the generator" name="Output - electricity rating" key="generator:output:electricity"/>
+<input type="freetext" presence="always" category="Energy" description="The hot water output rating (maximum potential) of the panel" name="Output - hot water rating" key="generator:output:hot_water"/>
+<input type="freetext" presence="always" category="Energy" description="The cold water output rating (maximum potential) of the generator" name="Output - cold water rating" key="generator:output:cold_water"/>
+</feature>
+  <feature name="High-voltage line">
+    <category>power</category>
+    <icon image="features/power_high.png"/>
+    <line/>
+    <tag k="power" v="line"/>
+    <inputSet ref="powerCables"/>
+    <inputSet ref="common"/>
+  </feature>
+
+
+  <feature name="Low-voltage line">
+    <category>power</category>
+    <icon image="features/power_low.png"/>
+    <line/>
+    <tag k="power" v="minor_line"/>
+    <inputSet ref="powerCables"/>
+    <inputSet ref="common"/>
+  </feature>
+
+
+  <feature name="High-voltage pylon">
+    <category>power</category>
+    <icon image="features/pois/power_tower_high2.n.24.png"/>
+    <point/>
+    <tag k="power" v="tower"/>
+    <inputSet ref="common"/>
+  </feature>
+
+
+  <feature name="Power pole">
+    <category>power</category>
+    <icon image="features/pois/power_tower_low.n.24.png"/>
+    <point/>
+    <tag k="power" v="pole"/>
+    <inputSet ref="common"/>
+  </feature>
+
+
+  <feature name="Substation">
+    <category>power</category>
+    <icon image="features/pois/power_substation.n.24.png"/>"
+    <area/>
+    <point/>
+    <tag k="power" v="station"/>
+    <inputSet ref="common"/>
+  </feature>
+
+
+  <feature name="Transformer">
+    <category>power</category>
+    <icon image="features/pois/power_transformer.n.24.png"/>
+    <area/>
+    <point/>
+    <tag k="power" v="sub_station"/>
+    <inputSet ref="common"/>
+  </feature>
+</featureGroup>

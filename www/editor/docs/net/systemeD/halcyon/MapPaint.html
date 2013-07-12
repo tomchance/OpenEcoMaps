@@ -1,0 +1,1051 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="MapPaint,net.systemeD.halcyon.MapPaint,connection,interactive,isBackground,map,maxlayer,minlayer,ruleset,style,sublayerIndex,ready,createMarkerUI,createNodeUI,createWayUI,deleteMarkerUI,deleteNodeUI,deleteWayUI,findWaysAtPoint,getHitSpriteAt,getPaintSpriteAt,limitWayDrawing,markerDeleted,nodeDeleted,protectWay,pullThrough,redraw,redrawEntity,redrawPOIs,renumberNodeUI,renumberWayUI,sameConnection,setHighlight,setHighlightOnNodes,setPurgable,setStyle,sublayer,unprotectWay,updateEntityUIs,wayDeleted" name="keywords">
+<title>net.systemeD.halcyon.MapPaint</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'MapPaint - Halcyon and Potlatch2 Developer documentation';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Halcyon and Potlatch2 Developer documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?net/systemeD/halcyon/MapPaint.html&amp;net/systemeD/halcyon/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MapPaint</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MapPaint"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">net.systemeD.halcyon</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class MapPaint</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">MapPaint <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> flash.display.Sprite</td>
+</tr>
+</table>
+<p></p> Manages the drawing of map entities, allocating their sprites etc. <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#connection">connection</a> : <a href="connection/Connection.html">Connection</a>
+<div class="summaryTableDescription"> Source data for this MapPaint layer </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#interactive">interactive</a> : Boolean = false<div class="summaryTableDescription"> Can the user select entities in this layer? </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isBackground">isBackground</a> : Boolean = true<div class="summaryTableDescription"> Is this a background layer or the core paint object? </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#map">map</a> : <a href="../halcyon/Map.html">Map</a>
+<div class="summaryTableDescription"> Parent Map - required for finding out bounds and scale </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#maxlayer">maxlayer</a> : int<div class="summaryTableDescription"> Highest OSM layer that can be displayed </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#minlayer">minlayer</a> : int<div class="summaryTableDescription"> Lowest OSM layer that can be displayed </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ready">ready</a> : Boolean<div class="summaryTableDescription">[read-only] Is ruleset loaded? </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ruleset">ruleset</a> : <a href="styleparser/RuleSet.html">RuleSet</a>
+<div class="summaryTableDescription"> The MapCSS rules used for drawing entities.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#style">style</a> : String = ""<div class="summaryTableDescription"> The url of the style in use </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sublayerIndex">sublayerIndex</a> : Object<div class="summaryTableDescription"> Hash of index->position </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#MapPaint()">MapPaint</a>(map:<a href="Map.html">Map</a>, connection:<a href="connection/Connection.html">Connection</a>, styleurl:String, minlayer:int, maxlayer:int)</div>
+<div class="summaryTableDescription"> Creates paint sprites and hit sprites for all layers in range.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createMarkerUI()">createMarkerUI</a>(marker:<a href="connection/Marker.html">Marker</a>, rotation:Number = 0, layer:int, stateClasses:Object = null):<a href="../halcyon/MarkerUI.html">MarkerUI</a>
+</div>
+<div class="summaryTableDescription"> Make a UI object representing a marker.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createNodeUI()">createNodeUI</a>(node:<a href="connection/Node.html">Node</a>, rotation:Number = 0, layer:int, stateClasses:Object = null):<a href="../halcyon/NodeUI.html">NodeUI</a>
+</div>
+<div class="summaryTableDescription"> Make a UI object representing a node.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createWayUI()">createWayUI</a>(way:<a href="connection/Way.html">Way</a>):<a href="../halcyon/WayUI.html">WayUI</a>
+</div>
+<div class="summaryTableDescription"> Make a UI object representing a way.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#deleteMarkerUI()">deleteMarkerUI</a>(marker:<a href="connection/Marker.html">Marker</a>):void</div>
+<div class="summaryTableDescription"> Remove a marker's UI object.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#deleteNodeUI()">deleteNodeUI</a>(node:<a href="connection/Node.html">Node</a>):void</div>
+<div class="summaryTableDescription"> Remove a node's UI object.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#deleteWayUI()">deleteWayUI</a>(way:<a href="connection/Way.html">Way</a>):void</div>
+<div class="summaryTableDescription"> Remove a way's UI object.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#findWaysAtPoint()">findWaysAtPoint</a>(x:Number, y:Number, ignore:<a href="connection/Way.html">Way</a> = null):Array</div>
+<div class="summaryTableDescription"> Find all ways whose WayUI passes a given screen co-ordinate.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getHitSpriteAt()">getHitSpriteAt</a>(l:int):Sprite</div>
+<div class="summaryTableDescription"> Returns the hit sprite for the given layer.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPaintSpriteAt()">getPaintSpriteAt</a>(l:int):Sprite</div>
+<div class="summaryTableDescription"> Returns the paint surface for the given layer.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#limitWayDrawing()">limitWayDrawing</a>(way:<a href="connection/Way.html">Way</a>, except:Number, only:Number):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#markerDeleted()">markerDeleted</a>(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</div>
+<div class="summaryTableDescription"> Respond to event by deleting MarkerUI.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nodeDeleted()">nodeDeleted</a>(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</div>
+<div class="summaryTableDescription"> Respond to event by deleting NodeUI.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#protectWay()">protectWay</a>(way:<a href="connection/Way.html">Way</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pullThrough()">pullThrough</a>(entity:<a href="connection/Entity.html">Entity</a>, target:<a href="MapPaint.html">MapPaint</a>):<a href="connection/Entity.html">Entity</a>
+</div>
+<div class="summaryTableDescription">
+        Transfers an entity from this layer into another layer
+        </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#redraw()">redraw</a>():void</div>
+<div class="summaryTableDescription"> Redraw all entities </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#redrawEntity()">redrawEntity</a>(e:<a href="connection/Entity.html">Entity</a>):Boolean</div>
+<div class="summaryTableDescription"> Redraw a single entity if it exists </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#redrawPOIs()">redrawPOIs</a>():void</div>
+<div class="summaryTableDescription"> Redraw nodes and markers only </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#renumberNodeUI()">renumberNodeUI</a>(node:<a href="connection/Node.html">Node</a>, oldID:Number):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#renumberWayUI()">renumberWayUI</a>(way:<a href="connection/Way.html">Way</a>, oldID:Number):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sameConnection()">sameConnection</a>(entity:<a href="connection/Entity.html">Entity</a>):Boolean</div>
+<div class="summaryTableDescription"> Does an entity belong to this layer? </div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setHighlight()">setHighlight</a>(entity:<a href="connection/Entity.html">Entity</a>, settings:Object):void</div>
+<div class="summaryTableDescription"> Visually mark an entity as highlighted.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setHighlightOnNodes()">setHighlightOnNodes</a>(way:<a href="connection/Way.html">Way</a>, settings:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setPurgable()">setPurgable</a>(entities:Array, purgable:Boolean):void</div>
+<div class="summaryTableDescription"> Protect Entities and EntityUIs against purging.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setStyle()">setStyle</a>(url:String):void</div>
+<div class="summaryTableDescription"> Switch to new MapCSS.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sublayer()">sublayer</a>(layer:int, spritetype:uint, sublayer:Number):Sprite</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unprotectWay()">unprotectWay</a>(way:<a href="connection/Way.html">Way</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateEntityUIs()">updateEntityUIs</a>(redraw:Boolean, remove:Boolean):void</div>
+<div class="summaryTableDescription">
+        Update, and if necessary, create / remove UIs for the current viewport.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#wayDeleted()">wayDeleted</a>(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</div>
+<div class="summaryTableDescription"> Respond to event by removing the WayUI.</div>
+</td><td class="summaryTableOwnerCol">MapPaint</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="connection"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">connection</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var connection:<a href="connection/Connection.html">Connection</a></code><p> Source data for this MapPaint layer </p></div>
+<a name="interactive"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">interactive</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var interactive:Boolean = false</code><p> Can the user select entities in this layer? </p></div>
+<a name="isBackground"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isBackground</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var isBackground:Boolean = true</code><p> Is this a background layer or the core paint object? </p></div>
+<a name="map"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">map</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var map:<a href="../halcyon/Map.html">Map</a></code><p> Parent Map - required for finding out bounds and scale </p></div>
+<a name="maxlayer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">maxlayer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var maxlayer:int</code><p> Highest OSM layer that can be displayed </p></div>
+<a name="minlayer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">minlayer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var minlayer:int</code><p> Lowest OSM layer that can be displayed </p></div>
+<a name="ready"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ready</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>ready:Boolean</code>&nbsp;&nbsp;[read-only]<p> Is ruleset loaded? </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get ready():Boolean</code>
+<br>
+</div>
+<a name="ruleset"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ruleset</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var ruleset:<a href="styleparser/RuleSet.html">RuleSet</a></code><p> The MapCSS rules used for drawing entities. </p></div>
+<a name="style"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">style</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var style:String = ""</code><p> The url of the style in use </p></div>
+<a name="sublayerIndex"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sublayerIndex</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var sublayerIndex:Object</code><p> Hash of index->position </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="MapPaint()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MapPaint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function MapPaint(map:<a href="Map.html">Map</a>, connection:<a href="connection/Connection.html">Connection</a>, styleurl:String, minlayer:int, maxlayer:int)</code><p> Creates paint sprites and hit sprites for all layers in range. This object ends up with a series of child sprites
+   as follows: p0,p1,p2..px, h0,h1,h2..hx where p are "paint sprites" and "h" are "hit sprites". There is one of each type for each layer.
+   </p><p>Each paint sprite has 4 child sprites (fill, casing, stroke, names). Each hit sprite has 2 child sprites (way hit tests, node hit tests).</p>  
+   <p>Thus if layers range from -5 to +5, there will be 11 top level paint sprites followed by 11 top level hit sprites.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">map</span>:<a href="Map.html">Map</a></code> &mdash; The Map this is attached to. (Required for finding out bounds and scale.)
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">connection</span>:<a href="connection/Connection.html">Connection</a></code> &mdash; The Connection containing the data for this layer.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">styleurl</span>:String</code> &mdash; The lowest OSM layer to display.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">minlayer</span>:int</code> &mdash; The highest OSM layer to display.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">maxlayer</span>:int</code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="createMarkerUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createMarkerUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function createMarkerUI(marker:<a href="connection/Marker.html">Marker</a>, rotation:Number = 0, layer:int, stateClasses:Object = null):<a href="../halcyon/MarkerUI.html">MarkerUI</a></code><p> Make a UI object representing a marker. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">marker</span>:<a href="connection/Marker.html">Marker</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">rotation</span>:Number</code> (default = <code>0</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">layer</span>:int</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">stateClasses</span>:Object</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../halcyon/MarkerUI.html">MarkerUI</a></code></td>
+</tr>
+</table>
+</div>
+<a name="createNodeUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createNodeUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function createNodeUI(node:<a href="connection/Node.html">Node</a>, rotation:Number = 0, layer:int, stateClasses:Object = null):<a href="../halcyon/NodeUI.html">NodeUI</a></code><p> Make a UI object representing a node. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">node</span>:<a href="connection/Node.html">Node</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">rotation</span>:Number</code> (default = <code>0</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">layer</span>:int</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">stateClasses</span>:Object</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../halcyon/NodeUI.html">NodeUI</a></code></td>
+</tr>
+</table>
+</div>
+<a name="createWayUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createWayUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function createWayUI(way:<a href="connection/Way.html">Way</a>):<a href="../halcyon/WayUI.html">WayUI</a></code><p> Make a UI object representing a way. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../halcyon/WayUI.html">WayUI</a></code></td>
+</tr>
+</table>
+</div>
+<a name="deleteMarkerUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">deleteMarkerUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function deleteMarkerUI(marker:<a href="connection/Marker.html">Marker</a>):void</code><p> Remove a marker's UI object. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">marker</span>:<a href="connection/Marker.html">Marker</a></code></td>
+</tr>
+</table>
+</div>
+<a name="deleteNodeUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">deleteNodeUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function deleteNodeUI(node:<a href="connection/Node.html">Node</a>):void</code><p> Remove a node's UI object. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">node</span>:<a href="connection/Node.html">Node</a></code></td>
+</tr>
+</table>
+</div>
+<a name="deleteWayUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">deleteWayUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function deleteWayUI(way:<a href="connection/Way.html">Way</a>):void</code><p> Remove a way's UI object. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+</table>
+</div>
+<a name="findWaysAtPoint()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">findWaysAtPoint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function findWaysAtPoint(x:Number, y:Number, ignore:<a href="connection/Way.html">Way</a> = null):Array</code><p> Find all ways whose WayUI passes a given screen co-ordinate. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ignore</span>:<a href="connection/Way.html">Way</a></code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code></td>
+</tr>
+</table>
+</div>
+<a name="getHitSpriteAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getHitSpriteAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getHitSpriteAt(l:int):Sprite</code><p> Returns the hit sprite for the given layer. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">l</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Sprite</code></td>
+</tr>
+</table>
+</div>
+<a name="getPaintSpriteAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPaintSpriteAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getPaintSpriteAt(l:int):Sprite</code><p> Returns the paint surface for the given layer. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">l</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Sprite</code></td>
+</tr>
+</table>
+</div>
+<a name="limitWayDrawing()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">limitWayDrawing</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function limitWayDrawing(way:<a href="connection/Way.html">Way</a>, except:Number, only:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">except</span>:Number</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">only</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="markerDeleted()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">markerDeleted</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function markerDeleted(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</code><p> Respond to event by deleting MarkerUI. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="connection/EntityEvent.html">EntityEvent</a></code></td>
+</tr>
+</table>
+</div>
+<a name="nodeDeleted()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nodeDeleted</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function nodeDeleted(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</code><p> Respond to event by deleting NodeUI. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="connection/EntityEvent.html">EntityEvent</a></code></td>
+</tr>
+</table>
+</div>
+<a name="protectWay()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">protectWay</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function protectWay(way:<a href="connection/Way.html">Way</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+</table>
+</div>
+<a name="pullThrough()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pullThrough</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pullThrough(entity:<a href="connection/Entity.html">Entity</a>, target:<a href="MapPaint.html">MapPaint</a>):<a href="connection/Entity.html">Entity</a></code><p>
+        Transfers an entity from this layer into another layer
+        </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="connection/Entity.html">Entity</a></code> &mdash; The entity from this layer that you want to transfer.
+        </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:<a href="MapPaint.html">MapPaint</a></code> &mdash; The layer to transfer to
+                </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="connection/Entity.html">Entity</a></code> &mdash; 
+                        either the newly created entity, or null
+        
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="redraw()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">redraw</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function redraw():void</code><p> Redraw all entities </p></div>
+<a name="redrawEntity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">redrawEntity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function redrawEntity(e:<a href="connection/Entity.html">Entity</a>):Boolean</code><p> Redraw a single entity if it exists </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:<a href="connection/Entity.html">Entity</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="redrawPOIs()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">redrawPOIs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function redrawPOIs():void</code><p> Redraw nodes and markers only </p></div>
+<a name="renumberNodeUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">renumberNodeUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function renumberNodeUI(node:<a href="connection/Node.html">Node</a>, oldID:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">node</span>:<a href="connection/Node.html">Node</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">oldID</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="renumberWayUI()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">renumberWayUI</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function renumberWayUI(way:<a href="connection/Way.html">Way</a>, oldID:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">oldID</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="sameConnection()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sameConnection</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function sameConnection(entity:<a href="connection/Entity.html">Entity</a>):Boolean</code><p> Does an entity belong to this layer? </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="connection/Entity.html">Entity</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="setHighlight()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setHighlight</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setHighlight(entity:<a href="connection/Entity.html">Entity</a>, settings:Object):void</code><p> Visually mark an entity as highlighted. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entity</span>:<a href="connection/Entity.html">Entity</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">settings</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="setHighlightOnNodes()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setHighlightOnNodes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setHighlightOnNodes(way:<a href="connection/Way.html">Way</a>, settings:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">settings</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="setPurgable()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setPurgable</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setPurgable(entities:Array, purgable:Boolean):void</code><p> Protect Entities and EntityUIs against purging. This prevents the currently selected items
+     from being purged even though they're off-screen. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">entities</span>:Array</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">purgable</span>:Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="setStyle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setStyle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setStyle(url:String):void</code><p> Switch to new MapCSS. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">url</span>:String</code></td>
+</tr>
+</table>
+</div>
+<a name="sublayer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sublayer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function sublayer(layer:int, spritetype:uint, sublayer:Number):Sprite</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">layer</span>:int</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">spritetype</span>:uint</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">sublayer</span>:Number</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Sprite</code></td>
+</tr>
+</table>
+</div>
+<a name="unprotectWay()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unprotectWay</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unprotectWay(way:<a href="connection/Way.html">Way</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">way</span>:<a href="connection/Way.html">Way</a></code></td>
+</tr>
+</table>
+</div>
+<a name="updateEntityUIs()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateEntityUIs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function updateEntityUIs(redraw:Boolean, remove:Boolean):void</code><p>
+        Update, and if necessary, create / remove UIs for the current viewport.
+        Flags control redrawing existing entities and removing UIs from entities no longer in view.
+                </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">redraw</span>:Boolean</code> &mdash; If true, all UIs for entities on "inside" lists will be redrawn
+        </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">remove</span>:Boolean</code> &mdash; If true, all UIs for entites on "outside" lists will be removed. The purgable flag on UIs
+                        can override this, for example for selected objects.
+        fixme? add smarter behaviour for way nodes - remove NodeUIs from way nodes off screen, create them for ones
+        that scroll onto screen (for highlights etc)
+        </td>
+</tr>
+</table>
+</div>
+<a name="wayDeleted()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">wayDeleted</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function wayDeleted(event:<a href="connection/EntityEvent.html">EntityEvent</a>):void</code><p> Respond to event by removing the WayUI. </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="connection/EntityEvent.html">EntityEvent</a></code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">Found an error? Help us fix it. http://wiki.openstreetmap.org/wiki/Potlatch2</center>
+</div>
+</body>
+</html>
+<!--Found an error? Help us fix it. http://wiki.openstreetmap.org/wiki/Potlatch2-->

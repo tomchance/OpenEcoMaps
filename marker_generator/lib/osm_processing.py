@@ -52,7 +52,7 @@ def processRawData(key, value, bbox, server):
       multiple_values = False
     query_value = '"%s"' % (value)
   else:
-    value = ''
+    query_value = ''
     operator = ''
     multiple_values = True
   query = """interpreter?data=[out:json];(node(%s)["%s"%s%s];(relation(%s)["%s"%s%s];node(r)->.nodes;way(r);node(w););(way(%s)["%s"%s%s];node(w);););out;""" % (bbox, key, operator, query_value, bbox, key, operator, query_value, bbox, key, operator, query_value)
